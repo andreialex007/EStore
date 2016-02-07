@@ -6,7 +6,7 @@ namespace EStore.Web.Controllers
     {
         public ActionResult Index()
         {
-            return Content("working...");
+            return View("Home/Index");
         }
     }
 }

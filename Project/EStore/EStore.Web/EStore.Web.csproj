@@ -174,8 +174,15 @@
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Code\AuthentificationExtensions.cs" />
+    <Compile Include="Code\CustomModelValidatorProvider.cs" />
+    <Compile Include="Code\ExceptionControllerActionInvoker.cs" />
+    <Compile Include="Code\Extensions.cs" />
+    <Compile Include="Code\HtmlHelpers.cs" />
+    <Compile Include="Code\JsonNetResult.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\_Common\ControllerBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3048,11 +3055,7 @@
     <Content Include="Content\assets\global\plugins\zoom\jquery.zoom.min.js" />
     <Content Include="Content\assets\global\scripts\datatable.js" />
     <Content Include="Content\assets\global\scripts\metronic.js" />
-    <Content Include="Content\Images\email-logo.png" />
-    <Content Include="Content\Images\facebook-icon.png" />
     <Content Include="Content\Images\logo.png" />
-    <Content Include="Content\Images\paid-background.png" />
-    <Content Include="Content\Images\twitter-icon.png" />
     <Content Include="Content\templates\admin2\angularjs\index.html" />
     <Content Include="Content\templates\admin2\angularjs\js\app.js" />
     <Content Include="Content\templates\admin2\angularjs\js\controllers\DashboardController.js" />
@@ -3253,6 +3256,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\common\custom.ui.toastr.js" />
+    <Content Include="Scripts\common\dialogs.js" />
+    <Content Include="Scripts\common\utils.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3265,13 +3271,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Code\" />
     <Folder Include="Content\assets\global\plugins\amcharts\" />
     <Folder Include="Content\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Content\assets\global\plugins\NewFolder1\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -3783,6 +3786,25 @@
     <Content Include="Content\templates\admin2\demo\typeahead_nba.json" />
     <Content Include="Content\templates\admin2\demo\typeahead_nhl.json" />
     <Content Include="Content\templates\admin2\demo\username_checker.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Common\ModalConfirm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout\Login.cshtml" />
+    <Content Include="Views\Shared\_Layout\Administrative.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout\Main.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Common\InfoModal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Common\MainMenu.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
