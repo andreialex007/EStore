@@ -1,0 +1,32 @@
+﻿.ttable {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.trow {
+    display: table-row;
+}
+
+.tcell {
+    display: table-cell;
+}
+
+.grow {
+    bottom: 0;
+    height: 100%;
+}
+
+.validation-summary-errors {
+    margin-top: 10px;
+}
+
+.page-logo {
+    padding-left: 10px !important;
+}
+
+    .page-logo .logo-default {
+        width: 133px;
+        margin-top: 2px !important;
+    }
+
