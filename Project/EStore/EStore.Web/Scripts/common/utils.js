@@ -87,6 +87,12 @@
 
         self.init = function () {
 
+            $.extend(true, $.fn.dataTable.defaults, {
+                "language": {
+                    "url": "/Content/assets/global/plugins/datatables/Russian.json"
+                }
+            });
+
             String.prototype.capitalizeFirstLetter = function () {
                 return this.charAt(0).toUpperCase() + this.slice(1);
             }

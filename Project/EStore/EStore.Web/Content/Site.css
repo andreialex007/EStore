@@ -30,3 +30,21 @@
         margin-top: 2px !important;
     }
 
+table {
+    table-layout: fixed !important;
+}
+
+    table th.actions {
+        width: 100px !important;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    table td:last-of-type {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    table .id-column {
+        width: 100px !important;
+    }

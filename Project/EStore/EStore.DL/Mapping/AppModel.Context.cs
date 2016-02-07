@@ -7,11 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-
 namespace EStore.DL.Mapping
 {
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    
     public partial class EStoreEntities : DbContext
     {
         public EStoreEntities()
@@ -24,5 +25,9 @@ namespace EStore.DL.Mapping
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tblArticle> tblArticles { get; set; }
+        public virtual DbSet<tblProduct> tblProducts { get; set; }
+        public virtual DbSet<tblUser> tblUsers { get; set; }
+        public virtual DbSet<VersionInfo> VersionInfoes { get; set; }
     }
 }

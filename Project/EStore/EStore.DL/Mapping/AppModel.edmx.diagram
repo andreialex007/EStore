@@ -4,7 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e350e001357c4073bb93c4f1f18e98b3" Name="Diagram1" />
+      <Diagram DiagramId="e350e001357c4073bb93c4f1f18e98b3" Name="Diagram1" >
+        <EntityTypeShape EntityType="EStoreModel.tblArticle" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EStoreModel.tblProduct" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EStoreModel.tblUser" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EStoreModel.VersionInfo" Width="1.5" PointX="2.75" PointY="3.75" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

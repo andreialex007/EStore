@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Andrew\Documents\Visual Studio 2015\Projects\EStore\EStore.DL\Mapping\AppModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Andrew\Desktop\EStoreProject\EStore\Project\EStore\EStore.DL\Mapping\AppModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
