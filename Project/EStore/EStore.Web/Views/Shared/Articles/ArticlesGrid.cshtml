@@ -1,9 +1,18 @@
-﻿@model List<EStore.BL.Models.ArticleItem>
-
+﻿
 <div class="articles-grid">
     <div class="row">
         <div class="col-md-12">
-            @Html.Partial("_Common/AddNewButton")
+            <div class="table-toolbar">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="btn-group">
+                            <a href="/Articles/add" class="btn green add">
+                                Добавить <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <table class="table table-striped table-hover table-bordered table-condensed">
                 <thead>
                     <tr>
@@ -14,19 +23,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.Id</td>
-                            <td>@item.Title</td>
-                            <td>@(item.Date.Value.ToString(""))</td>
-                            <td>
-                                @Html.Partial("_Common/EditDeleteTableActions")
-                            </td>
-                        </tr>
-                    }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<script id="delete-table-actions-template" type="text/html">
+    @Html.Partial("_Common/EditDeleteTableActions")
+</script>
