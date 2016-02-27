@@ -2,8 +2,8 @@
     var self = {};
 
     self.showConfirmModal = function (title, content, funcSuccess) {
-        title = title || "Confirmation";
-        content = content || "Are you really want to do action?";
+        title = title || "Подтверждение";
+        content = content || "Вы действительно уверены что хотите совершить действие?";
 
         $(".confirm-modal .modal-title").text(title);
         $(".confirm-modal .modal-body p").text(content);

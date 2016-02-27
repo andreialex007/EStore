@@ -48,3 +48,27 @@ table {
     table .id-column {
         width: 100px !important;
     }
+
+
+.note-editor {
+    border: none !important;
+}
+
+    .note-editor .note-toolbar {
+        border: none !important;
+        background-color: transparent !important;
+        padding-left: 0px !important;
+    }
+
+    .note-editor .note-editable {
+        border: 1px solid rgb(229, 229, 229) !important;
+        border-radius: 3px !important;
+    }
+
+.note-editable p {
+    margin: 0px !important;
+}
+
+.note-editable {
+    min-height: 100px;
+}

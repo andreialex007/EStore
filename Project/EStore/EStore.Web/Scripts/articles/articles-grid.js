@@ -15,6 +15,13 @@
             ]
         });
 
+        $(document.body).on("click", ".articles-search-page td:last-of-type .edit", self.edit);
+    }
+
+    self.edit = function (event) {
+        var rowIndex = $(event.target).closest("tr").index();
+        var itemId = self.table.row(rowIndex).data()[0];
+        location.href = "/Articles/" + itemId;
     }
 
     self.init();

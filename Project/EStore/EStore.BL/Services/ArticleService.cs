@@ -42,5 +42,25 @@ namespace EStore.BL.Services
                 .ToList();
             return items;
         }
+
+        public ArticleItem Edit(long id)
+        {
+            var articleItem = Db.Set<tblArticle>()
+                .Select(x => new ArticleItem
+                {
+                    Id = x.Id,
+                    Date = x.Date,
+                    Text = x.Text,
+                    Title = x.Title
+                })
+                .Single(x => x.Id == id);
+
+            return articleItem;
+        }
+
+        public void AppendData(ArticleItem item)
+        {
+
+        }
     }
 }

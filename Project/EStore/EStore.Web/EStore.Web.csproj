@@ -3267,6 +3267,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\articles\articles-grid.js" />
     <Content Include="Scripts\articles\articles-search-page.js" />
+    <Content Include="Scripts\articles\edit-article-page.js" />
     <Content Include="Scripts\common\custom.ui.toastr.js" />
     <Content Include="Scripts\common\dialogs.js" />
     <Content Include="Scripts\common\utils.js" />
@@ -3831,6 +3832,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\global\plugins\datatables\Russian.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Articles\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Common\ErrorsBlock.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

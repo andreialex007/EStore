@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using EStore.BL.Exceptions;
 using EStore.BL.Models;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
@@ -16,7 +16,25 @@ namespace EStore.Web.Controllers
         [HttpGet]
         public ActionResult Edit(long id = 0)
         {
-            return Content("Add");
+            var articleItem = Service.Article.Edit(id);
+            return View("Articles/Edit", articleItem);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Edit(ArticleItem item)
+        {
+            try
+            {
+                Service.Article.Save(item);
+                return RedirectToRouteNotify("EditArticle", new { id = item.Id });
+            }
+            catch (ValidationException ex)
+            {
+                AddModelErrors(ex);
+                Service.Article.AppendData(item);
+                return View("Articles/Edit", item);
+            }
         }
     }
 }
