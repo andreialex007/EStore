@@ -11,8 +11,7 @@ namespace EStore.Web.Controllers
     {
         public ActionResult Index()
         {
-            var items = Service.Article.All();
-            return View("Articles/Index", items);
+            return View("Articles/Index");
         }
 
         [HttpGet]

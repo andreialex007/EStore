@@ -3288,6 +3288,7 @@
     <Folder Include="Content\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Content\assets\global\plugins\NewFolder1\" />
+    <Folder Include="Scripts\products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -3839,6 +3840,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Common\ErrorsBlock.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Products\ProductsGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Products\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Products\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

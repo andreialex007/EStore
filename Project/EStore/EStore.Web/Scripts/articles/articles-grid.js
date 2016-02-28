@@ -21,7 +21,7 @@
             aoColumnDefs: [
                 {
                     bSortable: false,
-                    sDefaultContent: $("#delete-table-actions-template").html(),
+                    sDefaultContent: $("#edit-delete-table-actions-template").html(),
                     aTargets: [-1]
                 }
             ],

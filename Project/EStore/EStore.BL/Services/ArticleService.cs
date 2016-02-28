@@ -30,20 +30,6 @@ namespace EStore.BL.Services
             item.Id = article.Id;
         }
 
-        public List<ArticleItem> All()
-        {
-            var items = Db.Set<tblArticle>()
-                .Select(x => new ArticleItem
-                {
-                    Id = x.Id,
-                    Date = x.Date,
-                    Text = x.Text,
-                    Title = x.Title
-                })
-                .ToList();
-            return items;
-        }
-
         public ArticleItem Edit(long id)
         {
             var articleItem = new ArticleItem();
@@ -92,7 +78,7 @@ namespace EStore.BL.Services
             }
 
 
-            var recordsFiltered = 0;
+            var recordsFiltered = query.Count();
 
             var items = query
                 .OrderBy(orderBy, isAsc)
