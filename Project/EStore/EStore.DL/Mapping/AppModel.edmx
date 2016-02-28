@@ -14,6 +14,15 @@
           <Property Name="Text" Type="nvarchar(max)" />
           <Property Name="Date" Type="datetime" />
         </EntityType>
+        <EntityType Name="tblFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProductId" Type="bigint" />
+        </EntityType>
         <EntityType Name="tblProduct">
           <Key>
             <PropertyRef Name="Id" />
@@ -42,8 +51,21 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <Property Name="AppliedOn" Type="datetime" />
           <Property Name="Description" Type="nvarchar" MaxLength="1024" />
         </EntityType>
+        <Association Name="FK_tblFile_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1" />
+          <End Role="tblFile" Type="Self.tblFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblFile">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EStoreModelStoreContainer">
           <EntitySet Name="tblArticle" EntityType="Self.tblArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFile" EntityType="Self.tblFile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" store:Type="Tables" store:Schema="dbo">
@@ -53,6 +75,10 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
     [VersionInfo].[Description] AS [Description]
     FROM [dbo].[VersionInfo] AS [VersionInfo]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_tblFile_tblProduct" Association="Self.FK_tblFile_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblFile" EntitySet="tblFile" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -60,9 +86,14 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
       <Schema Namespace="EStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="EStoreEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="tblArticles" EntityType="EStoreModel.tblArticle" />
+          <EntitySet Name="tblFiles" EntityType="EStoreModel.tblFile" />
           <EntitySet Name="tblProducts" EntityType="EStoreModel.tblProduct" />
           <EntitySet Name="tblUsers" EntityType="EStoreModel.tblUser" />
           <EntitySet Name="VersionInfoes" EntityType="EStoreModel.VersionInfo" />
+          <AssociationSet Name="FK_tblFile_tblProduct" Association="EStoreModel.FK_tblFile_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblFile" EntitySet="tblFiles" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tblArticle">
           <Key>
@@ -73,6 +104,16 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="tblFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int64" />
+          <NavigationProperty Name="tblProduct" Relationship="EStoreModel.FK_tblFile_tblProduct" FromRole="tblFile" ToRole="tblProduct" />
+        </EntityType>
         <EntityType Name="tblProduct">
           <Key>
             <PropertyRef Name="Id" />
@@ -80,6 +121,7 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Descripton" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblFiles" Relationship="EStoreModel.FK_tblFile_tblProduct" FromRole="tblProduct" ToRole="tblFile" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -99,6 +141,18 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <Property Name="AppliedOn" Type="DateTime" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_tblFile_tblProduct">
+          <End Type="EStoreModel.tblProduct" Role="tblProduct" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblFile" Role="tblFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblFile">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -111,6 +165,16 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFiles">
+            <EntityTypeMapping TypeName="EStoreModel.tblFile">
+              <MappingFragment StoreEntitySet="tblFile">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -3272,6 +3272,7 @@
     <Content Include="Scripts\common\custom.ui.toastr.js" />
     <Content Include="Scripts\common\dialogs.js" />
     <Content Include="Scripts\common\utils.js" />
+    <Content Include="Scripts\products\product-images-grid.js" />
     <Content Include="Scripts\products\products-grid.js" />
     <Content Include="Scripts\products\products-search-page.js" />
     <Content Include="Scripts\products\edit-product-page.js" />
@@ -3291,6 +3292,7 @@
     <Folder Include="Content\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Content\assets\global\plugins\NewFolder1\" />
+    <Folder Include="Files\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -3851,6 +3853,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Products\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Products\ImagesGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Products\ImagesGridRow.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -72,3 +72,48 @@ table {
 .note-editable {
     min-height: 100px;
 }
+
+.product-images-grid {
+    position: relative;
+}
+
+    .product-images-grid .table-toolbar {
+        position: absolute;
+    }
+
+    .product-images-grid .table td,
+    .product-images-grid .table th {
+        width: auto !important;
+    }
+
+.table-equal-columns-id-actions td:not(:first-of-type),
+.table-equal-columns-id-actions th:not(:first-of-type) {
+    width: auto !important;
+}
+
+.table-equal-columns-id-actions th:first-of-type {
+    width: 100px !important;
+}
+
+.table-equal-columns-id-actions th:last-of-type {
+    width: 100px !important;
+}
+
+.fileinput-button {
+    position: relative;
+    overflow: hidden;
+}
+
+    .fileinput-button input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        -ms-filter: 'alpha(opacity=0)';
+        font-size: 200px;
+        direction: ltr;
+        cursor: pointer;
+        width: 156px;
+        height: 35px;
+    }

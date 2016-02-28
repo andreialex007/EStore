@@ -5,10 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e350e001357c4073bb93c4f1f18e98b3" Name="Diagram1" >
-        <EntityTypeShape EntityType="EStoreModel.tblArticle" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="EStoreModel.tblProduct" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="EStoreModel.tblUser" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="EStoreModel.VersionInfo" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EStoreModel.tblArticle" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EStoreModel.tblFile" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="EStoreModel.tblProduct" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="EStoreModel.tblUser" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EStoreModel.VersionInfo" Width="1.5" PointX="4.75" PointY="3.75" />
+        <AssociationConnector Association="EStoreModel.FK_tblFile_tblProduct" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

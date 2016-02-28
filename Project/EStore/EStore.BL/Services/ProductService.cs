@@ -18,7 +18,7 @@ namespace EStore.BL.Services
         public void Save(ProductItem item)
         {
             var errors = item.GetValidationErrors();
-            
+
             errors.ThrowIfHasErrors();
 
             var product = new tblProduct();
@@ -51,7 +51,16 @@ namespace EStore.BL.Services
                     {
                         Id = x.Id,
                         Descripton = x.Descripton,
-                        Name = x.Name
+                        Name = x.Name,
+                        ProductImages = x.tblFiles
+                            .Select(f => new ProductImageItem
+                            {
+                                Id = f.Id,
+                                Description = f.Description,
+                                Path = f.Path,
+                                ProductId = f.ProductId
+                            })
+                            .ToList()
                     })
                     .Single();
             }
@@ -102,6 +111,33 @@ namespace EStore.BL.Services
 
         public void AppendData(ProductItem item)
         {
+        }
+
+        public ProductImageItem AddFile(string path, string description, long productId)
+        {
+            var item = new ProductImageItem
+            {
+                Description = description,
+                Path = path,
+                ProductId = productId
+            };
+            AddFile(item);
+            return item;
+        }
+
+        public void AddFile(ProductImageItem item)
+        {
+            var tblFile = new tblFile
+            {
+                Description = item.Description,
+                Path = item.Path,
+                ProductId = item.ProductId
+            };
+
+            Db.Set<tblFile>().Add(tblFile);
+            Db.SaveChanges();
+
+            item.Id = tblFile.Id;
         }
     }
 }

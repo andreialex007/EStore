@@ -3,6 +3,7 @@
     window.editProductPage = function () {
 
         var self = {};
+        self.productImagesGrid = null;
 
         self.init = function () {
 
@@ -21,7 +22,9 @@
                 ]
             });
 
-            
+
+            self.productImagesGrid = new ProductImagesGrid();
+
         }
 
         self.init();

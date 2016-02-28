@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using EStore.BL.Models._Common;
 using EStore.BL.Utils;
 
@@ -17,5 +18,7 @@ namespace EStore.BL.Models
         [Required]
         [Display(Name = "Описание")]
         public string DescriptionText => CommonUtils.StripHtml(Descripton).Trim();
+
+        public List<ProductImageItem> ProductImages { get; set; } = new List<ProductImageItem>();
     }
 }

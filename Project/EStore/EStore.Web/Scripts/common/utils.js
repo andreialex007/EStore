@@ -69,8 +69,6 @@
             $(longEl).val(parseFloat(longitude.toFixed(8)));
         }
 
-
-
         self.initSelect2AutoOpenInContainer = function (parentElement) {
             var allElements = !parentElement ? $(".select2-container") : $(parentElement).find(".select2-container");
             $(allElements).next().one('select2-focus', self.select2Focus)
@@ -119,6 +117,16 @@
                 $.removeCookie("Saved", { path: '/' });
                 UIToastr.ShowMessage("success", "Saved", "Successfully saved", true);
             }
+        }
+
+        self.tableRowToArray = function (rowHtml) {
+
+            var dataArr = [];
+            $(rowHtml).find("td").each(function (index, element) {
+                dataArr.push($(element).html());
+            });
+
+            return dataArr;
         }
 
         self.init();

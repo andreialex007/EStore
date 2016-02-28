@@ -11,7 +11,6 @@ namespace EStore.Web
             var unwrappedConnectionString = Regex.Match(connectionString, "\"(.*)\"").ToString().Trim("\"".ToCharArray());
             var migrator = new Migrator(unwrappedConnectionString);
             migrator.Migrate(runner => runner.MigrateUp());
-            //migrator.Migrate(runner => runner.MigrateDown(0));
         }
     }
 }

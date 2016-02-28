@@ -106,6 +106,7 @@
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Models\ArticleItem.cs" />
+    <Compile Include="Models\ProductImageItem.cs" />
     <Compile Include="Models\ProductItem.cs" />
     <Compile Include="Models\_Common\Column.cs" />
     <Compile Include="Models\_Common\Order.cs" />

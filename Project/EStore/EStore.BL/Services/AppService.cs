@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using EStore.BL.Models;
 using EStore.BL.Services._Common;
 using EStore.DL;
 using EStore.DL.Mapping;
@@ -27,6 +28,11 @@ namespace EStore.BL.Services
             var element = Db.Set<T>().Single(x => x.Id == id);
             Db.Set<T>().Remove(element);
             Db.SaveChanges();
+        }
+
+        public string GetFilePath(long id)
+        {
+            return Db.Set<tblFile>().Single(x => x.Id == id).Path;
         }
     }
 }
