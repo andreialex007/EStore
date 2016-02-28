@@ -3272,6 +3272,9 @@
     <Content Include="Scripts\common\custom.ui.toastr.js" />
     <Content Include="Scripts\common\dialogs.js" />
     <Content Include="Scripts\common\utils.js" />
+    <Content Include="Scripts\products\products-grid.js" />
+    <Content Include="Scripts\products\products-search-page.js" />
+    <Content Include="Scripts\products\edit-product-page.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3288,7 +3291,6 @@
     <Folder Include="Content\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Content\assets\global\plugins\NewFolder1\" />
-    <Folder Include="Scripts\products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

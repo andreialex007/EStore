@@ -17,6 +17,9 @@ namespace EStore.BL.Services
 
         public void Save(ArticleItem item)
         {
+            var errors = item.GetValidationErrors();
+            errors.ThrowIfHasErrors();
+
             var article = new tblArticle
             {
                 Id = item.Id,

@@ -18,7 +18,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Descripton" Type="nvarchar(max)" />
         </EntityType>
@@ -77,7 +77,7 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Descripton" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -99,7 +99,7 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <Property Name="AppliedOn" Type="DateTime" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

@@ -104,6 +104,7 @@
     <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="Extensions\DbContextExtensions.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
+    <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Models\ArticleItem.cs" />
     <Compile Include="Models\ProductItem.cs" />
     <Compile Include="Models\_Common\Column.cs" />

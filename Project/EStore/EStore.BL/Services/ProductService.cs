@@ -1,9 +1,9 @@
 ﻿using System.Linq;
+using EStore.BL.Extensions;
 using EStore.BL.Models;
 using EStore.BL.Models._Common;
 using EStore.BL.Services._Common;
 using EStore.DL.Mapping;
-using EStore.BL.Extensions;
 
 // ReSharper disable RedundantAssignment
 
@@ -17,8 +17,12 @@ namespace EStore.BL.Services
 
         public void Save(ProductItem item)
         {
+            var errors = item.GetValidationErrors();
+            
+            errors.ThrowIfHasErrors();
+
             var product = new tblProduct();
-            if (item.Id == 0)
+            if (item.Id != 0)
             {
                 product = Db.Set<tblProduct>().Single(x => x.Id == item.Id);
             }
@@ -38,15 +42,19 @@ namespace EStore.BL.Services
 
         public ProductItem Edit(long id)
         {
-            var productItem = Db.Set<tblProduct>()
-                .Where(x => x.Id == id)
-                .Select(x => new ProductItem
-                {
-                    Id = x.Id,
-                    Descripton = x.Descripton,
-                    Name = x.Name
-                })
-                .Single();
+            var productItem = new ProductItem();
+            if (id != 0)
+            {
+                productItem = Db.Set<tblProduct>()
+                    .Where(x => x.Id == id)
+                    .Select(x => new ProductItem
+                    {
+                        Id = x.Id,
+                        Descripton = x.Descripton,
+                        Name = x.Name
+                    })
+                    .Single();
+            }
 
             return productItem;
         }
@@ -94,7 +102,6 @@ namespace EStore.BL.Services
 
         public void AppendData(ProductItem item)
         {
-            
         }
     }
 }

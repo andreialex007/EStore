@@ -15,13 +15,13 @@ CREATE TABLE [dbo].[tblUser](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblProduct]    Script Date: 02/07/2016 19:59:15 ******/
+/****** Object:  Table [dbo].[tblProduct]    Script Date: 02/28/2016 21:27:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tblProduct](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](255) NULL,
 	[Descripton] [nvarchar](max) NULL,
  CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED 

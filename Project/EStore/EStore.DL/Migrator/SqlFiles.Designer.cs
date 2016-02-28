@@ -61,12 +61,12 @@ namespace EStore.DL.Migrator {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /****** Object:  Table [dbo].[User]    Script Date: 02/07/2016 19:59:15 ******/
+        ///   Looks up a localized string similar to /****** Object:  Table [dbo].[tblUser]    Script Date: 02/07/2016 19:59:15 ******/
         ///SET ANSI_NULLS ON
         ///GO
         ///SET QUOTED_IDENTIFIER ON
         ///GO
-        ///CREATE TABLE [dbo].[User](
+        ///CREATE TABLE [dbo].[tblUser](
         ///	[Id] [bigint] IDENTITY(1,1) NOT NULL,
         ///	[FirstName] [nvarchar](250) NULL,
         ///	[LastName] [nvarchar](250) NULL,
@@ -75,7 +75,7 @@ namespace EStore.DL.Migrator {
         /// CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
         ///(
         ///	[Id] ASC
-        ///)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PA [rest of string was truncated]&quot;;.
+        ///)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, AL [rest of string was truncated]&quot;;.
         /// </summary>
         public static string _20150207_update {
             get {
