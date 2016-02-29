@@ -68,7 +68,7 @@ namespace EStore.Web.Controllers
         [HttpPost]
         public JsonResult DeleteImage(long id)
         {
-            var path = Service.GetFilePath(id);
+            var path = Service.DeleteFile(id);
             CommonUtils.DeleteFile(path);
             return SuccessJsonResult();
         }

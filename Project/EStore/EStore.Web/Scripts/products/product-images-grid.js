@@ -36,8 +36,21 @@
         self.table.row.add(dataArr).draw();
     }
 
-    self.deleteImage = function () {
+    self.deleteImage = function (event) {
+        var rowIndex = $(event.target).closest("tr").index();
+        var itemId = self.table.row(rowIndex).data()[0];
 
+        dialogsApi.showConfirmModal("", "", function () {
+            $.ajax({
+                type: "POST",
+                url: "/Products/DeleteImage",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({ id: itemId })
+            }).done(function () {
+                self.table.row(rowIndex).remove().draw();
+            });
+        });
     }
 
     self.init();

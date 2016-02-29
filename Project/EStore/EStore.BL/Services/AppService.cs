@@ -30,9 +30,13 @@ namespace EStore.BL.Services
             Db.SaveChanges();
         }
 
-        public string GetFilePath(long id)
+        public string DeleteFile(long id)
         {
-            return Db.Set<tblFile>().Single(x => x.Id == id).Path;
+            var tblFile = Db.Set<tblFile>().Single(x => x.Id == id);
+            var path = tblFile.Path;
+            Db.Set<tblFile>().Remove(tblFile);
+            Db.SaveChanges();
+            return path;
         }
     }
 }
