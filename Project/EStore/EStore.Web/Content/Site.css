@@ -42,7 +42,11 @@ table {
 
     table td:last-of-type {
         text-align: center;
-        vertical-align: middle;
+        vertical-align: middle !important;
+    }
+
+    table td {
+        vertical-align: middle !important;
     }
 
     table .id-column {
@@ -83,7 +87,7 @@ table {
 
     .product-images-grid .table td,
     .product-images-grid .table th {
-        width: auto !important;
+        width: auto;
     }
 
 .table-equal-columns-id-actions td:not(:first-of-type),
@@ -117,3 +121,26 @@ table {
         width: 156px;
         height: 35px;
     }
+
+.uploaded-image-preview {
+    width: 100px;
+}
+
+.product-images-grid th.file-name {
+    width: 200px !important;
+}
+
+.product-images-grid input[type='text'] {
+    border: none;
+    background: transparent;
+}
+
+
+#imgPreviewContainer {
+    background: white;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 5px;
+    z-index: 999;
+    border: 1px solid lightgray;
+}

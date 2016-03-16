@@ -2,9 +2,16 @@
 
 <tr>
     <td>@Model.Id</td>
-    <td><a target="_blank" href="@Model.Path">@Model.Name</a></td>
-    <td>@Model.Description</td>
+    <td>
+        <a tabindex="-1"  target="_blank" class="image-link-item" href="@Model.Path">@Model.Name</a>
+    </td>
+    <td>
+        <input type="text" placeholder="Введие описание файла" class="form-control input-sm" value="@Model.Description" />
+    </td>
     <td class="actions">
-        @Html.Partial("_Common/EditDeleteTableActions")
+        <a tabindex="-1" title="delete" class="delete btn default btn-xs red" href="javascript:;">
+            <i class="fa fa-times"></i>
+            Удалить
+        </a>
     </td>
 </tr>

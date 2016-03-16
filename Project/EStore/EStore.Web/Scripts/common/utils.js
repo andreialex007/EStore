@@ -129,6 +129,49 @@
             return dataArr;
         }
 
+        self.uploadFile = function (url, file, extraData, completedFunc) {
+
+            extraData = extraData || {};
+            completedFunc = completedFunc || function () { };
+
+            var request = new XMLHttpRequest();
+            var data = new FormData();
+            data.append("file", file);
+
+            for (var i in extraData) {
+                var item = extraData[i];
+                data.append(i, item);
+            }
+
+            request.open("POST", url, true);
+            request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+            request.addEventListener("load", completedFunc, false);
+            request.send(data);
+        }
+
+        self.filesCounter = 0;
+        self.uploadManyFiles = function (url, files, extraData, completedFunc) {
+
+            Metronic.blockUI({
+                boxed: true,
+                message: "Загрузка.."
+            });
+
+            var results = [];
+
+            $.each(files, function (i, file) {
+                self.filesCounter += 1;
+                self.uploadFile(url, file, extraData, function (xhr) {
+                    results.push(JSON.parse(this.responseText));
+                    self.filesCounter -= 1;
+                    if (self.filesCounter == 0) {
+                        Metronic.unblockUI();
+                        completedFunc(results);
+                    }
+                });
+            });
+        }
+
         self.init();
         return self;
     }();

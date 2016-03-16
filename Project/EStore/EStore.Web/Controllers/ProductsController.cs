@@ -72,5 +72,12 @@ namespace EStore.Web.Controllers
             CommonUtils.DeleteFile(path);
             return SuccessJsonResult();
         }
+
+        [HttpPost]
+        public JsonResult SaveImageDescription(long id, string text)
+        {
+            Service.Product.SaveImageDescription(id, text);
+            return SuccessJsonResult();
+        }
     }
 }

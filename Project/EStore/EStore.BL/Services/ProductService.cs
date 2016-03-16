@@ -125,6 +125,12 @@ namespace EStore.BL.Services
             return item;
         }
 
+        public void SaveImageDescription(long id, string text)
+        {
+            Db.Set<tblFile>().Single(x => x.Id == id).Description = text;
+            Db.SaveChanges();
+        }
+
         public void AddFile(ProductImageItem item)
         {
             var tblFile = new tblFile
