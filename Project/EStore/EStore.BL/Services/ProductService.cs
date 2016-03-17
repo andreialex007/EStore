@@ -60,7 +60,18 @@ namespace EStore.BL.Services
                                 Path = f.Path,
                                 ProductId = f.ProductId
                             })
-                            .ToList()
+                            .ToList(),
+                        ProductSingleItems = x.tblProductSingles
+                            .Select(s => new ProductSingleItem
+                            {
+                                Id = s.Id,
+                                ProductId = s.ProductId,
+                                BuyPrice = s.BuyPrice,
+                                IsNew = s.IsNew,
+                                IsSelling = s.IsSelling,
+                                OrderId = s.OrderId,
+                                SellPrice = s.SellPrice
+                            }).ToList()
                     })
                     .Single();
             }

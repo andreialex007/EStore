@@ -20,5 +20,7 @@ namespace EStore.BL.Models
         public string DescriptionText => CommonUtils.StripHtml(Descripton).Trim();
 
         public List<ProductImageItem> ProductImages { get; set; } = new List<ProductImageItem>();
+        public List<ProductSingleItem> ProductSingleItems { get; set; } = new List<ProductSingleItem>();
+
     }
 }

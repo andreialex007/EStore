@@ -124,4 +124,7 @@
   <data name="_20150228_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>scripts\20150228_update.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="_20150318_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>scripts\20150318_update.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

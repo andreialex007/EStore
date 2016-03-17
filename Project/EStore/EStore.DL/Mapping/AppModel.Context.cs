@@ -27,8 +27,13 @@ namespace EStore.DL.Mapping
     
         public virtual DbSet<tblArticle> tblArticles { get; set; }
         public virtual DbSet<tblFile> tblFiles { get; set; }
+        public virtual DbSet<tblManufacter> tblManufacters { get; set; }
+        public virtual DbSet<tblOrder> tblOrders { get; set; }
         public virtual DbSet<tblProduct> tblProducts { get; set; }
+        public virtual DbSet<tblProductSingle> tblProductSingles { get; set; }
+        public virtual DbSet<tblSupplier> tblSuppliers { get; set; }
+        public virtual DbSet<tblSupplierInvoice> tblSupplierInvoices { get; set; }
+        public virtual DbSet<tblSupplierInvoicePosition> tblSupplierInvoicePositions { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
-        public virtual DbSet<VersionInfo> VersionInfoes { get; set; }
     }
 }

@@ -23,6 +23,21 @@
           <Property Name="Description" Type="nvarchar" MaxLength="250" />
           <Property Name="ProductId" Type="bigint" />
         </EntityType>
+        <EntityType Name="tblManufacter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="State" Type="int" />
+        </EntityType>
         <EntityType Name="tblProduct">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,6 +45,46 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Descripton" Type="nvarchar(max)" />
+          <Property Name="ManufacterId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProductSingle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SellPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsNew" Type="bigint" />
+          <Property Name="ProductId" Type="bigint" />
+          <Property Name="IsSelling" Type="bit" />
+          <Property Name="OrderId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblSupplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblSupplierInvoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierNumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="BuyDate" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblSupplierInvoicePosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="bigint" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="SupplierInvoiceId" Type="bigint" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -40,16 +95,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="250" />
           <Property Name="UserName" Type="nvarchar" MaxLength="250" />
           <Property Name="Password" Type="nvarchar" MaxLength="250" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VersionInfo">
-          <Key>
-            <PropertyRef Name="Version" />
-          </Key>
-          <Property Name="Version" Type="bigint" Nullable="false" />
-          <Property Name="AppliedOn" Type="datetime" />
-          <Property Name="Description" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <Association Name="FK_tblFile_tblProduct">
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1" />
@@ -63,21 +109,132 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblOrder_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_tblManufacter">
+          <End Role="tblManufacter" Type="Self.tblManufacter" Multiplicity="0..1" />
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblManufacter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="ManufacterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductSingle_tblOrder">
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="0..1" />
+          <End Role="tblProductSingle" Type="Self.tblProductSingle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSingle">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductSingle_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1" />
+          <End Role="tblProductSingle" Type="Self.tblProductSingle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSingle">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSupplierInvoicePosition_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1" />
+          <End Role="tblSupplierInvoicePosition" Type="Self.tblSupplierInvoicePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSupplierInvoicePosition">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSupplierInvoicePosition_tblSupplier">
+          <End Role="tblSupplier" Type="Self.tblSupplier" Multiplicity="0..1" />
+          <End Role="tblSupplierInvoicePosition" Type="Self.tblSupplierInvoicePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSupplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSupplierInvoicePosition">
+              <PropertyRef Name="SupplierInvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSupplierInvoicePosition_tblSupplierInvoice">
+          <End Role="tblSupplierInvoice" Type="Self.tblSupplierInvoice" Multiplicity="0..1" />
+          <End Role="tblSupplierInvoicePosition" Type="Self.tblSupplierInvoicePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSupplierInvoice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSupplierInvoicePosition">
+              <PropertyRef Name="SupplierInvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EStoreModelStoreContainer">
           <EntitySet Name="tblArticle" EntityType="Self.tblArticle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFile" EntityType="Self.tblFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblManufacter" EntityType="Self.tblManufacter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductSingle" EntityType="Self.tblProductSingle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSupplier" EntityType="Self.tblSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSupplierInvoice" EntityType="Self.tblSupplierInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSupplierInvoicePosition" EntityType="Self.tblSupplierInvoicePosition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VersionInfo].[Version] AS [Version], 
-    [VersionInfo].[AppliedOn] AS [AppliedOn], 
-    [VersionInfo].[Description] AS [Description]
-    FROM [dbo].[VersionInfo] AS [VersionInfo]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_tblFile_tblProduct" Association="Self.FK_tblFile_tblProduct">
             <End Role="tblProduct" EntitySet="tblProduct" />
             <End Role="tblFile" EntitySet="tblFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_tblUser" Association="Self.FK_tblOrder_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblOrder" EntitySet="tblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblManufacter" Association="Self.FK_tblProduct_tblManufacter">
+            <End Role="tblManufacter" EntitySet="tblManufacter" />
+            <End Role="tblProduct" EntitySet="tblProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductSingle_tblOrder" Association="Self.FK_tblProductSingle_tblOrder">
+            <End Role="tblOrder" EntitySet="tblOrder" />
+            <End Role="tblProductSingle" EntitySet="tblProductSingle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductSingle_tblProduct" Association="Self.FK_tblProductSingle_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProductSingle" EntitySet="tblProductSingle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSupplierInvoicePosition_tblProduct" Association="Self.FK_tblSupplierInvoicePosition_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSupplierInvoicePosition_tblSupplier" Association="Self.FK_tblSupplierInvoicePosition_tblSupplier">
+            <End Role="tblSupplier" EntitySet="tblSupplier" />
+            <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSupplierInvoicePosition_tblSupplierInvoice" Association="Self.FK_tblSupplierInvoicePosition_tblSupplierInvoice">
+            <End Role="tblSupplierInvoice" EntitySet="tblSupplierInvoice" />
+            <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePosition" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -87,12 +244,45 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
         <EntityContainer Name="EStoreEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="tblArticles" EntityType="EStoreModel.tblArticle" />
           <EntitySet Name="tblFiles" EntityType="EStoreModel.tblFile" />
+          <EntitySet Name="tblManufacters" EntityType="EStoreModel.tblManufacter" />
+          <EntitySet Name="tblOrders" EntityType="EStoreModel.tblOrder" />
           <EntitySet Name="tblProducts" EntityType="EStoreModel.tblProduct" />
+          <EntitySet Name="tblProductSingles" EntityType="EStoreModel.tblProductSingle" />
+          <EntitySet Name="tblSuppliers" EntityType="EStoreModel.tblSupplier" />
+          <EntitySet Name="tblSupplierInvoices" EntityType="EStoreModel.tblSupplierInvoice" />
+          <EntitySet Name="tblSupplierInvoicePositions" EntityType="EStoreModel.tblSupplierInvoicePosition" />
           <EntitySet Name="tblUsers" EntityType="EStoreModel.tblUser" />
-          <EntitySet Name="VersionInfoes" EntityType="EStoreModel.VersionInfo" />
           <AssociationSet Name="FK_tblFile_tblProduct" Association="EStoreModel.FK_tblFile_tblProduct">
             <End Role="tblProduct" EntitySet="tblProducts" />
             <End Role="tblFile" EntitySet="tblFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblManufacter" Association="EStoreModel.FK_tblProduct_tblManufacter">
+            <End Role="tblManufacter" EntitySet="tblManufacters" />
+            <End Role="tblProduct" EntitySet="tblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_tblUser" Association="EStoreModel.FK_tblOrder_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblOrder" EntitySet="tblOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductSingle_tblOrder" Association="EStoreModel.FK_tblProductSingle_tblOrder">
+            <End Role="tblOrder" EntitySet="tblOrders" />
+            <End Role="tblProductSingle" EntitySet="tblProductSingles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductSingle_tblProduct" Association="EStoreModel.FK_tblProductSingle_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblProductSingle" EntitySet="tblProductSingles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSupplierInvoicePosition_tblProduct" Association="EStoreModel.FK_tblSupplierInvoicePosition_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSupplierInvoicePosition_tblSupplier" Association="EStoreModel.FK_tblSupplierInvoicePosition_tblSupplier">
+            <End Role="tblSupplier" EntitySet="tblSuppliers" />
+            <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSupplierInvoicePosition_tblSupplierInvoice" Association="EStoreModel.FK_tblSupplierInvoicePosition_tblSupplierInvoice">
+            <End Role="tblSupplierInvoice" EntitySet="tblSupplierInvoices" />
+            <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePositions" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tblArticle">
@@ -114,6 +304,24 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <Property Name="ProductId" Type="Int64" />
           <NavigationProperty Name="tblProduct" Relationship="EStoreModel.FK_tblFile_tblProduct" FromRole="tblFile" ToRole="tblProduct" />
         </EntityType>
+        <EntityType Name="tblManufacter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblProducts" Relationship="EStoreModel.FK_tblProduct_tblManufacter" FromRole="tblManufacter" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="State" Type="Int32" />
+          <NavigationProperty Name="tblUser" Relationship="EStoreModel.FK_tblOrder_tblUser" FromRole="tblOrder" ToRole="tblUser" />
+          <NavigationProperty Name="tblProductSingles" Relationship="EStoreModel.FK_tblProductSingle_tblOrder" FromRole="tblOrder" ToRole="tblProductSingle" />
+        </EntityType>
         <EntityType Name="tblProduct">
           <Key>
             <PropertyRef Name="Id" />
@@ -121,7 +329,57 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Descripton" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ManufacterId" Type="Int64" />
           <NavigationProperty Name="tblFiles" Relationship="EStoreModel.FK_tblFile_tblProduct" FromRole="tblProduct" ToRole="tblFile" />
+          <NavigationProperty Name="tblManufacter" Relationship="EStoreModel.FK_tblProduct_tblManufacter" FromRole="tblProduct" ToRole="tblManufacter" />
+          <NavigationProperty Name="tblProductSingles" Relationship="EStoreModel.FK_tblProductSingle_tblProduct" FromRole="tblProduct" ToRole="tblProductSingle" />
+          <NavigationProperty Name="tblSupplierInvoicePositions" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblProduct" FromRole="tblProduct" ToRole="tblSupplierInvoicePosition" />
+        </EntityType>
+        <EntityType Name="tblProductSingle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SellPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsNew" Type="Int64" />
+          <Property Name="ProductId" Type="Int64" />
+          <Property Name="IsSelling" Type="Boolean" />
+          <Property Name="OrderId" Type="Int64" />
+          <NavigationProperty Name="tblOrder" Relationship="EStoreModel.FK_tblProductSingle_tblOrder" FromRole="tblProductSingle" ToRole="tblOrder" />
+          <NavigationProperty Name="tblProduct" Relationship="EStoreModel.FK_tblProductSingle_tblProduct" FromRole="tblProductSingle" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblSupplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblSupplierInvoicePositions" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblSupplier" FromRole="tblSupplier" ToRole="tblSupplierInvoicePosition" />
+        </EntityType>
+        <EntityType Name="tblSupplierInvoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BuyDate" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblSupplierInvoicePositions" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblSupplierInvoice" FromRole="tblSupplierInvoice" ToRole="tblSupplierInvoicePosition" />
+        </EntityType>
+        <EntityType Name="tblSupplierInvoicePosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int64" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierInvoiceId" Type="Int64" />
+          <NavigationProperty Name="tblProduct" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblProduct" FromRole="tblSupplierInvoicePosition" ToRole="tblProduct" />
+          <NavigationProperty Name="tblSupplier" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblSupplier" FromRole="tblSupplierInvoicePosition" ToRole="tblSupplier" />
+          <NavigationProperty Name="tblSupplierInvoice" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblSupplierInvoice" FromRole="tblSupplierInvoicePosition" ToRole="tblSupplierInvoice" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -132,14 +390,8 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="VersionInfo">
-          <Key>
-            <PropertyRef Name="Version" />
-          </Key>
-          <Property Name="Version" Type="Int64" Nullable="false" />
-          <Property Name="AppliedOn" Type="DateTime" Precision="3" />
-          <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblOrders" Relationship="EStoreModel.FK_tblOrder_tblUser" FromRole="tblUser" ToRole="tblOrder" />
         </EntityType>
         <Association Name="FK_tblFile_tblProduct">
           <End Type="EStoreModel.tblProduct" Role="tblProduct" Multiplicity="0..1" />
@@ -150,6 +402,90 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
             </Principal>
             <Dependent Role="tblFile">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_tblManufacter">
+          <End Type="EStoreModel.tblManufacter" Role="tblManufacter" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblProduct" Role="tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblManufacter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="ManufacterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrder_tblUser">
+          <End Type="EStoreModel.tblUser" Role="tblUser" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblOrder" Role="tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductSingle_tblOrder">
+          <End Type="EStoreModel.tblOrder" Role="tblOrder" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblProductSingle" Role="tblProductSingle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSingle">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductSingle_tblProduct">
+          <End Type="EStoreModel.tblProduct" Role="tblProduct" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblProductSingle" Role="tblProductSingle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSingle">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSupplierInvoicePosition_tblProduct">
+          <End Type="EStoreModel.tblProduct" Role="tblProduct" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblSupplierInvoicePosition" Role="tblSupplierInvoicePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSupplierInvoicePosition">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSupplierInvoicePosition_tblSupplier">
+          <End Type="EStoreModel.tblSupplier" Role="tblSupplier" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblSupplierInvoicePosition" Role="tblSupplierInvoicePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSupplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSupplierInvoicePosition">
+              <PropertyRef Name="SupplierInvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSupplierInvoicePosition_tblSupplierInvoice">
+          <End Type="EStoreModel.tblSupplierInvoice" Role="tblSupplierInvoice" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblSupplierInvoicePosition" Role="tblSupplierInvoicePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSupplierInvoice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSupplierInvoicePosition">
+              <PropertyRef Name="SupplierInvoiceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -179,11 +515,72 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblManufacters">
+            <EntityTypeMapping TypeName="EStoreModel.tblManufacter">
+              <MappingFragment StoreEntitySet="tblManufacter">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrders">
+            <EntityTypeMapping TypeName="EStoreModel.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrder">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblProducts">
             <EntityTypeMapping TypeName="EStoreModel.tblProduct">
               <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="ManufacterId" ColumnName="ManufacterId" />
                 <ScalarProperty Name="Descripton" ColumnName="Descripton" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductSingles">
+            <EntityTypeMapping TypeName="EStoreModel.tblProductSingle">
+              <MappingFragment StoreEntitySet="tblProductSingle">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="IsSelling" ColumnName="IsSelling" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSuppliers">
+            <EntityTypeMapping TypeName="EStoreModel.tblSupplier">
+              <MappingFragment StoreEntitySet="tblSupplier">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSupplierInvoices">
+            <EntityTypeMapping TypeName="EStoreModel.tblSupplierInvoice">
+              <MappingFragment StoreEntitySet="tblSupplierInvoice">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+                <ScalarProperty Name="SupplierNumber" ColumnName="SupplierNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSupplierInvoicePositions">
+            <EntityTypeMapping TypeName="EStoreModel.tblSupplierInvoicePosition">
+              <MappingFragment StoreEntitySet="tblSupplierInvoicePosition">
+                <ScalarProperty Name="SupplierInvoiceId" ColumnName="SupplierInvoiceId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -191,20 +588,12 @@ warning 6002: The table/view 'EStore.dbo.VersionInfo' does not have a primary ke
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="EStoreModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VersionInfoes">
-            <EntityTypeMapping TypeName="EStoreModel.VersionInfo">
-              <MappingFragment StoreEntitySet="VersionInfo">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="AppliedOn" ColumnName="AppliedOn" />
-                <ScalarProperty Name="Version" ColumnName="Version" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

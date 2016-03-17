@@ -16,14 +16,16 @@
         $(document).on("click", ".product-images-grid .delete", self.deleteImage);
 
         $(document).on("focus", ".product-images-grid tbody input[type='text']", function (event) {
-            $(event.target).closest("tr").find('.image-link-item').trigger("mouseover");
-            var offset = $(event.target).closest("tr").find('.image-link-item').offset();
-            offset.top += $(event.target).closest("tr").find('.image-link-item').height();
+            var imageLinkItem = $(event.target).closest("tr").find('.image-link-item');
+            imageLinkItem.trigger("mouseover");
+            var offset = imageLinkItem.offset();
+            offset.top += imageLinkItem.height();
             $("#imgPreviewContainer").offset(offset);
         });
         $(document).on("blur", ".product-images-grid tbody input[type='text']", function (event) {
-            var id = $(event.target).closest("tr").find("td:first").text().trim();
-            $(event.target).closest("tr").find('.image-link-item').trigger("mouseout");
+            var parentTr = $(event.target).closest("tr");
+            var id = parentTr.find("td:first").text().trim();
+            parentTr.find('.image-link-item').trigger("mouseout");
             self.saveImageDescription(id, $(event.target).val());
         });
 
@@ -39,6 +41,7 @@
             dataType: "json",
             data: JSON.stringify({ id: id, text: text })
         }).done(function () {
+
         });
     }
 

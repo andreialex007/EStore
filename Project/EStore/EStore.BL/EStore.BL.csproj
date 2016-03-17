@@ -108,6 +108,7 @@
     <Compile Include="Models\ArticleItem.cs" />
     <Compile Include="Models\ProductImageItem.cs" />
     <Compile Include="Models\ProductItem.cs" />
+    <Compile Include="Models\ProductSingleItem.cs" />
     <Compile Include="Models\_Common\Column.cs" />
     <Compile Include="Models\_Common\Order.cs" />
     <Compile Include="Models\_Common\SearchModel.cs" />

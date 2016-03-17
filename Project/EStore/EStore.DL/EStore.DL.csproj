@@ -122,19 +122,35 @@
     <Compile Include="Mapping\tblFile.cs">
       <DependentUpon>AppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Mapping\tblManufacter.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\tblOrder.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Mapping\tblProduct.cs">
       <DependentUpon>AppModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapping\tblUser.cs">
+    <Compile Include="Mapping\tblProductSingle.cs">
       <DependentUpon>AppModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapping\VersionInfo.cs">
+    <Compile Include="Mapping\tblSupplier.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\tblSupplierInvoice.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\tblSupplierInvoicePosition.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\tblUser.cs">
       <DependentUpon>AppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrator\Common\Migrator.cs" />
     <Compile Include="Migrator\Common\NonReversableMigration.cs" />
     <Compile Include="Migrator\Migrations\Migration001.cs" />
     <Compile Include="Migrator\Migrations\Migration002.cs" />
+    <Compile Include="Migrator\Migrations\Migration003.cs" />
     <Compile Include="Migrator\SqlFiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -164,6 +180,7 @@
       <DependentUpon>AppModel.edmx</DependentUpon>
       <LastGenOutput>AppModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Migrator\Scripts\20150318_update.sql" />
     <Content Include="Migrator\Scripts\20150228_update.sql" />
     <Content Include="Migrator\Scripts\20150207_update.sql" />
   </ItemGroup>
