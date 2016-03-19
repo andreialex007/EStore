@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using EStore.BL.Models;
 using EStore.BL.Services._Common;
 using EStore.DL;
 using EStore.DL.Mapping;
@@ -9,14 +8,16 @@ namespace EStore.BL.Services
 {
     public class AppService : ServiceBase, IDisposable
     {
-        public ArticleService Article { get; set; }
-        public ProductService Product { get; set; }
-
         public AppService(EStoreEntities entities) : base(entities)
         {
             Article = new ArticleService(entities);
             Product = new ProductService(entities);
+            SupplierInvoice = new SupplierInvoiceService(entities);
         }
+
+        public ArticleService Article { get; set; }
+        public ProductService Product { get; set; }
+        public SupplierInvoiceService SupplierInvoice { get; set; }
 
         public void Dispose()
         {

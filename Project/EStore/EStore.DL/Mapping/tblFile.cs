@@ -18,7 +18,9 @@ namespace EStore.DL.Mapping
         public string Path { get; set; }
         public string Description { get; set; }
         public Nullable<long> ProductId { get; set; }
+        public Nullable<long> SupplierInvoiceId { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }
+        public virtual tblSupplierInvoice tblSupplierInvoice { get; set; }
     }
 }

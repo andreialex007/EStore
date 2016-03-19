@@ -58,6 +58,10 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PGK.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f93e897f802ddcb7, processorArchitecture=MSIL">
       <HintPath>..\packages\PGK.Extensions.2011.6\lib\PGK.Extensions.dll</HintPath>
       <Private>True</Private>
@@ -102,6 +106,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\CommonException.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />
+    <Compile Include="Extensions\DataExtensions.cs" />
     <Compile Include="Extensions\DbContextExtensions.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
@@ -111,6 +116,7 @@
     <Compile Include="Models\Product\ProductSingleItem.cs" />
     <Compile Include="Models\SupplierInvoice\SupplierInvoiceItem.cs" />
     <Compile Include="Models\SupplierInvoice\SupplierInvoicePositionItem.cs" />
+    <Compile Include="Models\SupplierItem.cs" />
     <Compile Include="Models\_Common\Column.cs" />
     <Compile Include="Models\_Common\Order.cs" />
     <Compile Include="Models\_Common\SearchModel.cs" />
@@ -130,6 +136,7 @@
     <Compile Include="Utils\EmailHelper.cs" />
     <Compile Include="Utils\EnumerableHelper.cs" />
     <Compile Include="Utils\EnumUtil.cs" />
+    <Compile Include="Utils\OnlyDateConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

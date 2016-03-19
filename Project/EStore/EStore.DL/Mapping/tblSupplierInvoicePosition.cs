@@ -22,7 +22,6 @@ namespace EStore.DL.Mapping
         public Nullable<long> SupplierInvoiceId { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }
-        public virtual tblSupplier tblSupplier { get; set; }
         public virtual tblSupplierInvoice tblSupplierInvoice { get; set; }
     }
 }

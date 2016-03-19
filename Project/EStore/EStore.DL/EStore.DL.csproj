@@ -58,6 +58,10 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PGK.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f93e897f802ddcb7, processorArchitecture=MSIL">
       <HintPath>..\packages\PGK.Extensions.2011.6\lib\PGK.Extensions.dll</HintPath>
       <Private>True</Private>
@@ -151,6 +155,7 @@
     <Compile Include="Migrator\Migrations\Migration001.cs" />
     <Compile Include="Migrator\Migrations\Migration002.cs" />
     <Compile Include="Migrator\Migrations\Migration003.cs" />
+    <Compile Include="Migrator\Migrations\Migration004.cs" />
     <Compile Include="Migrator\SqlFiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -180,6 +185,7 @@
       <DependentUpon>AppModel.edmx</DependentUpon>
       <LastGenOutput>AppModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Migrator\Scripts\20150319_update.sql" />
     <Content Include="Migrator\Scripts\20150318_update.sql" />
     <Content Include="Migrator\Scripts\20150228_update.sql" />
     <Content Include="Migrator\Scripts\20150207_update.sql" />

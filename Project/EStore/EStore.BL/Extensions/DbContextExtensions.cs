@@ -61,5 +61,12 @@ namespace EStore.BL.Extensions
         {
             _db.Entry(entity).State = EntityState.Detached;
         }
+
+        public static TEntity CreateAndAdd<TEntity>(this EStoreEntities db) where TEntity : class
+        {
+            var stPerm = db.Set<TEntity>().Create();
+            db.Set<TEntity>().Add(stPerm);
+            return stPerm;
+        }
     }
 }

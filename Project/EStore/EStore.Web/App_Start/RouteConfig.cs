@@ -20,6 +20,11 @@ namespace EStore.Web
                 new { controller = "Products", action = "Edit" },
                 new { id = @"\d+" });
 
+            routes.MapRoute("AddSupplierInvoice", "SupplierInvoices/add", new { controller = "SupplierInvoices", action = "Edit" });
+            routes.MapRoute("EditSupplierInvoice", "SupplierInvoices/{id}",
+                new { controller = "SupplierInvoices", action = "Edit" },
+                new { id = @"\d+" });
+
             routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
 
         }
