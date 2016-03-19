@@ -13,11 +13,13 @@ namespace EStore.BL.Services
             Article = new ArticleService(entities);
             Product = new ProductService(entities);
             SupplierInvoice = new SupplierInvoiceService(entities);
+            InvoicePosition = new SupplierInvoicePositionService(entities);
         }
 
         public ArticleService Article { get; set; }
         public ProductService Product { get; set; }
         public SupplierInvoiceService SupplierInvoice { get; set; }
+        public SupplierInvoicePositionService InvoicePosition { get; set; }
 
         public void Dispose()
         {

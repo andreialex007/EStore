@@ -52,24 +52,4 @@
     })
 </script>
 
-
-
-
-<div class="modal fade in products-modal item-picker" aria-hidden="false">
-    <div class="modal-backdrop fade in"></div>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div>
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Выберите товар</h4>
-                </div>
-                <div class="modal-body">
-                    @Html.Partial("Products/ProductsGrid")
-                </div>
-                <div class="modal-footer">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@RazorHelpers.ItemPicker(Html.Partial("Products/ProductsGrid"), "products-modal")

@@ -1,0 +1,30 @@
+﻿@using System.Web.Mvc
+@using Newtonsoft.Json
+
+
+@helper ItemPicker(MvcHtmlString htmlString, string modalClass)
+{
+    <div class="modal fade in @modalClass item-picker" aria-hidden="false">
+        <div class="modal-backdrop fade in"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Выберите товар</h4>
+                    </div>
+                    <div class="modal-body">
+                        @htmlString
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@helper Test()
+{
+    <span>fucking test</span>
+}

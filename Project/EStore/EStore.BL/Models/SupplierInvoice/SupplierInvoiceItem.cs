@@ -23,14 +23,15 @@ namespace EStore.BL.Models.SupplierInvoice
         [Display(Name = "Примечания")]
         public string Notes { get; set; }
 
-        public List<SupplierInvoicePositionItem> Positions { get; set; } = new List<SupplierInvoicePositionItem>();
-        public List<SupplierItem> AvaliableSuppliers { get; set; } = new List<SupplierItem>();
-
         public int PositionsQty { get; set; }
         public decimal Total { get; set; }
 
         [Display(Name = "Поставщик")]
         [Required]
         public long? SupplierId { get; set; }
+
+        public List<SupplierInvoicePositionItem> Positions { get; set; } = new List<SupplierInvoicePositionItem>();
+        public List<SupplierItem> AvaliableSuppliers { get; set; } = new List<SupplierItem>();
+
     }
 }

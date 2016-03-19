@@ -2,6 +2,7 @@
 using EStore.BL.Exceptions;
 using EStore.BL.Models.SupplierInvoice;
 using EStore.BL.Models._Common;
+using EStore.DL.Mapping;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
 namespace EStore.Web.Controllers
@@ -19,7 +20,7 @@ namespace EStore.Web.Controllers
             var items = Service.SupplierInvoice.Search(@params.search.value, @params.OrderBy, @params.IsAsc, @params.length, @params.start);
             return Json(items);
         }
-        
+
         [HttpGet]
         public ActionResult Edit(long id = 0)
         {
@@ -28,7 +29,6 @@ namespace EStore.Web.Controllers
         }
 
         [HttpPost]
-        [ValidateInput(false)]
         public ActionResult Edit(SupplierInvoiceItem item)
         {
             try
@@ -42,6 +42,20 @@ namespace EStore.Web.Controllers
                 Service.SupplierInvoice.AppendData(item);
                 return View("SupplierInvoices/Edit", item);
             }
+        }
+
+        [HttpPost]
+        public JsonResult SaveInvoicePosition(SupplierInvoicePositionItem item)
+        {
+            Service.InvoicePosition.Save(item);
+            return Json(item);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteInvoicePosition(long id)
+        {
+            Service.Delete<tblSupplierInvoicePosition>(id);
+            return SuccessJsonResult();
         }
     }
 }

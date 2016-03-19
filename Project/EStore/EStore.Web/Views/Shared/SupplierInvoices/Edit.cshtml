@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = $"{(Model.Id == 0 ? "Создание" : "Редактирование")} накладной потавщика";
-    Layout = "~/Views/Shared/_Layout/Main.cshtml";
+    Layout = "~/Views/Shared/_Layout/Administrative.cshtml";
 }
 
 @section Styles
@@ -28,6 +28,10 @@
     <script src="~/Content/assets/global/plugins/imagepreview.js"></script>
 
     <!-- custom scripts -->
+    <script src="~/Scripts/common/inline-edit-grid-base.js"></script>
+    <script src="~/Scripts/common/ajax-grid-base.js"></script>
+    <script src="~/Scripts/products/products-grid.js"></script>
+    <script src="~/Scripts/supplier-invoices/supplier-invoice-positions-grid.js"></script>
     <script src="~/Scripts/supplier-invoices/edit-supplier-invoice-page.js"></script>
 }
 
@@ -112,7 +116,8 @@
                         </div>
                         @if (Model.Id > 0)
                         {
-                            <div class="tab-pane fade active in" id="invoice-positions">
+                            <div class="tab-pane fade in" id="invoice-positions">
+                                @Html.Partial("SupplierInvoices/SupplierInvoicePositionsGrid", Model.Positions)
                             </div>
                             <div class="tab-pane fade active in" id="invoice-files">
                             </div>
@@ -123,3 +128,5 @@
         </div>
     </div>
 </div>
+
+@RazorHelpers.ItemPicker(Html.Partial("Products/ProductsGrid"), "products-modal")

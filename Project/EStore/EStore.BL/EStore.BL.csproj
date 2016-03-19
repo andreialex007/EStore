@@ -127,6 +127,7 @@
     <Compile Include="Services\AppService.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\SupplierInvoicePositionService.cs" />
     <Compile Include="Services\SupplierInvoiceService.cs" />
     <Compile Include="Services\_Common\EntityServiceBase.cs" />
     <Compile Include="Services\_Common\InternalServiceBase.cs" />

@@ -34,6 +34,7 @@ namespace EStore.BL.Services
                             {
                                 Id = p.Id,
                                 ProductId = p.ProductId,
+                                ProductName = p.tblProduct.Name,
                                 Note = p.Note,
                                 Price = p.Price,
                                 Qty = p.Qty,
@@ -71,7 +72,7 @@ namespace EStore.BL.Services
                 });
 
 
-            if (!searchTerm.IsNotEmptyOrWhiteSpace())
+            if (searchTerm.IsNotEmptyOrWhiteSpace())
             {
                 query = query.Where(x => x.Notes.ToLower().Contains(searchTerm));
             }

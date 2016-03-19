@@ -90,6 +90,11 @@ table {
         width: auto;
     }
 
+.inline-edit-grid td:not(:first-of-type),
+.inline-edit-grid th:not(:first-of-type) {
+    width: auto !important;
+}
+
 .table-equal-columns-id-actions td:not(:first-of-type),
 .table-equal-columns-id-actions th:not(:first-of-type) {
     width: auto !important;
@@ -177,11 +182,54 @@ table {
             width: 100px !important;
         }
 
-         .modal.item-picker table tbody td{
-             cursor: pointer;
-         }
+    .modal.item-picker table tbody td {
+        cursor: pointer;
+    }
 
 
- .modal.item-picker .table-toolbar{
-     display: none;
- }
+    .modal.item-picker .table-toolbar {
+        display: none;
+    }
+
+.inline-edit-grid table input[type='text'] {
+    border: none;
+    background-color: transparent;
+    cursor: text;
+}
+
+.inline-edit-grid table .select-product-btn {
+    display: none;
+}
+
+.inline-edit-grid table tr.edit-row input[type='text'] {
+    cursor: auto !important;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    cursor: text !important;
+}
+
+.inline-edit-grid table tr.edit-row .select-product-btn {
+    display: inline-block !important;
+}
+
+.inline-edit-grid table tbody tr .btn.save,
+.inline-edit-grid table tbody tr .btn.cancel {
+    display: none;
+}
+
+.inline-edit-grid table tbody tr.edit-row .btn.save,
+.inline-edit-grid table tbody tr.edit-row .btn.cancel {
+    display: inline-block !important;
+}
+
+.inline-edit-grid table tbody tr.edit-row .btn.edit,
+.inline-edit-grid table tbody tr.edit-row .btn.delete {
+    display: none;
+}
+
+
+
+.inline-edit-grid td.actions,
+.inline-edit-grid th.actions {
+    width: 100px !important;
+}
