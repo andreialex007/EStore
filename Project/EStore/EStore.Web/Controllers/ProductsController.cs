@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using EStore.BL.Exceptions;
 using EStore.BL.Models;
+using EStore.BL.Models.Product;
 using EStore.BL.Models._Common;
 using EStore.BL.Utils;
 using EStore.DL.Mapping;

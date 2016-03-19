@@ -1,6 +1,6 @@
 ﻿using EStore.BL.Models._Common;
 
-namespace EStore.BL.Models
+namespace EStore.BL.Models.Product
 {
     public class ProductSingleItem : ViewModelBase
     {

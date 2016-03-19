@@ -1,9 +1,15 @@
 ﻿function ProductsGrid() {
 
-    var self = {};
+    var self = new AjaxGridBase();
 
-    self.init = function () {
+    self.getEditUrl = function (id) {
+        return "/Products/" + id;
+    }
 
+    self.deleteUrl = "/Products/Delete";
+    self.gridSelector = ".products-grid";
+
+    self.initTable = function () {
         self.table = $(".products-grid table").DataTable({
             "processing": true,
             "serverSide": true,
@@ -27,36 +33,6 @@
                    [0, "asc"]
             ]
         });
-
-        $(document.body).on("click", ".products-search-page td:last-of-type .edit", self.edit);
-        $(document.body).on("click", ".products-search-page td:last-of-type .delete", self.delete);
-    }
-
-    self.edit = function (event) {
-        var rowIndex = $(event.target).closest("tr").index();
-        var itemId = self.table.row(rowIndex).data().Id;
-        location.href = "/Products/" + itemId;
-    }
-
-    self.delete = function (event) {
-        var rowIndex = $(event.target).closest("tr").index();
-        var itemId = self.table.row(rowIndex).data().Id;
-
-        dialogsApi.showConfirmModal("Подтверждаете удаление?", "Вы действительно хотите удалить выбарнный элемент?", function () {
-
-            $.ajax({
-                type: "POST",
-                url: "/Products/Delete",
-                contentType: "application/json",
-                dataType: "json",
-                data: JSON.stringify({ id: itemId })
-            }).done(function () {
-                self.table.ajax.reload();
-            });
-        });
-
-        event.preventDefault();
-        return false;
     }
 
     self.init();

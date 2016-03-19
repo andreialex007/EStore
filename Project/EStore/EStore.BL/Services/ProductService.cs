@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using EStore.BL.Extensions;
 using EStore.BL.Models;
+using EStore.BL.Models.Product;
 using EStore.BL.Models._Common;
 using EStore.BL.Services._Common;
 using EStore.DL.Mapping;

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using EStore.BL.Models._Common;
 using EStore.BL.Utils;
 
-namespace EStore.BL.Models
+namespace EStore.BL.Models.Product
 {
     public class ProductItem : ViewModelBase
     {

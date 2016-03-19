@@ -3270,6 +3270,7 @@
     <Content Include="Scripts\articles\articles-grid.js" />
     <Content Include="Scripts\articles\articles-search-page.js" />
     <Content Include="Scripts\articles\edit-article-page.js" />
+    <Content Include="Scripts\common\ajax-grid-base.js" />
     <Content Include="Scripts\common\custom.ui.toastr.js" />
     <Content Include="Scripts\common\dialogs.js" />
     <Content Include="Scripts\common\utils.js" />

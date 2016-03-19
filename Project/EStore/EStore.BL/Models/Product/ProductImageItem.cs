@@ -1,4 +1,4 @@
-﻿namespace EStore.BL.Models
+﻿namespace EStore.BL.Models.Product
 {
     public class ProductImageItem
     {

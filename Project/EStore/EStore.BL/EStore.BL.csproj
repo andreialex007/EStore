@@ -106,9 +106,11 @@
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Models\ArticleItem.cs" />
-    <Compile Include="Models\ProductImageItem.cs" />
-    <Compile Include="Models\ProductItem.cs" />
-    <Compile Include="Models\ProductSingleItem.cs" />
+    <Compile Include="Models\Product\ProductImageItem.cs" />
+    <Compile Include="Models\Product\ProductItem.cs" />
+    <Compile Include="Models\Product\ProductSingleItem.cs" />
+    <Compile Include="Models\SupplierInvoice\SupplierInvoiceItem.cs" />
+    <Compile Include="Models\SupplierInvoice\SupplierInvoicePositionItem.cs" />
     <Compile Include="Models\_Common\Column.cs" />
     <Compile Include="Models\_Common\Order.cs" />
     <Compile Include="Models\_Common\SearchModel.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Services\AppService.cs" />
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\SupplierInvoiceService.cs" />
     <Compile Include="Services\_Common\EntityServiceBase.cs" />
     <Compile Include="Services\_Common\InternalServiceBase.cs" />
     <Compile Include="Services\_Common\ServiceBase.cs" />
