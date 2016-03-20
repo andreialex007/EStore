@@ -3,6 +3,7 @@ using EStore.BL.Exceptions;
 using EStore.BL.Models.SupplierInvoice;
 using EStore.BL.Models._Common;
 using EStore.DL.Mapping;
+using EStore.Web.Code;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
 namespace EStore.Web.Controllers
@@ -48,7 +49,8 @@ namespace EStore.Web.Controllers
         public JsonResult SaveInvoicePosition(SupplierInvoicePositionItem item)
         {
             Service.InvoicePosition.Save(item);
-            return Json(item);
+            var view = this.RenderRazorViewToString(item, "/Views/Shared/SupplierInvoices/SupplierInvoicePositionsGridRow.cshtml");
+            return Json(new { view });
         }
 
         [HttpPost]

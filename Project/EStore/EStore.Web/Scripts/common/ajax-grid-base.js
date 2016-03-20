@@ -20,6 +20,10 @@
         $(self.gridSelector).closest(".modal").modal("hide");
     }
 
+    self.show = function () {
+        $(self.gridSelector).closest(".modal").modal("show");
+    }
+
     self.selectItem = function (event) {
         var parentTr = $(event.target).closest("tr");
         var rowIndex = parentTr.index();
