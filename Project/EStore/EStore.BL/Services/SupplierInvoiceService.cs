@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using EStore.BL.Extensions;
+using EStore.BL.Models.Product;
 using EStore.BL.Models.SupplierInvoice;
 using EStore.BL.Models._Common;
 using EStore.BL.Services._Common;
@@ -39,6 +40,16 @@ namespace EStore.BL.Services
                                 Price = p.Price,
                                 Qty = p.Qty,
                                 SupplierInvoiceId = p.SupplierInvoiceId
+                            })
+                            .ToList(),
+                        Files = x.tblFiles
+                            .Select(f => new FileItem
+                            {
+                                Id = f.Id,
+                                Path = f.Path,
+                                ProductId = f.ProductId,
+                                SupplierInvoiceId = f.SupplierInvoiceId,
+                                Description = f.Description
                             })
                             .ToList()
                     })

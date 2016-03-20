@@ -12,7 +12,7 @@ namespace EStore.BL.Utils
         public static string ReverseMapPath(string path)
         {
             var appPath = HttpContext.Current.Request.PhysicalApplicationPath;
-            var res = string.Format("/{0}", path.Replace(appPath, string.Empty).Replace("\\", "/"));
+            var res = $"/{path.Replace(appPath, string.Empty).Replace("\\", "/")}";
             return res;
         }
 
@@ -93,6 +93,11 @@ namespace EStore.BL.Utils
         {
             string pattern = @"<(.|\n)*?>";
             return Regex.Replace(htmlString, pattern, string.Empty);
+        }
+
+        public static bool HasImageExtension(this string source)
+        {
+            return (source.EndsWith(".png") || source.EndsWith(".jpg") || source.EndsWith(".gif") || source.EndsWith(".jpeg"));
         }
     }
 }

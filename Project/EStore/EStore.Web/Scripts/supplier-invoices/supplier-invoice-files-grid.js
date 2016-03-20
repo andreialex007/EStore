@@ -1,11 +1,11 @@
-﻿function ProductImagesGrid() {
+﻿function SupplierInvoiceFilesGrid() {
 
     var self = new ImagesGridBase();
 
     self.gridSelector = ".common-files-grid";
 
     self.getExtraData = function () {
-        return { productId: $(".product-id").val() };
+        return { supplierInvoiceId: $(".entity-id").val() };
     }
 
     self.init();

@@ -77,16 +77,16 @@ table {
     min-height: 100px;
 }
 
-.product-images-grid {
+.common-files-grid {
     position: relative;
 }
 
-    .product-images-grid .table-toolbar {
+    .common-files-grid .table-toolbar {
         position: absolute;
     }
 
-    .product-images-grid .table td,
-    .product-images-grid .table th {
+    .common-files-grid .table td,
+    .common-files-grid .table th {
         width: auto;
     }
 
@@ -131,11 +131,11 @@ table {
     width: 100px;
 }
 
-.product-images-grid th.file-name {
+.common-files-grid th.file-name {
     width: 200px !important;
 }
 
-.product-images-grid input[type='text'] {
+.common-files-grid input[type='text'] {
     border: none;
     background: transparent;
 }

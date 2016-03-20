@@ -14,12 +14,14 @@ namespace EStore.BL.Services
             Product = new ProductService(entities);
             SupplierInvoice = new SupplierInvoiceService(entities);
             InvoicePosition = new SupplierInvoicePositionService(entities);
+            File = new FileService(entities);
         }
 
         public ArticleService Article { get; set; }
         public ProductService Product { get; set; }
         public SupplierInvoiceService SupplierInvoice { get; set; }
         public SupplierInvoicePositionService InvoicePosition { get; set; }
+        public FileService File { get; set; }
 
         public void Dispose()
         {

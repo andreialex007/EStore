@@ -111,7 +111,7 @@
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Models\ArticleItem.cs" />
-    <Compile Include="Models\Product\ProductImageItem.cs" />
+    <Compile Include="Models\Product\FileItem.cs" />
     <Compile Include="Models\Product\ProductItem.cs" />
     <Compile Include="Models\Product\ProductSingleItem.cs" />
     <Compile Include="Models\SupplierInvoice\SupplierInvoiceItem.cs" />
@@ -126,6 +126,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppService.cs" />
     <Compile Include="Services\ArticleService.cs" />
+    <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierInvoicePositionService.cs" />
     <Compile Include="Services\SupplierInvoiceService.cs" />

@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using EStore.BL.Extensions;
-using EStore.BL.Models;
 using EStore.BL.Models.Product;
 using EStore.BL.Models._Common;
 using EStore.BL.Services._Common;
@@ -54,7 +53,7 @@ namespace EStore.BL.Services
                         Descripton = x.Descripton,
                         Name = x.Name,
                         ProductImages = x.tblFiles
-                            .Select(f => new ProductImageItem
+                            .Select(f => new FileItem
                             {
                                 Id = f.Id,
                                 Description = f.Description,
@@ -125,37 +124,5 @@ namespace EStore.BL.Services
         {
         }
 
-        public ProductImageItem AddFile(string path, string description, long productId)
-        {
-            var item = new ProductImageItem
-            {
-                Description = description,
-                Path = path,
-                ProductId = productId
-            };
-            AddFile(item);
-            return item;
-        }
-
-        public void SaveImageDescription(long id, string text)
-        {
-            Db.Set<tblFile>().Single(x => x.Id == id).Description = text;
-            Db.SaveChanges();
-        }
-
-        public void AddFile(ProductImageItem item)
-        {
-            var tblFile = new tblFile
-            {
-                Description = item.Description,
-                Path = item.Path,
-                ProductId = item.ProductId
-            };
-
-            Db.Set<tblFile>().Add(tblFile);
-            Db.SaveChanges();
-
-            item.Id = tblFile.Id;
-        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EStore.BL.Models.Product;
 using EStore.BL.Models._Common;
 using EStore.BL.Utils;
 using Newtonsoft.Json;
@@ -32,6 +33,6 @@ namespace EStore.BL.Models.SupplierInvoice
 
         public List<SupplierInvoicePositionItem> Positions { get; set; } = new List<SupplierInvoicePositionItem>();
         public List<SupplierItem> AvaliableSuppliers { get; set; } = new List<SupplierItem>();
-
+        public List<FileItem> Files { get; set; } = new List<FileItem>();
     }
 }

@@ -19,7 +19,7 @@ namespace EStore.BL.Models.Product
         [Display(Name = "Описание")]
         public string DescriptionText => CommonUtils.StripHtml(Descripton).Trim();
 
-        public List<ProductImageItem> ProductImages { get; set; } = new List<ProductImageItem>();
+        public List<FileItem> ProductImages { get; set; } = new List<FileItem>();
         public List<ProductSingleItem> ProductSingleItems { get; set; } = new List<ProductSingleItem>();
 
     }

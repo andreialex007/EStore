@@ -4,6 +4,7 @@
 
         var self = {};
         self.supplierInvoicePositionsGrid = null;
+        self.supplierInvoiceFilesGrid = null;
 
         self.init = function () {
             $("*[name='BuyDate']").datetimepicker({ format: "DD.MM.YYYY", locale: "ru" });
@@ -15,6 +16,7 @@
             }).select2("val", selectedSupplierId);
 
             self.supplierInvoicePositionsGrid = new SupplierInvoicePositionsGrid();
+            self.supplierInvoiceFilesGrid = new SupplierInvoiceFilesGrid();
         }
 
         self.init();
