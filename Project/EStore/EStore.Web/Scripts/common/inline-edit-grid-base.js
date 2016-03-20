@@ -8,8 +8,10 @@
         self.initTable();
 
         $(document.body).on("click", self.gridSelector + " .btn.add", function () {
-            var newData = utils.tableRowToArray($(self.gridSelector + " .new-item").html());
-            self.table.row.add(newData).draw();
+            var itemTemplate = $($(self.gridSelector + " .new-item").html());
+            itemTemplate.find("input[type='text']").prop("readonly", false);
+            itemTemplate.addClass("edit-row");
+            $(self.gridSelector + " tbody").prepend(itemTemplate);
         });
         $(document.body).on("click", self.gridSelector + " td:last-of-type .edit", self.edit);
         $(document.body).on("click", self.gridSelector + " td:last-of-type .delete", self.delete);
@@ -43,12 +45,24 @@
         self.initRow(parentTr, event);
     }
 
-    self.testing = function (event) {
-        debugger;
-    }
+    self.delete = function (event) {
 
-    self.delete = function () {
-        console.log("delete");
+        var parentTr = $(event.target).closest("tr");
+        var id = parentTr.find("td:first").text().trim();
+
+        dialogsApi.showConfirmModal("Подвтерждение удаления?", "Вы уверены что хотите удалить запись?", function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/SupplierInvoices/DeleteInvoicePosition",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({ id: id })
+            }).done(function (json) {
+                var updatedRow = $.grep(self.table.rows()[0], function (x) { return self.table.row(x).data()[0] == id; });
+                self.table.row(updatedRow[0]).remove().draw();
+            });
+        });
     }
 
     self.cancel = function (event) {
@@ -59,6 +73,7 @@
     self.save = function (event) {
 
         var parentTr = $(event.target).closest("tr");
+        var id = parentTr.find("td:first").text().trim();
         var json = self.rowViewToJson(parentTr);
 
         $.ajax({
@@ -68,10 +83,14 @@
             dataType: "json",
             data: JSON.stringify({ item: json })
         }).done(function (json) {
-            var id = parentTr.find("td:first").text().trim();
+
             var newData = utils.tableRowToArray(json.view);
-            var updatedRow = $.grep(self.table.rows(), function (x) { return self.table.row(x).data()[0] == id; });
-            self.table.row(updatedRow[0]).data(newData).draw();
+            if (id != "0") {
+                var updatedRow = $.grep(self.table.rows()[0], function (x) { return self.table.row(x).data()[0] == id; });
+                self.table.row(updatedRow[0]).data(newData).draw();
+            } else {
+                self.table.row.add(newData);
+            }
             self.cancel();
         });
 

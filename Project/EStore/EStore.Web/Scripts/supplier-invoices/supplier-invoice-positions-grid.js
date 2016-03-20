@@ -11,13 +11,11 @@
         $(document.body).on("click", self.gridSelector + " .select-product-btn", self.selectProduct);
         $(document.body).on("keyup", self.gridSelector + " .qty, " + self.gridSelector + " .price", self.recalculateTotal);
         self.productsGrid = new ProductsGrid();
-        self.productsGrid.onSelect = self.onProductSelected;
     }
 
-    self.onProductSelected = function (item) {
-        var updatedRow = $.grep(self.table.rows(), function (x) { return self.table.row(x).data()[0] == item.Id; });
-        var nodeHtml = $(self.table.row(updatedRow[0]).node());
-        nodeHtml
+    self.onProductSelected = function (item, event) {
+        var parentTr = $(event.target).closest("tr");
+        parentTr
             .find(".product-name")
             .attr("data-product-id", item.Id)
             .text(item.Name);
@@ -35,6 +33,9 @@
 
     self.selectProduct = function (event) {
         self.productsGrid.show();
+        self.productsGrid.onSelect = function(item) {
+            self.onProductSelected(item, event)
+        };
     }
 
     self.initRow = function (parentTr, event) {
