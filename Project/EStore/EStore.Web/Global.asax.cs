@@ -4,8 +4,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using EStore.BL.Utils;
-using EStore.BL.Utils.YandexImages;
 
 namespace EStore.Web
 {
@@ -13,9 +11,6 @@ namespace EStore.Web
     {
         protected void Application_Start()
         {
-
-            YandexImagesParser.Parse("dog");
-
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("ru-RU");
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ru-RU");
 

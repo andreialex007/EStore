@@ -18,7 +18,11 @@ namespace EStore.BL.Utils.YandexImages
             var images = page.Html.CssSelect(".serp-item")
                 .Select(x => x.Attributes["data-bem"].Value)
                 .Select(JsonConvert.DeserializeObject<YandexImageItem>)
-                .Select(x=>x.SerpItem.img_href)
+                .Select(x => new
+                {
+                    original = x.SerpItem.img_href,
+                    preview = x.SerpItem.thumb.url
+                })
                 .ToList();
         }
 
