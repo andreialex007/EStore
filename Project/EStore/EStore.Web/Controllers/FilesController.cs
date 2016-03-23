@@ -1,6 +1,8 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using EStore.BL.Utils;
+using EStore.BL.Utils.YandexImages;
 using EStore.Web.Code;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
@@ -32,5 +34,11 @@ namespace EStore.Web.Controllers
             return Json(new { view });
         }
 
+        [HttpPost]
+        public ActionResult SearchImages(string term)
+        {
+            var items = YandexImagesSearcher.Search(term);
+            return PartialView("_Common/ImagesSearchResult", items);
+        }
     }
 }

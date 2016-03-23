@@ -25,6 +25,11 @@
 
             self.productImagesGrid = new ProductImagesGrid();
 
+            $(".find-images-button").click(function () {
+                $(".images-search-modal .search-term").val($(".product-name-box input").val());
+                window.imagesSearchModal.show();
+            });
+
         }
 
         self.init();

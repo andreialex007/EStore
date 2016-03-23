@@ -163,7 +163,8 @@
     <Compile Include="Utils\YandexImages\Dto\Snippet.cs" />
     <Compile Include="Utils\YandexImages\Dto\Thumb.cs" />
     <Compile Include="Utils\YandexImages\Dto\YandexImageItem.cs" />
-    <Compile Include="Utils\YandexImages\YandexImagesParser.cs" />
+    <Compile Include="Utils\YandexImages\ImageSearchItem.cs" />
+    <Compile Include="Utils\YandexImages\YandexImagesSearcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -30,6 +30,7 @@
     <script src="/Scripts/common/files-grid-base.js"></script>
     <script src="/Scripts/common/images-grid-base.js"></script>
     <script src="~/Scripts/products/product-images-grid.js"></script>
+    <script src="~/Scripts/common/images-search-modal.js"></script>
     <script src="/Scripts/products/edit-product-page.js"></script>
 
 }
@@ -57,7 +58,7 @@
                 <div class="portlet-body">
                     <form method="post">
                         @Html.Partial("_Common/ErrorsBlock")
-                        <div class="row">
+                        <div class="row product-name-box">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">Название</label>
@@ -113,3 +114,6 @@
         </div>
     </div>
 </div>
+
+
+@Html.Partial("_Common/ImagesSearchModal")
