@@ -58,8 +58,11 @@
           <Property Name="SellPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IsNew" Type="bigint" />
           <Property Name="ProductId" Type="bigint" />
-          <Property Name="IsSelling" Type="bit" />
           <Property Name="OrderId" Type="bigint" />
+          <Property Name="State" Type="int" />
+          <Property Name="SupplierInvoicePositionId" Type="bigint" />
+          <Property Name="SupplierInvoiceId" Type="bigint" />
+          <Property Name="Notes" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tblSupplier">
           <Key>
@@ -172,6 +175,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblProductSingle_tblSupplierInvoice">
+          <End Role="tblSupplierInvoice" Type="Self.tblSupplierInvoice" Multiplicity="0..1" />
+          <End Role="tblProductSingle" Type="Self.tblProductSingle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSupplierInvoice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSingle">
+              <PropertyRef Name="SupplierInvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductSingle_tblSupplierInvoicePosition">
+          <End Role="tblSupplierInvoicePosition" Type="Self.tblSupplierInvoicePosition" Multiplicity="0..1" />
+          <End Role="tblProductSingle" Type="Self.tblProductSingle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSupplierInvoicePosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSingle">
+              <PropertyRef Name="SupplierInvoicePositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSupplierInvoice_tblSupplier">
           <End Role="tblSupplier" Type="Self.tblSupplier" Multiplicity="0..1" />
           <End Role="tblSupplierInvoice" Type="Self.tblSupplierInvoice" Multiplicity="*" />
@@ -243,6 +270,14 @@
             <End Role="tblProduct" EntitySet="tblProduct" />
             <End Role="tblProductSingle" EntitySet="tblProductSingle" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblProductSingle_tblSupplierInvoice" Association="Self.FK_tblProductSingle_tblSupplierInvoice">
+            <End Role="tblSupplierInvoice" EntitySet="tblSupplierInvoice" />
+            <End Role="tblProductSingle" EntitySet="tblProductSingle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductSingle_tblSupplierInvoicePosition" Association="Self.FK_tblProductSingle_tblSupplierInvoicePosition">
+            <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePosition" />
+            <End Role="tblProductSingle" EntitySet="tblProductSingle" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblSupplierInvoice_tblSupplier" Association="Self.FK_tblSupplierInvoice_tblSupplier">
             <End Role="tblSupplier" EntitySet="tblSupplier" />
             <End Role="tblSupplierInvoice" EntitySet="tblSupplierInvoice" />
@@ -298,6 +333,14 @@
           <AssociationSet Name="FK_tblSupplierInvoicePosition_tblProduct" Association="EStoreModel.FK_tblSupplierInvoicePosition_tblProduct">
             <End Role="tblProduct" EntitySet="tblProducts" />
             <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductSingle_tblSupplierInvoice" Association="EStoreModel.FK_tblProductSingle_tblSupplierInvoice">
+            <End Role="tblSupplierInvoice" EntitySet="tblSupplierInvoices" />
+            <End Role="tblProductSingle" EntitySet="tblProductSingles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductSingle_tblSupplierInvoicePosition" Association="EStoreModel.FK_tblProductSingle_tblSupplierInvoicePosition">
+            <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePositions" />
+            <End Role="tblProductSingle" EntitySet="tblProductSingles" />
           </AssociationSet>
           <AssociationSet Name="FK_tblSupplierInvoice_tblSupplier" Association="EStoreModel.FK_tblSupplierInvoice_tblSupplier">
             <End Role="tblSupplier" EntitySet="tblSuppliers" />
@@ -370,10 +413,15 @@
           <Property Name="SellPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="IsNew" Type="Int64" />
           <Property Name="ProductId" Type="Int64" />
-          <Property Name="IsSelling" Type="Boolean" />
           <Property Name="OrderId" Type="Int64" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="SupplierInvoicePositionId" Type="Int64" />
+          <Property Name="SupplierInvoiceId" Type="Int64" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblOrder" Relationship="EStoreModel.FK_tblProductSingle_tblOrder" FromRole="tblProductSingle" ToRole="tblOrder" />
           <NavigationProperty Name="tblProduct" Relationship="EStoreModel.FK_tblProductSingle_tblProduct" FromRole="tblProductSingle" ToRole="tblProduct" />
+          <NavigationProperty Name="tblSupplierInvoice" Relationship="EStoreModel.FK_tblProductSingle_tblSupplierInvoice" FromRole="tblProductSingle" ToRole="tblSupplierInvoice" />
+          <NavigationProperty Name="tblSupplierInvoicePosition" Relationship="EStoreModel.FK_tblProductSingle_tblSupplierInvoicePosition" FromRole="tblProductSingle" ToRole="tblSupplierInvoicePosition" />
         </EntityType>
         <EntityType Name="tblSupplier">
           <Key>
@@ -393,6 +441,7 @@
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SupplierId" Type="Int64" />
           <NavigationProperty Name="tblFiles" Relationship="EStoreModel.FK_tblFile_tblSupplierInvoice" FromRole="tblSupplierInvoice" ToRole="tblFile" />
+          <NavigationProperty Name="tblProductSingles" Relationship="EStoreModel.FK_tblProductSingle_tblSupplierInvoice" FromRole="tblSupplierInvoice" ToRole="tblProductSingle" />
           <NavigationProperty Name="tblSupplier" Relationship="EStoreModel.FK_tblSupplierInvoice_tblSupplier" FromRole="tblSupplierInvoice" ToRole="tblSupplier" />
           <NavigationProperty Name="tblSupplierInvoicePositions" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblSupplierInvoice" FromRole="tblSupplierInvoice" ToRole="tblSupplierInvoicePosition" />
         </EntityType>
@@ -407,6 +456,7 @@
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SupplierInvoiceId" Type="Int64" />
           <NavigationProperty Name="tblProduct" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblProduct" FromRole="tblSupplierInvoicePosition" ToRole="tblProduct" />
+          <NavigationProperty Name="tblProductSingles" Relationship="EStoreModel.FK_tblProductSingle_tblSupplierInvoicePosition" FromRole="tblSupplierInvoicePosition" ToRole="tblProductSingle" />
           <NavigationProperty Name="tblSupplierInvoice" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblSupplierInvoice" FromRole="tblSupplierInvoicePosition" ToRole="tblSupplierInvoice" />
         </EntityType>
         <EntityType Name="tblUser">
@@ -505,6 +555,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblProductSingle_tblSupplierInvoice">
+          <End Type="EStoreModel.tblSupplierInvoice" Role="tblSupplierInvoice" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblProductSingle" Role="tblProductSingle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSupplierInvoice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSingle">
+              <PropertyRef Name="SupplierInvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductSingle_tblSupplierInvoicePosition">
+          <End Type="EStoreModel.tblSupplierInvoicePosition" Role="tblSupplierInvoicePosition" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblProductSingle" Role="tblProductSingle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSupplierInvoicePosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSingle">
+              <PropertyRef Name="SupplierInvoicePositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSupplierInvoice_tblSupplier">
           <End Type="EStoreModel.tblSupplier" Role="tblSupplier" Multiplicity="0..1" />
           <End Type="EStoreModel.tblSupplierInvoice" Role="tblSupplierInvoice" Multiplicity="*" />
@@ -587,8 +661,11 @@
           <EntitySetMapping Name="tblProductSingles">
             <EntityTypeMapping TypeName="EStoreModel.tblProductSingle">
               <MappingFragment StoreEntitySet="tblProductSingle">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SupplierInvoiceId" ColumnName="SupplierInvoiceId" />
+                <ScalarProperty Name="SupplierInvoicePositionId" ColumnName="SupplierInvoicePositionId" />
+                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="IsSelling" ColumnName="IsSelling" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="IsNew" ColumnName="IsNew" />
                 <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />

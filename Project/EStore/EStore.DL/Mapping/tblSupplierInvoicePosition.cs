@@ -14,6 +14,12 @@ namespace EStore.DL.Mapping
     
     public partial class tblSupplierInvoicePosition
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblSupplierInvoicePosition()
+        {
+            this.tblProductSingles = new HashSet<tblProductSingle>();
+        }
+    
         public long Id { get; set; }
         public Nullable<long> ProductId { get; set; }
         public Nullable<int> Qty { get; set; }
@@ -22,6 +28,8 @@ namespace EStore.DL.Mapping
         public Nullable<long> SupplierInvoiceId { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProductSingle> tblProductSingles { get; set; }
         public virtual tblSupplierInvoice tblSupplierInvoice { get; set; }
     }
 }

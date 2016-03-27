@@ -14,4 +14,9 @@ namespace EStore.BL.Models._Common
         public string OrderBy => columns[order.First().column].data;
         public bool IsAsc => order.First().dir == "asc";
     }
+
+    public class ProductSingleSearchParams : SearchParams
+    {
+        public long ProductId { get; set; }
+    }
 }

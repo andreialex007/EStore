@@ -304,3 +304,90 @@ table {
     display: inline-block;
     overflow: hidden;
 }
+
+.product-singles-grid thead th {
+    width: auto !important;
+}
+
+.product-singles-grid table th.id-column {
+    width: 100px !important;
+}
+
+
+.product-singles-grid table th.actions {
+    width: 100px !important;
+}
+
+.product-singles-grid table tbody tr .btn.save,
+.product-singles-grid table tbody tr .btn.cancel {
+    display: none;
+}
+
+.product-singles-grid table tbody tr.edit-row .btn.save,
+.product-singles-grid table tbody tr.edit-row .btn.cancel {
+    display: inline-block !important;
+}
+
+.product-singles-grid table tbody tr.edit-row .btn.edit,
+.product-singles-grid table tbody tr.edit-row .btn.delete {
+    display: none;
+}
+
+.product-singles-grid tbody input[type='text'] {
+    border: none;
+    background-color: transparent;
+    cursor: text;
+}
+
+.product-singles-grid tbody .edit-row input[type='text'] {
+    border: 1px solid #e5e5e5;
+    background-color: white;
+    cursor: text;
+}
+
+.product-singles-grid tbody input[type='checkbox'] {
+    pointer-events: none;
+}
+
+.product-singles-grid tbody .edit-row input[type='checkbox'] {
+    pointer-events: all;
+}
+
+.product-singles-grid tbody select {
+    border: none;
+    pointer-events: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.product-singles-grid tbody .edit-row select {
+    border: 1px solid #e5e5e5;
+    pointer-events: all;
+    background-color: white;
+    -webkit-appearance: menulist;
+}
+
+.product-singles-grid .notes {
+    height: 28px !important;
+}
+
+    .product-singles-grid .notes[contenteditable='true'] {
+        font-size: 14px !important;
+        font-weight: normal !important;
+        color: #333 !important;
+        background-color: #fff !important;
+        border: 1px solid #e5e5e5 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+        padding: 5px 10px !important;
+        height: auto !important;
+        font-size: 13px !important;
+        border-radius: 3px !important;
+        max-height: 100px !important;
+        overflow-y: auto;
+    }

@@ -33,8 +33,8 @@
 
     self.selectProduct = function (event) {
         self.productsGrid.show();
-        self.productsGrid.onSelect = function(item) {
-            self.onProductSelected(item, event)
+        self.productsGrid.onSelect = function (item) {
+            self.onProductSelected(item, event);
         };
     }
 

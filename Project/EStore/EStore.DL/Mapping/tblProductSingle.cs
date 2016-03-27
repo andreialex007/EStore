@@ -19,10 +19,15 @@ namespace EStore.DL.Mapping
         public Nullable<decimal> SellPrice { get; set; }
         public Nullable<long> IsNew { get; set; }
         public Nullable<long> ProductId { get; set; }
-        public Nullable<bool> IsSelling { get; set; }
         public Nullable<long> OrderId { get; set; }
+        public Nullable<int> State { get; set; }
+        public Nullable<long> SupplierInvoicePositionId { get; set; }
+        public Nullable<long> SupplierInvoiceId { get; set; }
+        public string Notes { get; set; }
     
         public virtual tblOrder tblOrder { get; set; }
         public virtual tblProduct tblProduct { get; set; }
+        public virtual tblSupplierInvoice tblSupplierInvoice { get; set; }
+        public virtual tblSupplierInvoicePosition tblSupplierInvoicePosition { get; set; }
     }
 }

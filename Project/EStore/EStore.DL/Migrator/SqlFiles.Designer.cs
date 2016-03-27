@@ -154,13 +154,55 @@ namespace EStore.DL.Migrator {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ALTER TABLE tblFile ADD Position decimal(18, 18) NULL
+        ///   Looks up a localized string similar to ALTER TABLE tblFile ADD Position decimal(18, 2) NULL
         ///GO
         ///.
         /// </summary>
         public static string _20150327_update {
             get {
                 return ResourceManager.GetString("_20150327_update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblProductSingle DROP COLUMN IsSelling
+        ///ALTER TABLE tblProductSingle ADD [State] int NULL
+        ///GO
+        ///.
+        /// </summary>
+        public static string _20150327_update_2 {
+            get {
+                return ResourceManager.GetString("_20150327_update_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblProductSingle ADD SupplierInvoicePositionId bigint NULL
+        ///GO
+        ///
+        ///ALTER TABLE tblProductSingle ADD SupplierInvoiceId bigint NULL
+        ///GO
+        ///
+        ////****** Object:  ForeignKey [FK_tblProductSingle_tblSupplierInvoice]    Script Date: 03/27/2016 20:59:48 ******/
+        ///ALTER TABLE [dbo].[tblProductSingle]  WITH CHECK ADD  CONSTRAINT [FK_tblProductSingle_tblSupplierInvoice] FOREIGN KEY([SupplierInvoiceId])
+        ///REFERENCES [dbo].[tblSupplierInvoice] ([Id])
+        ///GO
+        ///ALTER TABLE [dbo].[tblProductSingle] CHECK CONSTRAINT [FK_tb [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string _20150327_update_3 {
+            get {
+                return ResourceManager.GetString("_20150327_update_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblProductSingle ADD Notes nvarchar(MAX) NULL
+        ///GO
+        ///.
+        /// </summary>
+        public static string _20150327_update_4 {
+            get {
+                return ResourceManager.GetString("_20150327_update_4", resourceCulture);
             }
         }
     }

@@ -3323,6 +3323,7 @@
     <Content Include="Scripts\common\inline-edit-grid-base.js" />
     <Content Include="Scripts\common\utils.js" />
     <Content Include="Scripts\products\product-images-grid.js" />
+    <Content Include="Scripts\products\product-singles-grid.js" />
     <Content Include="Scripts\products\products-grid.js" />
     <Content Include="Scripts\products\products-search-page.js" />
     <Content Include="Scripts\products\edit-product-page.js" />
@@ -3956,6 +3957,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Products\ProductSingleGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Products\ProductSingleGridRow.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

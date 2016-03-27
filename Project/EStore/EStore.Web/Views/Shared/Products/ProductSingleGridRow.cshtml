@@ -1,0 +1,40 @@
+﻿@using EStore.BL.Models
+@using EStore.BL.Utils
+@model EStore.BL.Models.Product.ProductSingleSearchItem
+<tr>
+    <td class="id-column">@Model.Id</td>
+    <td>
+        <input type="text"
+               class="form-control input-sm buy-price"
+               value="@((Model.BuyPrice ?? 0).ToString("N"))" />
+    </td>
+    <td>
+        <input type="text"
+               class="form-control input-sm sell-price"
+               value="@((Model.SellPrice ?? 0).ToString("N"))" />
+    </td>
+
+    <td>
+        <input type="text"
+               class="form-control input-sm margin"
+               value="@((Model.Margin ?? 0).ToString("N"))" />
+    </td>
+    <td>
+        <input type="checkbox" class="is-new" />
+    </td>
+    <td>
+        <select class="form-control state input-sm">
+            <option value="@(ProductSingleStateEnum.ForSale.CastTo<int>())">@(ProductSingleStateEnum.ForSale.DescriptionAttr())</option>
+            <option value="@(ProductSingleStateEnum.OnHold.CastTo<int>())">@(ProductSingleStateEnum.OnHold.DescriptionAttr())</option>
+        </select>
+    </td>
+    <td>
+        <a href="javascript:;" class="invoice-id">@Model.SupplierInvoiceId</a>
+    </td>
+    <td>
+        <div class="notes">@Model.Notes</div>
+    </td>
+    <td class="actions">
+        @Html.Partial("_Common/AllTableActions")
+    </td>
+</tr>

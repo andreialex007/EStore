@@ -49,7 +49,7 @@ namespace EStore.Web.Controllers
         public JsonResult SaveInvoicePosition(SupplierInvoicePositionItem item)
         {
             Service.InvoicePosition.Save(item);
-            var view = this.RenderRazorViewToString(item, "/Views/Shared/SupplierInvoices/SupplierInvoicePositionsGridRow.cshtml");
+            var view = this.RenderRazorViewToString(item, "~/Views/Shared/SupplierInvoices/SupplierInvoicePositionsGridRow.cshtml");
             return Json(new { view });
         }
 

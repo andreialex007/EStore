@@ -18,6 +18,7 @@ namespace EStore.DL.Mapping
         public tblSupplierInvoice()
         {
             this.tblFiles = new HashSet<tblFile>();
+            this.tblProductSingles = new HashSet<tblProductSingle>();
             this.tblSupplierInvoicePositions = new HashSet<tblSupplierInvoicePosition>();
         }
     
@@ -29,6 +30,8 @@ namespace EStore.DL.Mapping
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblFile> tblFiles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProductSingle> tblProductSingles { get; set; }
         public virtual tblSupplier tblSupplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSupplierInvoicePosition> tblSupplierInvoicePositions { get; set; }

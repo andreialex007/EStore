@@ -70,8 +70,8 @@ namespace EStore.BL.Services
                                 ProductId = s.ProductId,
                                 BuyPrice = s.BuyPrice,
                                 IsNew = s.IsNew,
-                                IsSelling = s.IsSelling,
                                 OrderId = s.OrderId,
+                                StateId = s.State,
                                 SellPrice = s.SellPrice
                             })
                             .ToList()
