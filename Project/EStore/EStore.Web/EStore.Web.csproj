@@ -3951,6 +3951,12 @@
   <ItemGroup>
     <Content Include="Views\Shared\_Common\ImagesSearchResult.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Products\ProductImagesGridRow.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Products\ProductSingleGrid.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -12,6 +12,7 @@
         });
         $(document).on("change", self.gridSelector + " .file-upload-input", self.uploadFile);
         $(document).on("click", self.gridSelector + " .delete", self.deleteFile);
+        $(document).on("click", self.gridSelector + " :radio", self.saveFileFirstPosition);
     }
 
     self.saveFileDescription = function (id, text) {
@@ -24,6 +25,18 @@
             data: JSON.stringify({ id: id, text: text })
         }).done(function () { });
     }
+
+    self.saveFileFirstPosition = function (event) {
+        var id = $(event.target).val();
+        $.ajax({
+            type: "POST",
+            url: "/Files/SaveFileFirstPosition",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({ id: id })
+        }).done(function () { });
+    }
+
 
     self.uploadFile = function (event) {
         utils.uploadManyFiles("/Files/UploadFile/", event.target.files, self.getExtraData(), self.filesUploaded);

@@ -10,6 +10,8 @@
         public string Description { get; set; }
         public long? ProductId { get; set; }
         public long? SupplierInvoiceId { get; set; }
+        public decimal Position { get; set; }
+        public bool IsChecked { get; set; }
     }
 
 

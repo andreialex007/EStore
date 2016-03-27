@@ -57,9 +57,11 @@ namespace EStore.BL.Services
                             {
                                 Id = f.Id,
                                 Description = f.Description,
+                                Position = f.Position ?? 0,
                                 Path = f.Path,
                                 ProductId = f.ProductId
                             })
+                            .OrderByDescending(f => f.Position)
                             .ToList(),
                         ProductSingleItems = x.tblProductSingles
                             .Select(s => new ProductSingleItem
@@ -71,9 +73,16 @@ namespace EStore.BL.Services
                                 IsSelling = s.IsSelling,
                                 OrderId = s.OrderId,
                                 SellPrice = s.SellPrice
-                            }).ToList()
+                            })
+                            .ToList()
                     })
                     .Single();
+
+                var firstImage = productItem.ProductImages.FirstOrDefault();
+                if (firstImage != null && firstImage.Position > 0)
+                {
+                    firstImage.IsChecked = true;
+                }
             }
 
             return productItem;

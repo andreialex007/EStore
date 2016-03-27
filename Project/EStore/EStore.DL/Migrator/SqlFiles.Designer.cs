@@ -152,5 +152,16 @@ namespace EStore.DL.Migrator {
                 return ResourceManager.GetString("_20150319_update", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblFile ADD Position decimal(18, 18) NULL
+        ///GO
+        ///.
+        /// </summary>
+        public static string _20150327_update {
+            get {
+                return ResourceManager.GetString("_20150327_update", resourceCulture);
+            }
+        }
     }
 }

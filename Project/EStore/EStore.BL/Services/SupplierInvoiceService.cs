@@ -49,7 +49,8 @@ namespace EStore.BL.Services
                                 Path = f.Path,
                                 ProductId = f.ProductId,
                                 SupplierInvoiceId = f.SupplierInvoiceId,
-                                Description = f.Description
+                                Description = f.Description,
+                                Position = f.Position ?? 0
                             })
                             .ToList()
                     })

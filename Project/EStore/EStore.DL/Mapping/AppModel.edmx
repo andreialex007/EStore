@@ -23,6 +23,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="250" />
           <Property Name="ProductId" Type="bigint" />
           <Property Name="SupplierInvoiceId" Type="bigint" />
+          <Property Name="Position" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblManufacter">
           <Key>
@@ -325,6 +326,7 @@
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="ProductId" Type="Int64" />
           <Property Name="SupplierInvoiceId" Type="Int64" />
+          <Property Name="Position" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="tblProduct" Relationship="EStoreModel.FK_tblFile_tblProduct" FromRole="tblFile" ToRole="tblProduct" />
           <NavigationProperty Name="tblSupplierInvoice" Relationship="EStoreModel.FK_tblFile_tblSupplierInvoice" FromRole="tblFile" ToRole="tblSupplierInvoice" />
         </EntityType>
@@ -546,6 +548,7 @@
           <EntitySetMapping Name="tblFiles">
             <EntityTypeMapping TypeName="EStoreModel.tblFile">
               <MappingFragment StoreEntitySet="tblFile">
+                <ScalarProperty Name="Position" ColumnName="Position" />
                 <ScalarProperty Name="SupplierInvoiceId" ColumnName="SupplierInvoiceId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

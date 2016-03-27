@@ -34,7 +34,6 @@
         }
 
         self.onImagesUploaded = function (params) {
-            debugger;
             self.productImagesGrid.filesUploaded(params.views);
         }
 

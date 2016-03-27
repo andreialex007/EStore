@@ -8,6 +8,11 @@
     self.init = function () {
         initBase();
         self.imagesInit();
+        $(document.body).on("click", ":radio[name='is-main']", self.mainSelected);
+    }
+
+    self.mainSelected = function (event) {
+        var id = $(event.target).val();
     }
 
     var filesUploadedBase = self.filesUploaded;

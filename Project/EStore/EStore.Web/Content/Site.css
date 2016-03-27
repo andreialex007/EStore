@@ -49,6 +49,7 @@ table {
         vertical-align: middle !important;
     }
 
+
     table .id-column {
         width: 100px !important;
     }
@@ -291,4 +292,15 @@ table {
 
 .blockOverlay, .blockMsg {
     z-index: 9999999 !important;
+}
+
+.table th.is-main {
+    width: 60px !important;
+}
+
+.image-link-item {
+    text-overflow: ellipsis;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
 }

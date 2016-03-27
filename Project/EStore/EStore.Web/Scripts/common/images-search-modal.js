@@ -29,6 +29,9 @@
             var selectedImages = $.map($(".search-results :checked"), function (x) { return $(x).closest("li").find("a").attr("href"); });
             var productId = $(".entity-id").val();
 
+            if (selectedImages.length == 0)
+                return;
+
             Metronic.blockUI({
                 boxed: true,
                 message: "Загрузка.."
