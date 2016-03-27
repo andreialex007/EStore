@@ -28,8 +28,14 @@
             $(".find-images-button").click(function () {
                 $(".images-search-modal .search-term").val($(".product-name-box input").val());
                 window.imagesSearchModal.show();
+                window.imagesSearchModal.onImagesUploaded = self.onImagesUploaded;
             });
 
+        }
+
+        self.onImagesUploaded = function (params) {
+            debugger;
+            self.productImagesGrid.filesUploaded(params.views);
         }
 
         self.init();

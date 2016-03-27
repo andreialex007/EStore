@@ -5,7 +5,7 @@
     self.gridSelector = ".common-files-grid";
 
     self.getExtraData = function () {
-        return { productId: $(".product-id").val() };
+        return { productId: $(".entity-id").val() };
     }
 
     self.init();

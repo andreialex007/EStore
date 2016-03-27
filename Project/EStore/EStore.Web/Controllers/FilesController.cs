@@ -1,9 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EStore.BL.Utils;
 using EStore.BL.Utils.YandexImages;
 using EStore.Web.Code;
+using ImageProcessor;
+using ImageProcessor.Imaging;
+using ImageProcessor.Imaging.Formats;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
 namespace EStore.Web.Controllers
@@ -39,6 +45,26 @@ namespace EStore.Web.Controllers
         {
             var items = YandexImagesSearcher.Search(term);
             return PartialView("_Common/ImagesSearchResult", items);
+        }
+
+        [HttpPost]
+        public ActionResult UploadFoundImages(string[] images, long? productId = null)
+        {
+            var views = new List<string>();
+            var paths = images.AsParallel()
+                .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
+                .WithDegreeOfParallelism(16)
+                .Select(CommonUtils.DownloadImageAndResize)
+                .ToList();
+
+            foreach (var url in paths)
+            {
+                var item = Service.File.AddFile(url, string.Empty, productId);
+                var view = this.RenderRazorViewToString(item, "~/Views/Shared/Files/FilesGridRow.cshtml");
+                views.Add(view);
+            }
+
+            return Json(new { views });
         }
     }
 }

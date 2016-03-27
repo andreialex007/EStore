@@ -47,7 +47,7 @@
     }
 
     self.getExtraData = function () {
-        return { productId: $(".product-id").val() };
+        return { productId: $(".entity-id").val() };
     }
 
     return self;

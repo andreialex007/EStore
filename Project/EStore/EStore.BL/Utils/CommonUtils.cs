@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
+using System.Net;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Hosting;
 using EStore.BL.Services._Common;
+using ImageProcessor;
+using ImageProcessor.Imaging;
+using ImageProcessor.Imaging.Formats;
 
 namespace EStore.BL.Utils
 {
@@ -11,15 +17,18 @@ namespace EStore.BL.Utils
     {
         public static string ReverseMapPath(string path)
         {
-            var appPath = HttpContext.Current.Request.PhysicalApplicationPath;
+            var appPath = AppDomain.CurrentDomain.BaseDirectory;
             var res = $"/{path.Replace(appPath, string.Empty).Replace("\\", "/")}";
             return res;
         }
 
         public static void DeleteFile(string url)
         {
+            if (url.ToLower().StartsWith("http"))
+                return;
             var path = HostingEnvironment.MapPath(url);
-            File.Delete(path);
+            if (File.Exists(path))
+                File.Delete(path);
         }
 
         public static string CopyFileToDirectory(string file, string directoryName)
@@ -50,6 +59,7 @@ namespace EStore.BL.Utils
             return urlPath.Url;
         }
 
+
         public static string UploadFileToDirectory(byte[] file, string directoryName, string fileName)
         {
             using (var stream = new MemoryStream(file))
@@ -61,7 +71,7 @@ namespace EStore.BL.Utils
         public static UrlPath GenerateUrlPathForFile(string directoryName, string fileName)
         {
             var dateFolder = DateTime.Now.ToString("dd-MM-yy");
-            var folder = Path.Combine(HttpContext.Current.Request.PhysicalApplicationPath, "Files", directoryName, dateFolder, Guid.NewGuid().ToString());
+            var folder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Files", directoryName, dateFolder, Guid.NewGuid().ToString());
             Directory.CreateDirectory(folder);
             var path = Path.Combine(folder, fileName);
             var url = ReverseMapPath(path);
@@ -98,6 +108,31 @@ namespace EStore.BL.Utils
         public static bool HasImageExtension(this string source)
         {
             return (source.EndsWith(".png") || source.EndsWith(".jpg") || source.EndsWith(".gif") || source.EndsWith(".jpeg"));
+        }
+
+        public static byte[] DownloadData(string url)
+        {
+            using (var client = new WebClient())
+            {
+                return client.DownloadData(url);
+            }
+        }
+
+        public static string DownloadImageAndResize(string image)
+        {
+            using (var imageFactory = new ImageFactory(true))
+            {
+                using (var stream = new MemoryStream())
+                {
+                    imageFactory.Load(DownloadData(image))
+                        .Resize(new ResizeLayer(new Size(800, 800),ResizeMode.Max))
+                        .Format(new PngFormat())
+                        .Save(stream);
+                    var fileName = Path.GetFileNameWithoutExtension(image) + ".png";
+                    var url = UploadFileToDirectory(stream, "Products", fileName);
+                    return url;
+                }
+            }
         }
     }
 }

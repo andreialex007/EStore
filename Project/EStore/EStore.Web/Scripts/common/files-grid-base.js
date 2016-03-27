@@ -32,7 +32,7 @@
     self.filesUploaded = function (result) {
         for (var i in result) {
             var item = result[i];
-            var dataArr = utils.tableRowToArray(item.view);
+            var dataArr = utils.tableRowToArray(item.view || item);
             self.table.row.add(dataArr).draw();
         }
     }

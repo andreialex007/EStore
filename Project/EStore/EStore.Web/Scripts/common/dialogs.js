@@ -9,13 +9,13 @@
         $(".confirm-modal .modal-body p").text(content);
 
         $(".confirm-modal").show();
-        $(".cancel-button")
+        $(".confirm-modal .cancel-button")
             .unbind()
             .click(function () {
                 $(".confirm-modal").hide();
             });
 
-        $(".ok-button").unbind()
+        $(".confirm-modal .ok-button").unbind()
             .click(function () {
                 funcSuccess();
                 $(".confirm-modal").hide();
