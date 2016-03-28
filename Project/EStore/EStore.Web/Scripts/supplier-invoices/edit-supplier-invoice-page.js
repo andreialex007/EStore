@@ -17,6 +17,22 @@
 
             self.supplierInvoicePositionsGrid = new SupplierInvoicePositionsGrid();
             self.supplierInvoiceFilesGrid = new SupplierInvoiceFilesGrid();
+
+            $(document.body).on("click", ".generate-products-btn", self.generateProducts);
+        }
+
+        self.generateProducts = function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/SupplierInvoices/GenerateProductSingles",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({ id: $(".entity-id").val() })
+            }).done(function (json) {
+                UIToastr.ShowMessage("success", "Выполнено", "Созданы товары");
+            });
+
         }
 
         self.init();

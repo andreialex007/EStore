@@ -17,7 +17,7 @@ namespace EStore.DL.Mapping
         public long Id { get; set; }
         public Nullable<decimal> BuyPrice { get; set; }
         public Nullable<decimal> SellPrice { get; set; }
-        public Nullable<long> IsNew { get; set; }
+        public Nullable<bool> IsNew { get; set; }
         public Nullable<long> ProductId { get; set; }
         public Nullable<long> OrderId { get; set; }
         public Nullable<int> State { get; set; }

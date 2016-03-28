@@ -8,7 +8,7 @@ namespace EStore.BL.Models.Product
         public decimal? BuyPrice { get; set; }
         public decimal? SellPrice { get; set; }
         public decimal? Margin => (BuyPrice / SellPrice) * 100;
-        public long? IsNew { get; set; }
+        public bool? IsNew { get; set; }
         public long? ProductId { get; set; }
         public long? OrderId { get; set; }
         public long? SupplierInvoicePositionId { get; set; }
@@ -24,7 +24,7 @@ namespace EStore.BL.Models.Product
         public decimal? BuyPrice { get; set; }
         public decimal? SellPrice { get; set; }
         public decimal? Margin { get; set; }
-        public long? IsNew { get; set; }
+        public bool? IsNew { get; set; }
         public long? ProductId { get; set; }
         public long? OrderId { get; set; }
         public long? SupplierInvoicePositionId { get; set; }

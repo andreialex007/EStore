@@ -1,0 +1,2 @@
+﻿ALTER TABLE tblProductSingle ALTER COLUMN IsNew BIT NULL
+GO 

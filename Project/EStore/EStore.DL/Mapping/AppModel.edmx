@@ -56,7 +56,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BuyPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="SellPrice" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="IsNew" Type="bigint" />
+          <Property Name="IsNew" Type="bit" />
           <Property Name="ProductId" Type="bigint" />
           <Property Name="OrderId" Type="bigint" />
           <Property Name="State" Type="int" />
@@ -411,7 +411,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BuyPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="SellPrice" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="IsNew" Type="Int64" />
+          <Property Name="IsNew" Type="Boolean" />
           <Property Name="ProductId" Type="Int64" />
           <Property Name="OrderId" Type="Int64" />
           <Property Name="State" Type="Int32" />

@@ -59,5 +59,12 @@ namespace EStore.Web.Controllers
             Service.Delete<tblSupplierInvoicePosition>(id);
             return SuccessJsonResult();
         }
+
+        [HttpPost]
+        public JsonResult GenerateProductSingles(long id)
+        {
+            Service.ProductSingle.GenerateProductSingles(id);
+            return SuccessJsonResult();
+        }
     }
 }

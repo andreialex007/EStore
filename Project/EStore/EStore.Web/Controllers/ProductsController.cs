@@ -70,8 +70,7 @@ namespace EStore.Web.Controllers
         public JsonResult SaveProductSingle(ProductSingleItem item)
         {
             Service.ProductSingle.Save(item);
-            var view = this.RenderRazorViewToString(item, "~/Views/Shared/Products/ProductSingleGridRow.cshtml");
-            return Json(new { view });
+            return SuccessJsonResult();
         }
 
         [HttpPost]

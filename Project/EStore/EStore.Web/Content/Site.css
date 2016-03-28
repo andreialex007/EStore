@@ -372,6 +372,7 @@ table {
 
 .product-singles-grid .notes {
     height: 28px !important;
+    line-height: 26px;
 }
 
     .product-singles-grid .notes[contenteditable='true'] {
@@ -390,4 +391,5 @@ table {
         border-radius: 3px !important;
         max-height: 100px !important;
         overflow-y: auto;
+        line-height: 1.42857143 !important;
     }

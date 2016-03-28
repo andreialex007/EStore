@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using EStore.BL.Extensions;
 using EStore.BL.Models;
 using EStore.BL.Models.Product;
@@ -53,10 +55,12 @@ namespace EStore.BL.Services
                     Notes = x.Notes,
                     SupplierInvoiceId = x.SupplierInvoiceId,
                     StateName = (x.State == stateOnHoldId ? stateOnHoldName : (x.State == stateForSaleId ? stateForSaleName : "")),
+                    StateId = x.State,
                     IsNew = x.IsNew,
                     BuyPrice = x.BuyPrice,
                     SellPrice = x.SellPrice,
                     OrderId = x.OrderId,
+                    Margin = Math.Round((decimal)(((x.SellPrice - x.BuyPrice) / x.BuyPrice) * 100), 2),
                     SupplierInvoicePositionId = x.SupplierInvoicePositionId
                 });
 
@@ -77,6 +81,30 @@ namespace EStore.BL.Services
             };
 
             return model;
+        }
+
+        public void GenerateProductSingles(long invoiceId)
+        {
+            var invoice = Db.Set<tblSupplierInvoice>()
+                .Include(x => x.tblSupplierInvoicePositions)
+                .Single(x => x.Id == invoiceId);
+
+            foreach (var position in invoice.tblSupplierInvoicePositions)
+            {
+                for (int i = 0; i < (position.Qty ?? 0); i++)
+                {
+                    var single = Db.CreateAndAdd<tblProductSingle>();
+                    single.BuyPrice = position.Price;
+                    single.ProductId = position.ProductId;
+                    single.SellPrice = position.Price;
+                    single.State = ProductSingleStateEnum.ForSale.CastTo<int>();
+                    single.IsNew = true;
+                    single.SupplierInvoiceId = invoiceId;
+                    single.SupplierInvoicePositionId = position.Id;
+                }
+            }
+
+            Db.SaveChanges();
         }
     }
 }

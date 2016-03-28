@@ -205,5 +205,16 @@ namespace EStore.DL.Migrator {
                 return ResourceManager.GetString("_20150327_update_4", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblProductSingle ALTER COLUMN IsNew BIT NULL
+        ///GO 
+        ///.
+        /// </summary>
+        public static string _20150328_update {
+            get {
+                return ResourceManager.GetString("_20150328_update", resourceCulture);
+            }
+        }
     }
 }
