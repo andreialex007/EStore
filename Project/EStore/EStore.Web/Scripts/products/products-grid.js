@@ -3,7 +3,7 @@
     var self = new AjaxGridBase();
 
     self.getEditUrl = function (id) {
-        return "/Products/" + id;
+        return "/admin/Products/" + id;
     }
 
     self.deleteUrl = "/Products/Delete";
@@ -14,7 +14,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": "/Products/Search",
+                "url": "/admin/Products/Search",
                 "type": "POST"
             },
             "columns": [

@@ -9,7 +9,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": "/Articles/Search",
+                "url": "/admin/Articles/Search",
                 "type": "POST"
             },
             "columns": [
@@ -37,7 +37,7 @@
     self.edit = function (event) {
         var rowIndex = $(event.target).closest("tr").index();
         var itemId = self.table.row(rowIndex).data().Id;
-        location.href = "/Articles/" + itemId;
+        location.href = "/admin/articles/" + itemId;
     }
 
     self.delete = function (event) {
@@ -48,7 +48,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Articles/Delete",
+                url: "/admin/Articles/Delete",
                 contentType: "application/json",
                 dataType: "json",
                 data: JSON.stringify({ id: itemId })

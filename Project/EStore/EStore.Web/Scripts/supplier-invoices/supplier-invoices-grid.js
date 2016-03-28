@@ -3,10 +3,10 @@
     var self = new AjaxGridBase();
 
     self.getEditUrl = function (id) {
-        return "/SupplierInvoices/" + id;
+        return "/admin/SupplierInvoices/" + id;
     }
 
-    self.deleteUrl = "/SupplierInvoices/Delete";
+    self.deleteUrl = "/admin/SupplierInvoices/Delete";
     self.gridSelector = ".supplier-invoices-grid";
 
     self.initTable = function () {
@@ -14,7 +14,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": "/SupplierInvoices/Search",
+                "url": "/admin/SupplierInvoices/Search",
                 "type": "POST"
             },
             "columns": [

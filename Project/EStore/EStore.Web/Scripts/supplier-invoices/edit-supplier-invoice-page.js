@@ -25,7 +25,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/SupplierInvoices/GenerateProductSingles",
+                url: "/admin/SupplierInvoices/GenerateProductSingles",
                 contentType: "application/json",
                 dataType: "json",
                 data: JSON.stringify({ id: $(".entity-id").val() })

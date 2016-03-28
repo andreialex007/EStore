@@ -54,7 +54,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/SupplierInvoices/DeleteInvoicePosition",
+                url: "/admin/SupplierInvoices/DeleteInvoicePosition",
                 contentType: "application/json",
                 dataType: "json",
                 data: JSON.stringify({ id: id })
@@ -78,7 +78,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/SupplierInvoices/SaveInvoicePosition",
+            url: "/admin/SupplierInvoices/SaveInvoicePosition",
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify({ item: json })

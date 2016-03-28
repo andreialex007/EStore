@@ -228,6 +228,7 @@
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductCategoriesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SupplierInvoicesController.cs" />
     <Compile Include="Controllers\_Common\ControllerBase.cs" />
@@ -3960,6 +3961,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Products\ProductSingleGridRow.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\ArticleCategories\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\ArticleCategories\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -216,5 +216,29 @@ namespace EStore.DL.Migrator {
                 return ResourceManager.GetString("_20150328_update", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblProduct ADD CategoryId bigint NULL
+        ///GO
+        ///
+        ////****** Object:  Table [dbo].[tblProductCategory]    Script Date: 03/29/2016 00:12:16 ******/
+        ///SET ANSI_NULLS ON
+        ///GO
+        ///SET QUOTED_IDENTIFIER ON
+        ///GO
+        ///CREATE TABLE [dbo].[tblProductCategory](
+        ///	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+        ///	[Name] [nvarchar](250) NULL,
+        ///	[ParentCategoryId] [bigint] NULL,
+        /// CONSTRAINT [PK_tblProductCategory] PRIMARY KEY CLUSTERED 
+        ///(
+        ///	[Id] ASC
+        ///)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string _20150329_update {
+            get {
+                return ResourceManager.GetString("_20150329_update", resourceCulture);
+            }
+        }
     }
 }

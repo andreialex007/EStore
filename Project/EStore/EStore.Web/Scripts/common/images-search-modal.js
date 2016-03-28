@@ -38,7 +38,7 @@
             });
             $.ajax({
                 type: "POST",
-                url: "/Files/UploadFoundImages",
+                url: "/admin/Files/UploadFoundImages",
                 contentType: "application/json",
                 data: JSON.stringify({ images: selectedImages, productId: productId })
             }).done(function (result) {
@@ -69,7 +69,7 @@
             });
             $.ajax({
                 type: "POST",
-                url: "/Files/SearchImages",
+                url: "/admin/Files/SearchImages",
                 contentType: "application/json",
                 data: JSON.stringify({ term: term })
             }).done(function (result) {

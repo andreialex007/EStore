@@ -19,7 +19,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/Files/SaveFileDescription",
+            url: "/admin/Files/SaveFileDescription",
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify({ id: id, text: text })
@@ -30,7 +30,7 @@
         var id = $(event.target).val();
         $.ajax({
             type: "POST",
-            url: "/Files/SaveFileFirstPosition",
+            url: "/admin/Files/SaveFileFirstPosition",
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify({ id: id })
@@ -39,7 +39,7 @@
 
 
     self.uploadFile = function (event) {
-        utils.uploadManyFiles("/Files/UploadFile/", event.target.files, self.getExtraData(), self.filesUploaded);
+        utils.uploadManyFiles("/admin/Files/UploadFile/", event.target.files, self.getExtraData(), self.filesUploaded);
     }
 
     self.filesUploaded = function (result) {
@@ -57,7 +57,7 @@
         dialogsApi.showConfirmModal("", "", function () {
             $.ajax({
                 type: "POST",
-                url: "/Files/DeleteFile",
+                url: "/admin/Files/DeleteFile",
                 contentType: "application/json",
                 dataType: "json",
                 data: JSON.stringify({ id: itemId })

@@ -12,29 +12,23 @@ namespace EStore.DL.Mapping
     using System;
     using System.Collections.Generic;
     
-    public partial class tblProduct
+    public partial class tblProductCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblProduct()
+        public tblProductCategory()
         {
-            this.tblFiles = new HashSet<tblFile>();
-            this.tblProductSingles = new HashSet<tblProductSingle>();
-            this.tblSupplierInvoicePositions = new HashSet<tblSupplierInvoicePosition>();
+            this.tblProducts = new HashSet<tblProduct>();
+            this.tblProductCategory1 = new HashSet<tblProductCategory>();
         }
     
         public long Id { get; set; }
         public string Name { get; set; }
-        public string Descripton { get; set; }
-        public Nullable<long> ManufacterId { get; set; }
-        public Nullable<long> CategoryId { get; set; }
+        public Nullable<long> ParentCategoryId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblFile> tblFiles { get; set; }
-        public virtual tblManufacter tblManufacter { get; set; }
-        public virtual tblProductCategory tblProductCategory { get; set; }
+        public virtual ICollection<tblProduct> tblProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProductSingle> tblProductSingles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblSupplierInvoicePosition> tblSupplierInvoicePositions { get; set; }
+        public virtual ICollection<tblProductCategory> tblProductCategory1 { get; set; }
+        public virtual tblProductCategory tblProductCategory2 { get; set; }
     }
 }

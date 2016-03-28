@@ -48,6 +48,15 @@
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Descripton" Type="nvarchar(max)" />
           <Property Name="ManufacterId" Type="bigint" />
+          <Property Name="CategoryId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="ParentCategoryId" Type="bigint" />
         </EntityType>
         <EntityType Name="tblProductSingle">
           <Key>
@@ -151,6 +160,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblProduct_tblProductCategory">
+          <End Role="tblProductCategory" Type="Self.tblProductCategory" Multiplicity="0..1" />
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductCategory_tblProductCategory">
+          <End Role="tblProductCategory" Type="Self.tblProductCategory" Multiplicity="0..1" />
+          <End Role="tblProductCategory1" Type="Self.tblProductCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductCategory1">
+              <PropertyRef Name="ParentCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblProductSingle_tblOrder">
           <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="0..1" />
           <End Role="tblProductSingle" Type="Self.tblProductSingle" Multiplicity="*" />
@@ -241,6 +274,7 @@
           <EntitySet Name="tblManufacter" EntityType="Self.tblManufacter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductCategory" EntityType="Self.tblProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProductSingle" EntityType="Self.tblProductSingle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSupplier" EntityType="Self.tblSupplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSupplierInvoice" EntityType="Self.tblSupplierInvoice" Schema="dbo" store:Type="Tables" />
@@ -261,6 +295,14 @@
           <AssociationSet Name="FK_tblProduct_tblManufacter" Association="Self.FK_tblProduct_tblManufacter">
             <End Role="tblManufacter" EntitySet="tblManufacter" />
             <End Role="tblProduct" EntitySet="tblProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblProductCategory" Association="Self.FK_tblProduct_tblProductCategory">
+            <End Role="tblProductCategory" EntitySet="tblProductCategory" />
+            <End Role="tblProduct" EntitySet="tblProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductCategory_tblProductCategory" Association="Self.FK_tblProductCategory_tblProductCategory">
+            <End Role="tblProductCategory" EntitySet="tblProductCategory" />
+            <End Role="tblProductCategory1" EntitySet="tblProductCategory" />
           </AssociationSet>
           <AssociationSet Name="FK_tblProductSingle_tblOrder" Association="Self.FK_tblProductSingle_tblOrder">
             <End Role="tblOrder" EntitySet="tblOrder" />
@@ -301,6 +343,7 @@
           <EntitySet Name="tblManufacters" EntityType="EStoreModel.tblManufacter" />
           <EntitySet Name="tblOrders" EntityType="EStoreModel.tblOrder" />
           <EntitySet Name="tblProducts" EntityType="EStoreModel.tblProduct" />
+          <EntitySet Name="tblProductCategories" EntityType="EStoreModel.tblProductCategory" />
           <EntitySet Name="tblProductSingles" EntityType="EStoreModel.tblProductSingle" />
           <EntitySet Name="tblSuppliers" EntityType="EStoreModel.tblSupplier" />
           <EntitySet Name="tblSupplierInvoices" EntityType="EStoreModel.tblSupplierInvoice" />
@@ -326,6 +369,10 @@
             <End Role="tblOrder" EntitySet="tblOrders" />
             <End Role="tblProductSingle" EntitySet="tblProductSingles" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblProductCategory" Association="EStoreModel.FK_tblProduct_tblProductCategory">
+            <End Role="tblProductCategory" EntitySet="tblProductCategories" />
+            <End Role="tblProduct" EntitySet="tblProducts" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblProductSingle_tblProduct" Association="EStoreModel.FK_tblProductSingle_tblProduct">
             <End Role="tblProduct" EntitySet="tblProducts" />
             <End Role="tblProductSingle" EntitySet="tblProductSingles" />
@@ -333,6 +380,10 @@
           <AssociationSet Name="FK_tblSupplierInvoicePosition_tblProduct" Association="EStoreModel.FK_tblSupplierInvoicePosition_tblProduct">
             <End Role="tblProduct" EntitySet="tblProducts" />
             <End Role="tblSupplierInvoicePosition" EntitySet="tblSupplierInvoicePositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductCategory_tblProductCategory" Association="EStoreModel.FK_tblProductCategory_tblProductCategory">
+            <End Role="tblProductCategory" EntitySet="tblProductCategories" />
+            <End Role="tblProductCategory1" EntitySet="tblProductCategories" />
           </AssociationSet>
           <AssociationSet Name="FK_tblProductSingle_tblSupplierInvoice" Association="EStoreModel.FK_tblProductSingle_tblSupplierInvoice">
             <End Role="tblSupplierInvoice" EntitySet="tblSupplierInvoices" />
@@ -399,10 +450,23 @@
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Descripton" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ManufacterId" Type="Int64" />
+          <Property Name="CategoryId" Type="Int64" />
           <NavigationProperty Name="tblFiles" Relationship="EStoreModel.FK_tblFile_tblProduct" FromRole="tblProduct" ToRole="tblFile" />
           <NavigationProperty Name="tblManufacter" Relationship="EStoreModel.FK_tblProduct_tblManufacter" FromRole="tblProduct" ToRole="tblManufacter" />
+          <NavigationProperty Name="tblProductCategory" Relationship="EStoreModel.FK_tblProduct_tblProductCategory" FromRole="tblProduct" ToRole="tblProductCategory" />
           <NavigationProperty Name="tblProductSingles" Relationship="EStoreModel.FK_tblProductSingle_tblProduct" FromRole="tblProduct" ToRole="tblProductSingle" />
           <NavigationProperty Name="tblSupplierInvoicePositions" Relationship="EStoreModel.FK_tblSupplierInvoicePosition_tblProduct" FromRole="tblProduct" ToRole="tblSupplierInvoicePosition" />
+        </EntityType>
+        <EntityType Name="tblProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ParentCategoryId" Type="Int64" />
+          <NavigationProperty Name="tblProducts" Relationship="EStoreModel.FK_tblProduct_tblProductCategory" FromRole="tblProductCategory" ToRole="tblProduct" />
+          <NavigationProperty Name="tblProductCategory1" Relationship="EStoreModel.FK_tblProductCategory_tblProductCategory" FromRole="tblProductCategory" ToRole="tblProductCategory1" />
+          <NavigationProperty Name="tblProductCategory2" Relationship="EStoreModel.FK_tblProductCategory_tblProductCategory" FromRole="tblProductCategory1" ToRole="tblProductCategory" />
         </EntityType>
         <EntityType Name="tblProductSingle">
           <Key>
@@ -531,6 +595,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblProduct_tblProductCategory">
+          <End Type="EStoreModel.tblProductCategory" Role="tblProductCategory" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblProduct" Role="tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblProductSingle_tblProduct">
           <End Type="EStoreModel.tblProduct" Role="tblProduct" Multiplicity="0..1" />
           <End Type="EStoreModel.tblProductSingle" Role="tblProductSingle" Multiplicity="*" />
@@ -552,6 +628,18 @@
             </Principal>
             <Dependent Role="tblSupplierInvoicePosition">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductCategory_tblProductCategory">
+          <End Type="EStoreModel.tblProductCategory" Role="tblProductCategory" Multiplicity="0..1" />
+          <End Type="EStoreModel.tblProductCategory" Role="tblProductCategory1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductCategory1">
+              <PropertyRef Name="ParentCategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -651,8 +739,18 @@
           <EntitySetMapping Name="tblProducts">
             <EntityTypeMapping TypeName="EStoreModel.tblProduct">
               <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ManufacterId" ColumnName="ManufacterId" />
                 <ScalarProperty Name="Descripton" ColumnName="Descripton" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductCategories">
+            <EntityTypeMapping TypeName="EStoreModel.tblProductCategory">
+              <MappingFragment StoreEntitySet="tblProductCategory">
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

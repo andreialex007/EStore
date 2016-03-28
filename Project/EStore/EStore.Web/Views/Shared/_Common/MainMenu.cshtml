@@ -7,9 +7,16 @@
 <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 <ul class="page-sidebar-menu page-sidebar-menu-light page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
     <li>
-        <a href="/">
+        <a href="/admin/">
             <i class="fa fa-home"></i>
             <span class="title">Главная</span>
+            <span class="arrow "></span>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" href="/">
+            <i class="fa fa-globe"></i>
+            <span class="title">Сайт</span>
             <span class="arrow "></span>
         </a>
     </li>
@@ -24,6 +31,13 @@
         <a href="@Url.Action("Index", "Products")">
             <i class="fa fa-product-hunt"></i>
             <span class="title">Товары</span>
+            <span class="arrow "></span>
+        </a>
+    </li>
+    <li>
+        <a href="@Url.Action("Index", "ProductCategories")">
+            <i class="fa fa-folder-open"></i>
+            <span class="title">Категории товаров</span>
             <span class="arrow "></span>
         </a>
     </li>

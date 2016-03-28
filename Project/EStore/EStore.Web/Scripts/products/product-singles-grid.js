@@ -10,7 +10,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": "/Products/SearchProductSingle",
+                "url": "/admin/Products/SearchProductSingle",
                 "type": "POST",
                 "data": function (data) {
                     data.ProductId = $(".entity-id").val();
@@ -107,7 +107,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/Products/SaveProductSingle",
+            url: "/admin/Products/SaveProductSingle",
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify({
@@ -131,7 +131,7 @@
         dialogsApi.showConfirmModal("Подвтерждение удаления?", "Вы уверены что хотите удалить запись?", function () {
             $.ajax({
                 type: "POST",
-                url: "/Products/DeleteProductSingle",
+                url: "/admin/Products/DeleteProductSingle",
                 contentType: "application/json",
                 dataType: "json",
                 data: JSON.stringify({
