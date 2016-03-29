@@ -23,7 +23,6 @@
                 ]
             });
 
-
             self.productImagesGrid = new ProductImagesGrid();
             self.productSinglesGrid = new ProductSinglesGrid();
 
@@ -32,7 +31,6 @@
                 window.imagesSearchModal.show();
                 window.imagesSearchModal.onImagesUploaded = self.onImagesUploaded;
             });
-
         }
 
         self.onImagesUploaded = function (params) {

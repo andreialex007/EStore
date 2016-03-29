@@ -3323,6 +3323,8 @@
     <Content Include="Scripts\common\images-search-modal.js" />
     <Content Include="Scripts\common\inline-edit-grid-base.js" />
     <Content Include="Scripts\common\utils.js" />
+    <Content Include="Scripts\product-categories\edit-product-category-page.js" />
+    <Content Include="Scripts\product-categories\product-categories-search-page.js" />
     <Content Include="Scripts\products\product-images-grid.js" />
     <Content Include="Scripts\products\product-singles-grid.js" />
     <Content Include="Scripts\products\products-grid.js" />
@@ -3963,10 +3965,10 @@
     <Content Include="Views\Shared\Products\ProductSingleGridRow.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\ArticleCategories\Edit.cshtml" />
+    <Content Include="Views\Shared\ProductCategories\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\ArticleCategories\Index.cshtml" />
+    <Content Include="Views\Shared\ProductCategories\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

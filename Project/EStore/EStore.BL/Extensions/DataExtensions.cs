@@ -20,5 +20,20 @@ namespace EStore.BL.Extensions
 
             return items;
         }
+
+        public static List<ProductCategoryItem> AllCategories(this EStoreEntities context)
+        {
+            var categoryItems = context.Set<tblProductCategory>()
+                .Select(x => new ProductCategoryItem
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    ParentCategoryId = x.ParentCategoryId,
+                    ParentCategoryName = x.ParentCategoryId != null ? x.tblProductCategory2.Name : ""
+                })
+                .ToList();
+
+            return categoryItems;
+        }
     }
 }

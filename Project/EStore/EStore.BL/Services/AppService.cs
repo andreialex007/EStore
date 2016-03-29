@@ -16,6 +16,7 @@ namespace EStore.BL.Services
             InvoicePosition = new SupplierInvoicePositionService(entities);
             File = new FileService(entities);
             ProductSingle = new ProductSingleService(entities);
+            ProductCategory = new ProductCategoryService(entities);
         }
 
         public ArticleService Article { get; set; }
@@ -24,6 +25,7 @@ namespace EStore.BL.Services
         public SupplierInvoicePositionService InvoicePosition { get; set; }
         public ProductSingleService ProductSingle { get; set; }
         public FileService File { get; set; }
+        public ProductCategoryService ProductCategory { get; set; }
 
         public void Dispose()
         {

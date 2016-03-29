@@ -131,6 +131,7 @@ namespace EStore.BL.Services
 
         public void AppendData(ProductItem item)
         {
+
         }
 
     }
