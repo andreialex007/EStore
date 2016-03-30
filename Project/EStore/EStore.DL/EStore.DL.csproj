@@ -200,6 +200,7 @@
     <Compile Include="Migrator\Migrations\Migration008.cs" />
     <Compile Include="Migrator\Migrations\Migration009.cs" />
     <Compile Include="Migrator\Migrations\Migration010.cs" />
+    <Compile Include="Migrator\Migrations\Migration011.cs" />
     <Compile Include="Migrator\SqlFiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -229,6 +230,7 @@
       <DependentUpon>AppModel.edmx</DependentUpon>
       <LastGenOutput>AppModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Migrator\Scripts\20150330_update.sql" />
     <Content Include="Migrator\Scripts\20150329_update.sql" />
     <Content Include="Migrator\Scripts\20150328_update.sql" />
     <Content Include="Migrator\Scripts\20150327_update_4.sql" />

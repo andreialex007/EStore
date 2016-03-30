@@ -5,7 +5,7 @@ using EStore.BL.Models._Common;
 using EStore.DL.Mapping;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
-namespace EStore.Web.Controllers
+namespace EStore.Web.Controllers.Admin
 {
     public class ArticlesController : ControllerBase
     {

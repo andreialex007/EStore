@@ -224,13 +224,13 @@
     <Compile Include="Code\Extensions.cs" />
     <Compile Include="Code\HtmlHelpers.cs" />
     <Compile Include="Code\JsonNetResult.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ArticlesController.cs" />
-    <Compile Include="Controllers\FilesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductCategoriesController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\SupplierInvoicesController.cs" />
+    <Compile Include="Controllers\Admin\AccountController.cs" />
+    <Compile Include="Controllers\Admin\ArticlesController.cs" />
+    <Compile Include="Controllers\Admin\FilesController.cs" />
+    <Compile Include="Controllers\Admin\HomeController.cs" />
+    <Compile Include="Controllers\Admin\ProductCategoriesController.cs" />
+    <Compile Include="Controllers\Admin\ProductsController.cs" />
+    <Compile Include="Controllers\Admin\SupplierInvoicesController.cs" />
     <Compile Include="Controllers\_Common\ControllerBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3351,6 +3351,7 @@
     <Folder Include="Content\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Content\assets\global\plugins\NewFolder1\" />
+    <Folder Include="Controllers\Public\" />
     <Folder Include="Files\Products\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
 using EStore.BL.Exceptions;
-using EStore.BL.Models;
+using EStore.BL.Models.Product;
 using EStore.DL.Mapping;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
-namespace EStore.Web.Controllers
+namespace EStore.Web.Controllers.Admin
 {
     public class ProductCategoriesController : ControllerBase
     {

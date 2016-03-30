@@ -145,14 +145,15 @@
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Models\ArticleItem.cs" />
-    <Compile Include="Models\ProductCategoryItem.cs" />
-    <Compile Include="Models\ProductSingleStateEnum.cs" />
+    <Compile Include="Models\Product\ProductCategoryItem.cs" />
+    <Compile Include="Models\Product\ProductSingleStateEnum.cs" />
     <Compile Include="Models\Product\FileItem.cs" />
     <Compile Include="Models\Product\ProductItem.cs" />
     <Compile Include="Models\Product\ProductSingleItem.cs" />
     <Compile Include="Models\SupplierInvoice\SupplierInvoiceItem.cs" />
     <Compile Include="Models\SupplierInvoice\SupplierInvoicePositionItem.cs" />
     <Compile Include="Models\SupplierItem.cs" />
+    <Compile Include="Models\UserItem.cs" />
     <Compile Include="Models\_Common\Column.cs" />
     <Compile Include="Models\_Common\Order.cs" />
     <Compile Include="Models\_Common\SearchModel.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Services\ProductSingleService.cs" />
     <Compile Include="Services\SupplierInvoicePositionService.cs" />
     <Compile Include="Services\SupplierInvoiceService.cs" />
+    <Compile Include="Services\AdminUserService.cs" />
     <Compile Include="Services\_Common\EntityServiceBase.cs" />
     <Compile Include="Services\_Common\InternalServiceBase.cs" />
     <Compile Include="Services\_Common\ServiceBase.cs" />

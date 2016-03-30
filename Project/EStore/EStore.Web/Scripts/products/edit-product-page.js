@@ -31,6 +31,12 @@
                 window.imagesSearchModal.show();
                 window.imagesSearchModal.onImagesUploaded = self.onImagesUploaded;
             });
+
+            var categoryId = $(".product-category input[type='hidden']").data("selected-id");
+            $(".product-category input[type='hidden']").select2Custom({
+                placeholder: "Выберите категорию",
+                data: $(".product-category input[type='hidden']").data("items")
+            }).select2("val", categoryId);
         }
 
         self.onImagesUploaded = function (params) {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace EStore.Web.Controllers
+namespace EStore.Web.Controllers.Admin
 {
     public class HomeController : Controller
     {

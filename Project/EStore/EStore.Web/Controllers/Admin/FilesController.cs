@@ -7,7 +7,7 @@ using EStore.BL.Utils.YandexImages;
 using EStore.Web.Code;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
-namespace EStore.Web.Controllers
+namespace EStore.Web.Controllers.Admin
 {
     public class FilesController : ControllerBase
     {

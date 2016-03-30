@@ -240,5 +240,16 @@ namespace EStore.DL.Migrator {
                 return ResourceManager.GetString("_20150329_update", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblUser ADD IsAdmin bit NULL
+        ///GO
+        ///.
+        /// </summary>
+        public static string _20150330_update {
+            get {
+                return ResourceManager.GetString("_20150330_update", resourceCulture);
+            }
+        }
     }
 }

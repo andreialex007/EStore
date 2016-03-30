@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using EStore.BL.Models;
+using EStore.BL.Models.Product;
 using EStore.DL.Mapping;
 
 namespace EStore.BL.Extensions
@@ -21,15 +23,31 @@ namespace EStore.BL.Extensions
             return items;
         }
 
-        public static List<ProductCategoryItem> AllCategories(this EStoreEntities context)
+        public static List<ProductCategoryItem> AllCategoriesFlatten(this EStoreEntities context)
+        {
+            return AllCategoriesHierarchy(context).Flatten(x => x.ChildCategories).ToList();
+        }
+
+        public static List<ProductCategoryItem> AllCategoriesHierarchy(this EStoreEntities context)
         {
             var categoryItems = context.Set<tblProductCategory>()
+                .Include(x => x.tblProductCategory1)
+                .Include(x => x.tblProductCategory2)
+                .Where(x => x.ParentCategoryId == null)
+                .ToList()
                 .Select(x => new ProductCategoryItem
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    ParentCategoryId = x.ParentCategoryId,
-                    ParentCategoryName = x.ParentCategoryId != null ? x.tblProductCategory2.Name : ""
+                    ChildCategories = x.tblProductCategory1
+                        .Select(c => new ProductCategoryItem
+                        {
+                            Id = c.Id,
+                            Name = c.Name,
+                            ParentCategoryId = c.ParentCategoryId,
+                            ParentCategoryName = c.ParentCategoryId != null ? c.tblProductCategory2.Name : "",
+                        })
+                        .ToList()
                 })
                 .ToList();
 

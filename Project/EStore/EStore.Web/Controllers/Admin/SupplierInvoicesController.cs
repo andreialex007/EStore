@@ -6,7 +6,7 @@ using EStore.DL.Mapping;
 using EStore.Web.Code;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
-namespace EStore.Web.Controllers
+namespace EStore.Web.Controllers.Admin
 {
     public class SupplierInvoicesController : ControllerBase
     {

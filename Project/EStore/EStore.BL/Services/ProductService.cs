@@ -34,6 +34,7 @@ namespace EStore.BL.Services
 
             product.Descripton = item.Descripton;
             product.Name = item.Name;
+            product.CategoryId = item.CategoryId;
 
             Db.SaveChanges();
 
@@ -51,6 +52,7 @@ namespace EStore.BL.Services
                     {
                         Id = x.Id,
                         Descripton = x.Descripton,
+                        CategoryId = x.CategoryId,
                         Name = x.Name,
                         ProductImages = x.tblFiles
                             .Select(f => new FileItem
@@ -85,6 +87,8 @@ namespace EStore.BL.Services
                 }
             }
 
+            AppendData(productItem);
+
             return productItem;
         }
 
@@ -103,6 +107,7 @@ namespace EStore.BL.Services
                 {
                     Id = x.Id,
                     Descripton = x.Descripton,
+                    CategoryId = x.CategoryId,
                     Name = x.Name
                 });
 
@@ -131,7 +136,7 @@ namespace EStore.BL.Services
 
         public void AppendData(ProductItem item)
         {
-
+            item.AvaliableCategories = Db.AllCategoriesFlatten();
         }
 
     }

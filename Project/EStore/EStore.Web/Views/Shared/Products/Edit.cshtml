@@ -1,4 +1,5 @@
-﻿@model EStore.BL.Models.Product.ProductItem
+﻿@using EStore.Web.Code
+@model EStore.BL.Models.Product.ProductItem
 
 @{
     ViewBag.Title = $"{(Model.Id == 0 ? "Создать" : "Редактировать")} товар";
@@ -58,10 +59,20 @@
                     <form method="post">
                         @Html.Partial("_Common/ErrorsBlock")
                         <div class="row product-name-box">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Название</label>
                                     <input type="text" name="@Html.NameFor(x => x.Name)" value="@Model.Name" class="form-control" placeholder="Название">
+                                </div>
+                            </div>
+                            <div class="col-md-6 product-category">
+                                <div class="form-group">
+                                    <label class="control-label">Категория</label>
+                                    <input type="hidden"
+                                           name="@Html.NameFor(x=>x.CategoryId)"
+                                           data-items="@Model.AvaliableCategories.Select(x => new {id = x.Id, text = x.Name}).ToJson()"
+                                           data-selected-id="@Model.CategoryId"
+                                           class="form-control" />
                                 </div>
                             </div>
                         </div>

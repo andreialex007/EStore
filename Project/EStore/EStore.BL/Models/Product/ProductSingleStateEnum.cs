@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace EStore.BL.Models
+namespace EStore.BL.Models.Product
 {
     public enum ProductSingleStateEnum
     {

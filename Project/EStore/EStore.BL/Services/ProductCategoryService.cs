@@ -2,6 +2,7 @@
 using System.Linq;
 using EStore.BL.Extensions;
 using EStore.BL.Models;
+using EStore.BL.Models.Product;
 using EStore.BL.Services._Common;
 using EStore.DL.Mapping;
 
@@ -15,12 +16,12 @@ namespace EStore.BL.Services
 
         public List<ProductCategoryItem> All()
         {
-            return Db.AllCategories();
+            return Db.AllCategoriesFlatten();
         }
 
         public List<ProductCategoryItem> AllRoot()
         {
-            return Db.AllCategories().Where(x => x.ParentCategoryId == null).ToList();
+            return Db.AllCategoriesFlatten().Where(x => x.ParentCategoryId == null).ToList();
         }
 
         public void Save(ProductCategoryItem item)
