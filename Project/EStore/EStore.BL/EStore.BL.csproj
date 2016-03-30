@@ -144,6 +144,7 @@
     <Compile Include="Extensions\DbContextExtensions.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
+    <Compile Include="Models\AdminLoginModel.cs" />
     <Compile Include="Models\ArticleItem.cs" />
     <Compile Include="Models\Product\ProductCategoryItem.cs" />
     <Compile Include="Models\Product\ProductSingleStateEnum.cs" />

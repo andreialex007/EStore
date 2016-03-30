@@ -11,7 +11,7 @@ using ValidationException = EStore.BL.Exceptions.ValidationException;
 
 namespace EStore.Web.Controllers._Common
 {
-    //    [Authorize]
+    [Authorize]
     public class ControllerBase : Controller
     {
         protected AppService Service;

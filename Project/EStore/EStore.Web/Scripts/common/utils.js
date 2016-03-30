@@ -173,6 +173,8 @@
             request.send(data);
         }
 
+
+
         self.filesCounter = 0;
         self.uploadManyFiles = function (url, files, extraData, completedFunc) {
 

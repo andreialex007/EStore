@@ -1,0 +1,45 @@
+﻿@using EStore.BL.Models
+@using EStore.BL.Models.Product
+@using EStore.BL.Utils
+@model EStore.BL.Models.Product.ProductSingleSearchItem
+<tr>
+    <td class="id-column">@Model.Id</td>
+    <td>
+        <input type="text"
+               class="form-control input-sm buy-price"
+               value="@((Model.BuyPrice ?? 0).ToString("N"))" />
+    </td>
+    <td>
+        <input type="text"
+               class="form-control input-sm sell-price"
+               value="@((Model.SellPrice ?? 0).ToString("N"))" />
+    </td>
+
+    <td>
+        <input type="text"
+               class="form-control input-sm margin"
+               value="@((Model.Margin ?? 0).ToString("N"))" />
+    </td>
+    <td>
+        <input type="checkbox" @(((Model.IsNew ?? false) ? "checked='checked'" : "")) class="is-new" />
+    </td>
+    <td>
+        <select class="form-control state input-sm">
+            @foreach (var item in new[] { ProductSingleStateEnum.OnHold, ProductSingleStateEnum.ForSale })
+            {
+                <option @((item.CastTo<int>() == Model.StateId ? "selected='true'" : "")) value="@(item.CastTo<int>())">
+                    @(item.DescriptionAttr())
+                </option>
+            }
+        </select>
+    </td>
+    <td>
+        <a target="_blank" href="/supplierinvoices/@Model.SupplierInvoiceId" class="invoice-id">@Model.SupplierInvoiceId</a>
+    </td>
+    <td>
+        <div title="@Model.Notes"  class="notes">@Model.Notes</div>
+    </td>
+    <td class="actions">
+        @Html.Partial("~/Views/_Common/AllTableActions.cshtml")
+    </td>
+</tr>

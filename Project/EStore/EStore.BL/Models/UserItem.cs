@@ -11,13 +11,15 @@ namespace EStore.BL.Models
         [Required]
         public string FirstName { get; set; }
 
+        public string FullName => $"{FirstName} {LastName}";
+
         public string LastName { get; set; }
         public string UserName { get; set; }
 
-        [Required]
         public string Password { get; set; }
 
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         public virtual bool? IsAdmin { get; }

@@ -1,13 +1,13 @@
 ﻿$(function () {
 
-    window.productCategoriesSearchPage = function () {
+    window.adminUsersSearchPage = function () {
 
         var self = new SearchGridBase();
-        self.deleteUrl = "/admin/ProductCategories/Delete";
+        self.deleteUrl = "/admin/AdminUsers/Delete";
 
         self.init = function () {
 
-            self.table = $(".categories-search-page table").DataTable({
+            self.table = $(".admin-users-search-page table").DataTable({
                 aoColumnDefs: [
                     {
                         bSortable: false,
@@ -19,7 +19,7 @@
                 ]
             });
 
-            $(document.body).on("click", ".categories-search-page td:last-of-type .delete", self.delete);
+            $(document.body).on("click", ".admin-users-search-page td:last-of-type .delete", self.delete);
         }
 
         self.init();

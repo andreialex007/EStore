@@ -17,6 +17,7 @@ namespace EStore.BL.Services
             File = new FileService(entities);
             ProductSingle = new ProductSingleService(entities);
             ProductCategory = new ProductCategoryService(entities);
+            AdminUser = new AdminUserService(entities);
         }
 
         public ArticleService Article { get; set; }
@@ -26,6 +27,7 @@ namespace EStore.BL.Services
         public ProductSingleService ProductSingle { get; set; }
         public FileService File { get; set; }
         public ProductCategoryService ProductCategory { get; set; }
+        public AdminUserService AdminUser { get; set; }
 
         public void Dispose()
         {

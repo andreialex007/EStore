@@ -1,0 +1,58 @@
+﻿@model EStore.BL.Models.AdminLoginModel
+
+@{
+    ViewBag.Title = "Вход в систему";
+    Layout = "~/Views/_Layout/Login.cshtml";
+}
+
+@section Styles
+{
+    <!-- styles -->
+    <link href="~/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/global/plugins/dropzone/css/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" />
+    <link href="~/Content/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css" rel="stylesheet" />
+    <link href="~/Content/assets/global/plugins/bootstrap-summernote/summernote.css" rel="stylesheet" />
+
+}
+
+@section Scripts {
+    <!-- scripts -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"> </script>
+    <script src="~/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+    <script src="~/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js" type="text/javascript"></script>
+    <script src="/Content/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/global/plugins/dropzone/dropzone.js"></script>
+    <script src="~/Content/assets/global/plugins/accounting.js"></script>
+    <script src="~/Content/assets/global/plugins/bootstrap-summernote/summernote.js"></script>
+
+}
+
+<!-- BEGIN LOGIN FORM -->
+<form class="login-form" method="post">
+    <h3 class="form-title">Вход в систему</h3>
+    <div class="alert alert-danger @((ViewData.ModelState.IsValid ? "display-hide": ""))">
+        <button class="close" data-close="alert"></button>
+        <span>
+            @string.Join("<br/>", ViewData.ModelState.SelectMany(x => x.Value.Errors).Select(x=>x.ErrorMessage))
+        </span>
+    </div>
+    <div class="form-group">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Email</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="text"
+               autocomplete="off"
+               placeholder="Email"
+               value="@Model.Username"
+               name="username" />
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Пароль</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Пароль" name="password" />
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-success uppercase">Войти</button>
+    </div>
+</form>
+<!-- END LOGIN FORM -->

@@ -1,0 +1,20 @@
+﻿@using EStore.Web.Code
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                <strong>Ошибка!</strong>
+                <ul>
+                    @foreach (var item in ViewData.ModelState)
+                    {
+                        <li>@item.Value.Errors.ErrorsToString()</li>
+                    }
+
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+}

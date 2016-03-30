@@ -11,14 +11,14 @@ namespace EStore.Web.Controllers.Admin
         public ActionResult Index()
         {
             var items = Service.ProductCategory.All();
-            return View("ProductCategories/Index", items);
+            return View("~/Views/Admin/ProductCategories/Index.cshtml", items);
         }
 
         [HttpGet]
         public ActionResult Edit(long id = 0)
         {
             var categoryItem = Service.ProductCategory.Edit(id);
-            return View("ProductCategories/Edit", categoryItem);
+            return View("~/Views/Admin/ProductCategories/Edit.cshtml", categoryItem);
         }
 
         [HttpPost]
@@ -33,7 +33,7 @@ namespace EStore.Web.Controllers.Admin
             {
                 AddModelErrors(ex);
                 Service.ProductCategory.AppendData(item);
-                return View("ProductCategories/Edit", item);
+                return View("~/Views/Admin/ProductCategories/Edit.cshtml", item);
             }
         }
 

@@ -12,7 +12,7 @@ namespace EStore.Web.Controllers.Admin
     {
         public ActionResult Index()
         {
-            return View("SupplierInvoices/Index");
+            return View("~/Views/Admin/SupplierInvoices/Index.cshtml");
         }
 
         [HttpPost]
@@ -26,7 +26,7 @@ namespace EStore.Web.Controllers.Admin
         public ActionResult Edit(long id = 0)
         {
             var invoiceItem = Service.SupplierInvoice.Edit(id);
-            return View("SupplierInvoices/Edit", invoiceItem);
+            return View("~/Views/Admin/SupplierInvoices/Edit.cshtml", invoiceItem);
         }
 
         [HttpPost]
@@ -41,7 +41,7 @@ namespace EStore.Web.Controllers.Admin
             {
                 AddModelErrors(ex);
                 Service.SupplierInvoice.AppendData(item);
-                return View("SupplierInvoices/Edit", item);
+                return View("~/Views/Admin/SupplierInvoices/Edit.cshtml", item);
             }
         }
 
@@ -49,7 +49,7 @@ namespace EStore.Web.Controllers.Admin
         public JsonResult SaveInvoicePosition(SupplierInvoicePositionItem item)
         {
             Service.InvoicePosition.Save(item);
-            var view = this.RenderRazorViewToString(item, "~/Views/Shared/SupplierInvoices/SupplierInvoicePositionsGridRow.cshtml");
+            var view = this.RenderRazorViewToString(item, "~/Views/Admin/SupplierInvoices/SupplierInvoicePositionsGridRow.cshtml");
             return Json(new { view });
         }
 

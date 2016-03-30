@@ -1,0 +1,27 @@
+﻿@model List<EStore.BL.Utils.YandexImages.ImageSearchItem>
+
+
+<div class="search-results">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="ttable">
+                    <div class="trow">
+                        <div class="tcell image-cell img-thumbnail">
+                            <a target="_blank" href="@item.Original">
+                                <img src="@item.Preview"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="trow">
+                        <label>
+                            <input type="checkbox"/>
+                            <span>Выбрать</span>
+                        </label>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

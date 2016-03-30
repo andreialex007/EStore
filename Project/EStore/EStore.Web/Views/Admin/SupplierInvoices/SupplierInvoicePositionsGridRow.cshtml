@@ -1,0 +1,25 @@
+﻿@model EStore.BL.Models.SupplierInvoice.SupplierInvoicePositionItem
+<tr>
+    <td class="id-column">@Model.Id</td>
+    <td>
+        <span data-product-id="@Model.ProductId" class="product-name">@Model.ProductName</span>
+        <span class="btn btn-warning btn-xs select-product-btn">
+            <i class="fa fa-folder-open"></i>
+        </span>
+    </td>
+    <td>
+        <input type="text"
+               class="form-control input-sm qty"
+               value="@((Model.Qty ?? 0))"/>
+    </td>
+    <td>
+        <input type="text"
+               class="form-control input-sm price"
+               value="@((Model.Price ?? 0).ToString("N"))"/>
+    </td>
+    <td><span class="total">@Model.Total.ToString("N")</span></td>
+    <td><input type="text" value="@Model.Note" class="form-control input-sm note-text"/></td>
+    <td class="actions">
+        @Html.Partial("~/Views/_Common/AllTableActions.cshtml")
+    </td>
+</tr>

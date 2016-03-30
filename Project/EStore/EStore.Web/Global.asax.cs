@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.AspNet.Identity;
 
 namespace EStore.Web
 {
@@ -13,7 +14,7 @@ namespace EStore.Web
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("ru-RU");
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ru-RU");
-
+            
             DatabaseConfig.MigrateDatabase();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

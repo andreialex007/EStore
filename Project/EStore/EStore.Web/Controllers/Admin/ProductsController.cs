@@ -12,14 +12,14 @@ namespace EStore.Web.Controllers.Admin
     {
         public ActionResult Index()
         {
-            return View("Products/Index");
+            return View("~/Views/Admin/Products/Index.cshtml");
         }
 
         [HttpGet]
         public ActionResult Edit(long id = 0)
         {
             var item = Service.Product.Edit(id);
-            return View("Products/Edit", item);
+            return View("~/Views/Admin/Products/Edit.cshtml", item);
         }
 
         [HttpPost]
@@ -35,7 +35,7 @@ namespace EStore.Web.Controllers.Admin
             {
                 AddModelErrors(ex);
                 Service.Product.AppendData(item);
-                return View("Products/Edit", item);
+                return View("~/Views/Admin/Products/Edit.cshtml", item);
             }
         }
 
@@ -61,7 +61,7 @@ namespace EStore.Web.Controllers.Admin
                 @params.start);
 
             foreach (var item in items.data)
-                item.View = this.RenderRazorViewToString(item, "~/Views/Shared/Products/ProductSingleGridRow.cshtml");
+                item.View = this.RenderRazorViewToString(item, "~/Views/Admin/Products/ProductSingleGridRow.cshtml");
 
             return Json(items);
         }

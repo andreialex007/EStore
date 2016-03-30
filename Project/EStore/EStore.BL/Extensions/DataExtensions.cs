@@ -53,5 +53,22 @@ namespace EStore.BL.Extensions
 
             return categoryItems;
         }
+
+        public static List<AdminUserItem> AllAdminUsers(this EStoreEntities context)
+        {
+            var items = context.Set<tblUser>()
+                .Where(x => x.IsAdmin == true)
+                .Select(x => new AdminUserItem
+                {
+                    Id = x.Id,
+                    Email = x.Email,
+                    UserName = x.UserName,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName
+                })
+                .ToList();
+
+            return items;
+        }
     }
 }

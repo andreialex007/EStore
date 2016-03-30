@@ -40,8 +40,8 @@ namespace EStore.Web.Controllers.Admin
             var item = Service.File.AddFile(url, description, productId, supplierInvoiceId);
             var view = this.RenderRazorViewToString(item,
                 productId != null
-                    ? "~/Views/Shared/Products/ProductImagesGridRow.cshtml"
-                    : "~/Views/Shared/Files/FilesGridRow.cshtml");
+                    ? "~/Views/Admin/Products/ProductImagesGridRow.cshtml"
+                    : "~/Views/Admin/Files/FilesGridRow.cshtml");
             return Json(new { view });
         }
 
@@ -49,7 +49,7 @@ namespace EStore.Web.Controllers.Admin
         public ActionResult SearchImages(string term)
         {
             var items = YandexImagesSearcher.Search(term);
-            return PartialView("_Common/ImagesSearchResult", items);
+            return PartialView("~/Views/_Common/ImagesSearchResult.cshtml", items);
         }
 
         [HttpPost]
@@ -65,7 +65,7 @@ namespace EStore.Web.Controllers.Admin
             foreach (var url in paths)
             {
                 var item = Service.File.AddFile(url, string.Empty, productId);
-                var view = this.RenderRazorViewToString(item, "~/Views/Shared/Products/ProductImagesGridRow.cshtml");
+                var view = this.RenderRazorViewToString(item, "~/Views/Admin/Products/ProductImagesGridRow.cshtml");
                 views.Add(view);
             }
 
