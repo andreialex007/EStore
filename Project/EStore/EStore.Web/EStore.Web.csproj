@@ -231,6 +231,7 @@
     <Compile Include="Controllers\Admin\ProductCategoriesController.cs" />
     <Compile Include="Controllers\Admin\ProductsController.cs" />
     <Compile Include="Controllers\Admin\SupplierInvoicesController.cs" />
+    <Compile Include="Controllers\Public\PublicArticlesController.cs" />
     <Compile Include="Controllers\_Common\ControllerBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -239,6 +240,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Public.css" />
     <Content Include="Content\assets\admin\layout2\css\custom.css" />
     <Content Include="Content\assets\admin\layout2\css\layout.css" />
     <Content Include="Content\assets\admin\layout2\css\themes\blue.css" />
@@ -3108,6 +3110,7 @@
     <Content Include="Content\assets\global\plugins\zoom\jquery.zoom.min.js" />
     <Content Include="Content\assets\global\scripts\datatable.js" />
     <Content Include="Content\assets\global\scripts\metronic.js" />
+    <Content Include="Content\Images\i-device-logo.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\templates\admin2\angularjs\index.html" />
     <Content Include="Content\templates\admin2\angularjs\js\app.js" />
@@ -3308,7 +3311,7 @@
     <Content Include="Content\templates\admin2\ui_typography.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Admin.css" />
     <Content Include="Resources\phantomjs.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -3349,13 +3352,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\assets\admin\layout3\" />
     <Folder Include="Content\assets\global\plugins\amcharts\" />
     <Folder Include="Content\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Content\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Content\assets\global\plugins\NewFolder1\" />
-    <Folder Include="Controllers\Public\" />
     <Folder Include="Files\Products\" />
-    <Folder Include="Views\Public\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -3979,6 +3981,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\AdminAccount\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Public\Articles\View.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

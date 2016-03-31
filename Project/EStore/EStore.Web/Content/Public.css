@@ -1,0 +1,170 @@
+﻿
+.ttable {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.trow {
+    display: table-row;
+}
+
+.tcell {
+    display: table-cell;
+}
+
+.share-block {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.catalog-page .info-container
+.product-details-page .info-container {
+    margin-top: 6px;
+    display: inline-block;
+}
+
+.catalog-page .info-container .value
+.product-details-page .info-container .value {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.catalog-page .info-container .icon-container,
+.product-details-page .info-container .icon-container {
+    padding-right: 8px;
+    display: inline-block;
+}
+
+.catalog-page .info-container .icon-container i,
+.product-details-page .info-container .icon-container i {
+    font-size: 20px;
+    color: grey;
+    display: inline-block;
+}
+
+.catalog-page .info-container .info-text,
+.product-details-page .info-container .info-text {
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.catalog-page .add-to-cart-container {
+    margin-top: 17px;
+}
+
+.info-container.price .value {
+    font-size: 30px;
+}
+
+.info-container.price i {
+    font-size: 27px !important;
+}
+
+.catalog-page .price-block,
+.product-details-page .price-block {
+    white-space: nowrap;
+}
+
+#owl-demo .item {
+    margin: 3px;
+}
+
+#owl-demo .item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.owl-theme .owl-controls .owl-buttons div {
+    position: absolute;
+}
+
+.owl-theme .owl-controls .owl-buttons .owl-prev {
+    left: -25px;
+    top: 50%;
+    margin-top: -11px;
+    padding: 3px;
+    border-radius: 2px;
+    height: 23px;
+    padding-top: 4px;
+}
+
+.owl-theme .owl-controls .owl-buttons .owl-next {
+    right: -25px;
+    top: 50%;
+    margin-top: -11px;
+    padding: 3px;
+    border-radius: 2px;
+    height: 23px;
+    padding-top: 4px;
+}
+
+.product-details-page .main-img {
+    margin-bottom: 17px;
+}
+
+.extra-info-well {
+    background-color: #CCE6FC !important;
+}
+
+.product-details-page .add-to-cart-button {
+    margin-top: 4px;
+}
+
+.product-info-portlet .nav-tabs {
+    float: left !important;
+}
+
+.product-info-portlet .portlet-title > .nav-tabs > li > a {
+    color: slategray !important;
+}
+
+.product-info-portlet .portlet-title > .nav-tabs > li.active > a {
+    color: black !important;
+}
+
+.specifications-table {
+    margin-bottom: 0px !important;
+}
+
+body .page-content {
+    font-size: 14px;
+}
+
+.dashed-link{
+    border-bottom: 1px dashed grey;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

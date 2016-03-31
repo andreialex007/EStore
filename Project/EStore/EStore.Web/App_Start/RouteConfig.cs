@@ -7,6 +7,18 @@ namespace EStore.Web
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            RegisterAdminRoutes(routes);
+
+            RegisterPublicRoutes(routes);
+        }
+
+        private static void RegisterPublicRoutes(RouteCollection routes)
+        {
+            routes.MapRoute(null, "{controller}/{action}/{id}", new { controller = "PublicArticles", action = "ViewPage", id = UrlParameter.Optional });
+        }
+
+        private static void RegisterAdminRoutes(RouteCollection routes)
+        {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.LowercaseUrls = true;
 
@@ -39,7 +51,6 @@ namespace EStore.Web
                 new { id = @"\d+" });
 
             routes.MapRoute("Default", "admin/{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
-
         }
     }
 }

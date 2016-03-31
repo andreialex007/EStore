@@ -12,8 +12,8 @@ namespace EStore.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
                 .Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content-css")
-                .Include("~/Content/Site.css"));
+            bundles.Add(new StyleBundle("~/AdminContent-css")
+                .Include("~/Content/Admin.css"));
 
             bundles.Add(new StyleBundle("~/styles/metronic-mandatory")
                 .Include("~/Content/assets/global/plugins/font-awesome/css/font-awesome.min.css",
@@ -31,7 +31,7 @@ namespace EStore.Web
                     "~/Content/assets/global/plugins/bootstrap-toastr/toastr.min.css"
                 ));
 
-            bundles.Add(new StyleBundle("~/styles/metronic-theme")
+            bundles.Add(new StyleBundle("~/styles/metronic-admin-theme")
                 .Include(
                 "~/Content/assets/global/css/components-rounded.css",
                 "~/Content/assets/global/css/plugins.css",
@@ -39,6 +39,18 @@ namespace EStore.Web
                 "~/Content/assets/admin/layout2/css/themes/dark.css",
                 "~/Content/assets/admin/layout2/css/custom.css"
                 ));
+
+            bundles.Add(new StyleBundle("~/styles/metronic-public-theme")
+                .Include(
+                "~/Content/assets/global/css/components-rounded.css",
+                "~/Content/assets/global/css/plugins.css",
+                "~/Content/assets/admin/layout3/css/layout.css",
+                "~/Content/assets/admin/layout3/css/themes/yellow-orange.css",
+                "~/Content/assets/admin/layout3/css/custom.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/PublicContent-css")
+                .Include("~/Content/Public.css"));
 
             bundles.Add(new ScriptBundle("~/javascript/metronic-core-scripts")
                 .Include(
@@ -59,11 +71,21 @@ namespace EStore.Web
                     "~/Content/assets/admin/pages/scripts/index.js"
                 ));
 
-            bundles.Add(new ScriptBundle("~/javascript/metronic-page-level-scripts")
+            bundles.Add(new ScriptBundle("~/javascript/metronic-admin-page-level-scripts")
                 .Include(
                     "~/Content/assets/global/scripts/metronic.js",
                     "~/Content/assets/admin/layout2/scripts/layout.js",
                     "~/Content/assets/admin/layout2/scripts/demo.js",
+                    "~/Content/assets/admin/pages/scripts/index.js",
+                    "~/Content/assets/admin/pages/scripts/tasks.js",
+                    "~/Content/assets/global/plugins/bootstrap-toastr/toastr.min.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/javascript/metronic-public-page-level-scripts")
+                .Include(
+                    "~/Content/assets/global/scripts/metronic.js",
+                    "~/Content/assets/admin/layout3/scripts/layout.js",
+                    "~/Content/assets/admin/layout3/scripts/demo.js",
                     "~/Content/assets/admin/pages/scripts/index.js",
                     "~/Content/assets/admin/pages/scripts/tasks.js",
                     "~/Content/assets/global/plugins/bootstrap-toastr/toastr.min.js"
