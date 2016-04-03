@@ -251,5 +251,30 @@ namespace EStore.DL.Migrator {
                 return ResourceManager.GetString("_20150330_update", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /****** Object:  Table [dbo].[tblProductFeedback]    Script Date: 04/04/2016 02:24:01 ******/
+        ///SET ANSI_NULLS ON
+        ///GO
+        ///SET QUOTED_IDENTIFIER ON
+        ///GO
+        ///CREATE TABLE [dbo].[tblProductFeedback](
+        ///	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+        ///	[Pluses] [nvarchar](max) NULL,
+        ///	[Minuses] [nvarchar](max) NULL,
+        ///	[Comment] [nvarchar](max) NULL,
+        ///	[Stars] [int] NULL,
+        ///	[UserName] [nvarchar](250) NULL,
+        ///	[ProductId] [bigint] NULL,
+        /// CONSTRAINT [PK_tblProductFeedback] PRIMARY KEY CLUSTERED 
+        ///(
+        ///	[Id] ASC
+        ///)WITH (PAD_INDEX  = O [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string _20150404_update {
+            get {
+                return ResourceManager.GetString("_20150404_update", resourceCulture);
+            }
+        }
     }
 }

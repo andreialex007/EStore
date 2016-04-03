@@ -76,6 +76,18 @@ namespace EStore.BL.Services
                                 StateId = s.State,
                                 SellPrice = s.SellPrice
                             })
+                            .ToList(),
+                        FeedbackItems = x.tblProductFeedbacks
+                            .Select(f => new ProductFeedbackItem
+                            {
+                                Id = f.Id,
+                                ProductId = f.ProductId,
+                                UserName = f.UserName,
+                                Minuses = f.Minuses,
+                                Comment = f.Comment,
+                                Stars = f.Stars,
+                                Pluses = f.Pluses
+                            })
                             .ToList()
                     })
                     .Single();

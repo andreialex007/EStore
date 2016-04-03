@@ -147,6 +147,7 @@
     <Compile Include="Models\AdminLoginModel.cs" />
     <Compile Include="Models\ArticleItem.cs" />
     <Compile Include="Models\Product\ProductCategoryItem.cs" />
+    <Compile Include="Models\Product\ProductFeedbackItem.cs" />
     <Compile Include="Models\Product\ProductSingleStateEnum.cs" />
     <Compile Include="Models\Product\FileItem.cs" />
     <Compile Include="Models\Product\ProductItem.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\ProductCategoryService.cs" />
+    <Compile Include="Services\ProductFeedbackService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\ProductSingleService.cs" />
     <Compile Include="Services\SupplierInvoicePositionService.cs" />

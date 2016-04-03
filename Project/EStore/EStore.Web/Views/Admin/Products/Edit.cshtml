@@ -91,6 +91,9 @@
                                         <li>
                                             <a href="#product-images" data-toggle="tab"> Изображения </a>
                                         </li>
+                                        <li>
+                                            <a href="#product-feedbacks" data-toggle="tab"> Отзывы </a>
+                                        </li>
                                     }
                                 </ul>
                                 <div class="tab-content">
@@ -111,6 +114,9 @@
                                         </div>
                                         <div class="tab-pane fade" id="product-images">
                                             @Html.Partial("~/Views/Admin/Products/ProductImagesGrid.cshtml", Model.ProductImages)
+                                        </div>
+                                        <div class="tab-pane fade" id="product-feedbacks">
+                                            @Html.Partial("~/Views/Admin/Products/ProductFeedbacksGrid.cshtml", Model.FeedbackItems)
                                         </div>
                                     }
                                 </div>

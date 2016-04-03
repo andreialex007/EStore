@@ -18,6 +18,7 @@ namespace EStore.DL.Mapping
         public tblProduct()
         {
             this.tblFiles = new HashSet<tblFile>();
+            this.tblProductFeedbacks = new HashSet<tblProductFeedback>();
             this.tblProductSingles = new HashSet<tblProductSingle>();
             this.tblSupplierInvoicePositions = new HashSet<tblSupplierInvoicePosition>();
         }
@@ -32,6 +33,8 @@ namespace EStore.DL.Mapping
         public virtual ICollection<tblFile> tblFiles { get; set; }
         public virtual tblManufacter tblManufacter { get; set; }
         public virtual tblProductCategory tblProductCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProductFeedback> tblProductFeedbacks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProductSingle> tblProductSingles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

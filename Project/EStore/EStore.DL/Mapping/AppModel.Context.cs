@@ -31,6 +31,7 @@ namespace EStore.DL.Mapping
         public virtual DbSet<tblOrder> tblOrders { get; set; }
         public virtual DbSet<tblProduct> tblProducts { get; set; }
         public virtual DbSet<tblProductCategory> tblProductCategories { get; set; }
+        public virtual DbSet<tblProductFeedback> tblProductFeedbacks { get; set; }
         public virtual DbSet<tblProductSingle> tblProductSingles { get; set; }
         public virtual DbSet<tblSupplier> tblSuppliers { get; set; }
         public virtual DbSet<tblSupplierInvoice> tblSupplierInvoices { get; set; }
