@@ -1,0 +1,50 @@
+﻿@model List<EStore.BL.Models.Product.ProductFeedbackItem>
+
+
+@foreach (var item in Model)
+{
+    <div class="parsed-review-item" >
+        <div>
+            <label>
+                <input type="checkbox"/>
+                Выбрать
+            </label>
+
+            <span>
+                <strong>Пользователь:</strong>
+                @item.UserName
+            </span>
+            &nbsp;
+            &nbsp;
+            <span>
+                <strong>Рейтинг:</strong>
+                @item.Stars
+            </span>
+        </div>
+        <div>
+            <div>
+                <strong>Достоинства</strong>
+            </div>
+            <div>
+                @Html.Raw(item.Pluses)
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>Недостатки</strong>
+            </div>
+            <div>
+                @Html.Raw(item.Minuses)
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>Комментарий</strong>
+            </div>
+            <div>
+                @Html.Raw(item.Comment)
+            </div>
+        </div>
+    </div>
+    <br />
+}

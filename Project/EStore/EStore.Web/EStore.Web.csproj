@@ -3331,6 +3331,8 @@
     <Content Include="Scripts\common\utils.js" />
     <Content Include="Scripts\product-categories\edit-product-category-page.js" />
     <Content Include="Scripts\product-categories\product-categories-search-page.js" />
+    <Content Include="Scripts\products\product-feedback-parser-modal.js" />
+    <Content Include="Scripts\products\product-feedbacks-grid.js" />
     <Content Include="Scripts\products\product-images-grid.js" />
     <Content Include="Scripts\products\product-singles-grid.js" />
     <Content Include="Scripts\products\products-grid.js" />
@@ -3988,6 +3990,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Products\ProductFeedbacksGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Products\ProductFeedbacksGridRow.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Products\FeedbackParserModal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Products\FeedbacksSearchResult.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

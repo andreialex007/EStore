@@ -393,3 +393,32 @@ table {
         overflow-y: auto;
         line-height: 1.42857143 !important;
     }
+
+.product-feedbacks-grid .table-toolbar {
+    position: absolute !important;
+}
+
+.open-feedback-search-page {
+    float: right !important;
+}
+
+
+.feedback-parser-modal .modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+.feedback-parser-modal .parsing-result-items {
+    overflow-y: auto;
+    max-height: 500px;
+    margin-top: 13px;
+}
+
+.parsed-review-item label {
+    float: right;
+}
+
+
+.feedback-parser-modal .modal-dialog {
+    width: 900px !important;
+}

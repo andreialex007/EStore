@@ -11,5 +11,10 @@ namespace EStore.BL.Models.Product
         public int? Stars { get; set; }
         public string UserName { get; set; }
         public long? ProductId { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Pluses: {Pluses}, Minuses: {Minuses}, Comment: {Comment}, Stars: {Stars}, UserName: {UserName}, ProductId: {ProductId}";
+        }
     }
 }

@@ -15,11 +15,13 @@ namespace EStore.Web.Controllers._Common
     public class ControllerBase : Controller
     {
         protected AppService Service;
+        protected AdminContext AdminContext;
 
         public ControllerBase()
         {
             ActionInvoker = new ExceptionControllerActionInvoker();
             Service = new AppService(new EStoreEntities());
+            AdminContext = AdminContext.Current;
         }
 
         protected override JsonResult Json(object data, string contentType,

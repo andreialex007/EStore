@@ -173,6 +173,7 @@
     <Compile Include="Services\SupplierInvoicePositionService.cs" />
     <Compile Include="Services\SupplierInvoiceService.cs" />
     <Compile Include="Services\AdminUserService.cs" />
+    <Compile Include="Services\AdminContext.cs" />
     <Compile Include="Services\_Common\EntityServiceBase.cs" />
     <Compile Include="Services\_Common\InternalServiceBase.cs" />
     <Compile Include="Services\_Common\ServiceBase.cs" />
@@ -182,6 +183,8 @@
     <Compile Include="Utils\EnumerableHelper.cs" />
     <Compile Include="Utils\EnumUtil.cs" />
     <Compile Include="Utils\OnlyDateConverter.cs" />
+    <Compile Include="Utils\PhantomJsUtils.cs" />
+    <Compile Include="Utils\ProductFeedbackParsers\YandexMarketParser.cs" />
     <Compile Include="Utils\YandexImages\Dto\Dup.cs" />
     <Compile Include="Utils\YandexImages\Dto\Preview.cs" />
     <Compile Include="Utils\YandexImages\Dto\SerpItem.cs" />

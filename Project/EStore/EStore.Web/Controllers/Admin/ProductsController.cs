@@ -1,7 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using EStore.BL.Exceptions;
 using EStore.BL.Models.Product;
 using EStore.BL.Models._Common;
+using EStore.BL.Utils.ProductFeedbackParsers;
 using EStore.DL.Mapping;
 using EStore.Web.Code;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
@@ -78,6 +80,13 @@ namespace EStore.Web.Controllers.Admin
         {
             Service.Delete<tblProductSingle>(id);
             return SuccessJsonResult();
+        }
+
+        [HttpPost]
+        public ActionResult ParseFeedbacks(string url)
+        {
+            AdminContext.Feedbacks = YandexMarketParser.ParseFeedbacks(url);
+            return PartialView("~/Views/Admin/Products/FeedbacksSearchResult.cshtml", AdminContext.Feedbacks);
         }
     }
 }

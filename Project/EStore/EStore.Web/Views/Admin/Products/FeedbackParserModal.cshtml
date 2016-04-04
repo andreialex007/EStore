@@ -1,0 +1,76 @@
+﻿<div class="modal fade in feedback-parser-modal" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Парсинг отзывов</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#yandex-reviews"
+                                       data-search-page="https://market.yandex.ru/search.xml?text="
+                                       data-toggle="tab" aria-expanded="true">Яндекс</a>
+                                </li>
+                                <li>
+                                    <a href="#otzovik-reviews"
+                                       data-search-page="http://otzovik.com/?search_text="
+                                       data-toggle="tab" aria-expanded="false">Отзовик</a>
+                                </li>
+                                <li class="open-feedback-search-page">
+                                    <span class="btn btn-success">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="yandex-reviews">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input type="text" placeholder="Вставьте url страницы с отзывами на яндекс маркете" class="form-control">
+                                                <span class="input-group-btn">
+                                                    <span class="btn btn-primary start-parsing-btn">
+                                                        <i class="fa fa-download"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 parsing-result-items">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="otzovik-reviews">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input type="text" placeholder="Вставьте url страницы с отзывами на otzovik.com" class="form-control">
+                                                <span class="input-group-btn">
+                                                    <span class="btn btn-primary start-parsing-btn">
+                                                        <i class="fa fa-download"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 parsing-result-items">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <span class="btn green select-feedbacks-button">Выбрать</span>
+                    <span class="btn red close-button">Отмена</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

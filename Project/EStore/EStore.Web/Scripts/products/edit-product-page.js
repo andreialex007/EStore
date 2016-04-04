@@ -5,6 +5,7 @@
         var self = {};
         self.productImagesGrid = null;
         self.productSinglesGrid = null;
+        self.productFeedbacksGrid = null;
 
         self.init = function () {
 
@@ -25,6 +26,7 @@
 
             self.productImagesGrid = new ProductImagesGrid();
             self.productSinglesGrid = new ProductSinglesGrid();
+            self.productFeedbacksGrid = new ProductFeedbacksGrid();
 
             $(".find-images-button").click(function () {
                 $(".images-search-modal .search-term").val($(".product-name-box input").val());

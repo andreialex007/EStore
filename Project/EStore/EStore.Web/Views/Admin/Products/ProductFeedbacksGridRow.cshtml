@@ -1,0 +1,17 @@
+﻿@using EStore.BL.Utils
+@model EStore.BL.Models.Product.ProductFeedbackItem
+
+<tr>
+    <th class="id-column">@Model.Id</th>
+    <th>@Model.Pluses</th>
+    <th>@Model.Minuses</th>
+    <th>@Model.Comment</th>
+    <th>@Model.Stars</th>
+    <th>@Model.UserName</th>
+    <th class="actions">
+        <a tabindex="-1" title="delete" class="delete btn default btn-xs red" href="javascript:;">
+            <i class="fa fa-times"></i>
+            Удалить
+        </a>
+    </th>
+</tr>
