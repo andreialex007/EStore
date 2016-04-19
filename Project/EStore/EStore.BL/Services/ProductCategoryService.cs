@@ -24,6 +24,11 @@ namespace EStore.BL.Services
             return Db.AllCategoriesFlatten().Where(x => x.ParentCategoryId == null).ToList();
         }
 
+        public List<ProductCategoryItem> AllCategoriesHierarchy()
+        {
+            return Db.AllCategoriesHierarchy();
+        }
+
         public void Save(ProductCategoryItem item)
         {
             var errors = item.GetValidationErrors();

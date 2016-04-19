@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
 namespace EStore.Web.Controllers.Public
@@ -10,6 +6,10 @@ namespace EStore.Web.Controllers.Public
     [AllowAnonymous]
     public class CatalogController : ControllerBase
     {
-
+        public ActionResult Menu()
+        {
+            var items = Service.ProductCategory.AllCategoriesHierarchy();
+            return PartialView("~/Views/Public/Catalog/Menu.cshtml", items);
+        }
     }
 }
