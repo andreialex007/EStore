@@ -422,3 +422,8 @@ table {
 .feedback-parser-modal .modal-dialog {
     width: 900px !important;
 }
+
+.overflow-wrapper {
+    max-height: 100px;
+    overflow: hidden;
+}

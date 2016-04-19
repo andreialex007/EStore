@@ -18,6 +18,7 @@ namespace EStore.BL.Services
             ProductSingle = new ProductSingleService(entities);
             ProductCategory = new ProductCategoryService(entities);
             AdminUser = new AdminUserService(entities);
+            ProductFeedback = new ProductFeedbackService(entities);
         }
 
         public ArticleService Article { get; set; }
@@ -28,6 +29,8 @@ namespace EStore.BL.Services
         public FileService File { get; set; }
         public ProductCategoryService ProductCategory { get; set; }
         public AdminUserService AdminUser { get; set; }
+        public ProductFeedbackService ProductFeedback { get; set; }
+
 
         public void Dispose()
         {

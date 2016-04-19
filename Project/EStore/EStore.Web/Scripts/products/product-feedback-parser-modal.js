@@ -37,9 +37,27 @@
             });
         }
 
-        self.selectFeedbacks = function () {
-            console.log("selectFeedbacks");
+        self.selectFeedbacks = function (event) {
+
+            var values = $.map($(event.target).closest(".modal-content").find(":checkbox:checked"), function (x) { return $(x).val(); });
+
+            Metronic.blockUI({
+                boxed: true,
+                message: "Загрузка..."
+            });
+            $.ajax({
+                type: "POST",
+                url: "/admin/Products/SelectFeedbacks",
+                contentType: "application/json",
+                data: JSON.stringify({ ids: values, productId: $(".entity-id").val() })
+            }).done(function (result) {
+                Metronic.unblockUI();
+                self.feedbacksAdded(result);
+            });
+
         }
+
+        self.feedbacksAdded = function (resultk) { }
 
         self.cancel = function () {
             self.hide();

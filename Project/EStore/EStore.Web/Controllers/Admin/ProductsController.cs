@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using EStore.BL.Exceptions;
 using EStore.BL.Models.Product;
@@ -87,6 +88,30 @@ namespace EStore.Web.Controllers.Admin
         {
             AdminContext.Feedbacks = YandexMarketParser.ParseFeedbacks(url);
             return PartialView("~/Views/Admin/Products/FeedbacksSearchResult.cshtml", AdminContext.Feedbacks);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteFeedback(long id)
+        {
+            Service.Delete<tblProductFeedback>(id);
+            return SuccessJsonResult();
+        }
+
+        [HttpPost]
+        public JsonResult SelectFeedbacks(long[] ids, long productId)
+        {
+            var items = AdminContext.Feedbacks.Where((x, i) => ids.Contains(i)).ToList();
+            var feedbacks = Service.ProductFeedback.AddFeedbacks(items, productId);
+            AdminContext.Feedbacks = new List<ProductFeedbackItem>();
+
+            var views = new List<string>();
+            foreach (var feedbackItem in feedbacks)
+            {
+                var view = this.RenderRazorViewToString(feedbackItem, "~/Views/Admin/Products/ProductFeedbacksGridRow.cshtml");
+                views.Add(view);
+            }
+
+            return Json(new { views });
         }
     }
 }

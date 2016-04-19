@@ -1,12 +1,13 @@
 ﻿@model List<EStore.BL.Models.Product.ProductFeedbackItem>
 
 
-@foreach (var item in Model)
+@for (int index = 0; index < Model.Count; index++)
 {
-    <div class="parsed-review-item" >
+    var item = Model[index];
+    <div class="parsed-review-item">
         <div>
             <label>
-                <input type="checkbox"/>
+                <input value="@index" type="checkbox"/>
                 Выбрать
             </label>
 
@@ -46,5 +47,5 @@
             </div>
         </div>
     </div>
-    <br />
+    <br/>
 }

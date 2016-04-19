@@ -13,4 +13,5 @@ namespace EStore.DL.Mapping
     public partial class tblSupplierInvoicePosition : IdEntity { }
     public partial class tblProductCategory : IdEntity { }
     public partial class tblUser : IdEntity { }
+    public partial class tblProductFeedback : IdEntity { }
 }

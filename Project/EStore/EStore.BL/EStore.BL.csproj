@@ -184,6 +184,7 @@
     <Compile Include="Utils\EnumUtil.cs" />
     <Compile Include="Utils\OnlyDateConverter.cs" />
     <Compile Include="Utils\PhantomJsUtils.cs" />
+    <Compile Include="Utils\ProductFeedbackParsers\OtzovikParser.cs" />
     <Compile Include="Utils\ProductFeedbackParsers\YandexMarketParser.cs" />
     <Compile Include="Utils\YandexImages\Dto\Dup.cs" />
     <Compile Include="Utils\YandexImages\Dto\Preview.cs" />
