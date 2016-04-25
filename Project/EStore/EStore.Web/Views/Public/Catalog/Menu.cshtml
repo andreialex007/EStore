@@ -1,21 +1,24 @@
 ﻿@model List<EStore.BL.Models.Product.ProductCategoryItem>
 
-@foreach (var item in Model)
-{
-    <div class="col-md-3">
-        <ul class="mega-menu-submenu">
-            <li>
-                <h3>@item.Name</h3>
-            </li>
-            @foreach (var subItem in item.ChildCategories)
-                {
+<ul class="catalog-menu">
+    @foreach (var item in Model)
+    {
+        <li class="mega-menu-submenu submenu-element">
+            <ul>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-angle-right"></i>
-                        @subItem.Name
-                    </a>
+                    <h3>@item.Name</h3>
                 </li>
-            }
-        </ul>
-    </div>
-}
+                @foreach (var subItem in item.ChildCategories)
+                {
+                    <li>
+                        <a href="/catalog/@(subItem.Id)">
+                            <i class="fa fa-angle-right"></i>
+                            @subItem.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+</ul>
+

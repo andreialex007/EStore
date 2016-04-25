@@ -1,7 +1,9 @@
-﻿@model EStore.BL.Models.ArticleItem
+﻿@model EStore.BL.Models.PublicArticleItem
 
 @{
-    ViewBag.Title = "Статьи";
+    ViewBag.Title = Model.Title;
+    ViewBag.PageTitle = Model.PageTitle;
+    ViewBag.PageSmallTitle = Model.PageSmallTitle;
     Layout = "~/Views/_Layout/Main.cshtml";
 }
 
@@ -25,3 +27,6 @@
     <script src="~/Content/assets/global/plugins/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js"></script>
 
 }
+
+
+@Html.Raw(Model.Text)

@@ -60,6 +60,7 @@ namespace EStore.Web.Controllers.Admin
                 .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
                 .WithDegreeOfParallelism(16)
                 .Select(CommonUtils.DownloadImageAndResize)
+                .Where(x=>x.IsNotEmptyOrWhiteSpace())
                 .ToList();
 
             foreach (var url in paths)

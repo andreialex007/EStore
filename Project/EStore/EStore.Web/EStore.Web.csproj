@@ -4003,6 +4003,12 @@
   <ItemGroup>
     <Content Include="Views\Public\Catalog\Menu.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Public\Catalog\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Public\Catalog\Index.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

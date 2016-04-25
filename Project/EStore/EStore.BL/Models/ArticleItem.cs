@@ -17,4 +17,16 @@ namespace EStore.BL.Models
         public string Text { get; set; }
         public DateTime? Date { get; set; }
     }
+
+
+    public class PublicArticleItem : ArticleItem
+    {
+        public virtual string PageTitle
+        {
+            get { return Title; }
+            set { }
+        }
+
+        public string PageSmallTitle { get; set; }
+    }
 }

@@ -24,7 +24,15 @@
     </div>
 }
 
-@helper Test()
+@helper IsActiveMainMenu(string url, ViewContext viewContext)
 {
-    <span>fucking test</span>
+    if (url == "/" && viewContext.HttpContext.Request.Path == "/")
+    {
+        <text>active</text>
+    }
+
+    if (viewContext.HttpContext.Request.Path.TrimStart("/".ToCharArray()).StartsWith(url))
+    {
+        <text>active</text>
+    }
 }

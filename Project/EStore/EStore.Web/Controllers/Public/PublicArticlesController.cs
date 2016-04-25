@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using EStore.BL.Models;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
@@ -11,10 +7,37 @@ namespace EStore.Web.Controllers.Public
     [AllowAnonymous]
     public class PublicArticlesController : ControllerBase
     {
-        public ActionResult ViewPage()
+        [HttpGet]
+        public ActionResult Index()
         {
-            var articleItem = new ArticleItem();
-            return View("~/Views/Public/Articles/View.cshtml", articleItem);
+            return View("~/Views/Public/Articles/View.cshtml", new PublicArticleItem
+            {
+                Title = "Главная"
+            });
+        }
+
+        [HttpGet]
+        public ActionResult Delivery()
+        {
+            var item = Service.Article.Get(2);
+            item.PageSmallTitle = "Информация о доставке";
+            return View("~/Views/Public/Articles/View.cshtml", item);
+        }
+
+        [HttpGet]
+        public ActionResult Guarantee()
+        {
+            var item = Service.Article.Get(3);
+            item.PageSmallTitle = "Информация о гарантии";
+            return View("~/Views/Public/Articles/View.cshtml", item);
+        }
+
+        [HttpGet]
+        public ActionResult Contacts()
+        {
+            var item = Service.Article.Get(4);
+            item.PageSmallTitle = "Информация о гарантии";
+            return View("~/Views/Public/Articles/View.cshtml", item);
         }
     }
 }

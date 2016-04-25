@@ -1,0 +1,80 @@
+﻿@model List<EStore.BL.Models.Product.ProductItem>
+
+@{
+    ViewBag.Title = "Каталог товаров";
+    ViewBag.PageTitle = "Каталог";
+    ViewBag.PageSmallTitle = "Список категорий товаров";
+}
+
+
+<!-- BEGIN PAGE BREADCRUMB -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="/">Главная</a><i class="fa fa-circle"></i>
+    </li>
+    <li class="active">
+        Каталог
+    </li>
+</ul>
+<!-- END PAGE BREADCRUMB -->
+
+
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-apple"></i>
+                        @item.Name
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="@item.MainImage"
+                                 class="img-responsive img-thumbnail" alt="Cinque Terre"
+                                 style="width: 204px; height: auto;">
+                        </div>
+                        <div class="col-md-7">
+                            <div>
+                                @item.DescriptionText
+                            </div>
+                            <div class="extra-info">
+                                <div class="info-container">
+                                    <span class="icon-container">
+                                        <i class="fa fa-truck font-blue-dark"></i>
+                                    </span>
+                                    <span class="info-text dashed-link">Доставка бесплатно</span>
+                                </div>
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <div class="info-container amount">
+                                    <span class="icon-container">
+                                        <i class="fa fa-check-circle font-green-meadow"></i>
+                                    </span>
+                                    <span class="info-text dashed-link">В наличии</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-center price-block">
+                            <div class="info-container price">
+                                <span class="icon-container">
+                                    <i class="fa fa-rub"></i>
+                                </span>
+                                <span class="value">12 000</span>
+                            </div>
+                            <div class="add-to-cart-container">
+                                <span class="btn bg-yellow-gold">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                    В корзину
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

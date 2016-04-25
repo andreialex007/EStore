@@ -17,7 +17,7 @@ namespace EStore.Web.Controllers.Admin
         [HttpGet]
         public ActionResult Edit(long id = 0)
         {
-            var articleItem = Service.Article.Edit(id);
+            var articleItem = Service.Article.Get(id);
             return View("~/Views/Admin/Articles/Edit.cshtml", articleItem);
         }
 

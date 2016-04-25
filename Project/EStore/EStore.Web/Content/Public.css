@@ -18,14 +18,12 @@
     margin-top: 10px;
 }
 
-.catalog-page .info-container
-.product-details-page .info-container {
+.catalog-page .info-container .product-details-page .info-container {
     margin-top: 6px;
     display: inline-block;
 }
 
-.catalog-page .info-container .value
-.product-details-page .info-container .value {
+.catalog-page .info-container .value .product-details-page .info-container .value {
     font-weight: bold;
     font-size: 22px;
 }
@@ -36,12 +34,12 @@
     display: inline-block;
 }
 
-.catalog-page .info-container .icon-container i,
-.product-details-page .info-container .icon-container i {
-    font-size: 20px;
-    color: grey;
-    display: inline-block;
-}
+    .catalog-page .info-container .icon-container i,
+    .product-details-page .info-container .icon-container i {
+        font-size: 20px;
+        color: grey;
+        display: inline-block;
+    }
 
 .catalog-page .info-container .info-text,
 .product-details-page .info-container .info-text {
@@ -70,11 +68,11 @@
     margin: 3px;
 }
 
-#owl-demo .item img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
+    #owl-demo .item img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 
 .owl-theme .owl-controls .owl-buttons div {
     position: absolute;
@@ -132,39 +130,23 @@ body .page-content {
     font-size: 14px;
 }
 
-.dashed-link{
+.dashed-link {
     border-bottom: 1px dashed grey;
     cursor: pointer;
     text-decoration: none !important;
 }
 
+.submenu-element {
+    list-style-type: none !important;
+    width: 24% !important;
+    vertical-align: top !important;
+    display: inline-block !important;
+}
 
+.catalog-menu {
+    padding-left: 0px !important;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.page-content ul {
+    list-style-type: none !important;
+}

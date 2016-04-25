@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using EStore.BL.Extensions;
 using EStore.BL.Models.Product;
 using EStore.BL.Models._Common;
@@ -41,7 +42,7 @@ namespace EStore.BL.Services
             item.Id = product.Id;
         }
 
-        public ProductItem Edit(long id)
+        public ProductItem Get(long id)
         {
             var productItem = new ProductItem();
             if (id != 0)
@@ -102,6 +103,22 @@ namespace EStore.BL.Services
             AppendData(productItem);
 
             return productItem;
+        }
+
+        public List<ProductItem> ByCategoryId(long categoryId)
+        {
+            var items = Db.Set<tblProduct>().Where(x => x.CategoryId == categoryId)
+                .Select(x => new ProductItem
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    MainImage = x.tblFiles.OrderBy(f => f.Position).FirstOrDefault().Path,
+                    Descripton = x.Descripton
+                })
+                .OrderBy(x => x.Name)
+                .ToList();
+
+            return items;
         }
 
         public SearchModel<ProductItem> Search(

@@ -154,10 +154,10 @@
                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                 <div class="hor-menu ">
                     <ul class="nav navbar-nav">
-                        <li class="active">
+                        <li class="@(RazorHelpers.IsActiveMainMenu("/",ViewContext))">
                             <a href="/">Главная</a>
                         </li>
-                        <li class="menu-dropdown mega-menu-dropdown mega-menu-full">
+                        <li class="menu-dropdown mega-menu-dropdown mega-menu-full @(RazorHelpers.IsActiveMainMenu("catalog",ViewContext))">
                             <a data-hover="megamenu-dropdown" href="/catalog" class="dropdown-toggle">
                                 Каталог <i class="fa fa-angle-down"></i>
                             </a>
@@ -171,17 +171,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="menu-dropdown ">
+                        <li class="menu-dropdown @(RazorHelpers.IsActiveMainMenu("delivery",ViewContext))">
                             <a href="/delivery" class="tooltips" data-container="body" data-placement="bottom" data-html="true" data-original-title="Доставка">
                                 Доставка
                             </a>
                         </li>
-                        <li class="menu-dropdown ">
+                        <li class="menu-dropdown @(RazorHelpers.IsActiveMainMenu("guarantee",ViewContext))">
                             <a href="/guarantee" class="tooltips" data-container="body" data-placement="bottom" data-html="true" data-original-title="Гарантия">
                                 Гарантия
                             </a>
                         </li>
-                        <li class="menu-dropdown ">
+                        <li class="menu-dropdown @(RazorHelpers.IsActiveMainMenu("contacts",ViewContext))">
                             <a href="/contacts" class="tooltips" data-container="body" data-placement="bottom" data-html="true" data-original-title="Контакты">
                                 Контакты
                             </a>
@@ -203,8 +203,8 @@
                 <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
                     <h1>
-                        <span>I-Device</span>
-                        <small>Интернет магазин техники Apple</small>
+                        <span>@(ViewBag.PageTitle)</span>
+                        <small>@(ViewBag.PageSmallTitle)</small>
                     </h1>
                 </div>
                 <!-- END PAGE TITLE -->
@@ -214,7 +214,7 @@
         <!-- BEGIN PAGE CONTENT -->
         <div class="page-content" style="min-height: 614px;">
             <div class="container">
-
+                @RenderBody()
             </div>
         </div>
         <!-- END PAGE CONTENT -->
@@ -228,7 +228,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
                 <h2>I-Device</h2>
                 <p>
-                    Интернет магазин техники apple - лучшие устройства по лучшим ценам
+                    Интернет магазин техники - лучшие устройства по лучшим ценам
                 </p>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 footer-block">

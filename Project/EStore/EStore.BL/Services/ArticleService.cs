@@ -32,15 +32,15 @@ namespace EStore.BL.Services
             item.Id = article.Id;
         }
 
-        public ArticleItem Edit(long id)
+        public PublicArticleItem Get(long id)
         {
-            var articleItem = new ArticleItem();
+            var articleItem = new PublicArticleItem();
 
             if (id != 0)
             {
                 articleItem = Db
                     .Set<tblArticle>()
-                    .Select(x => new ArticleItem
+                    .Select(x => new PublicArticleItem
                     {
                         Id = x.Id,
                         Date = x.Date,

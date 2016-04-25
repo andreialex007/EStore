@@ -14,7 +14,12 @@ namespace EStore.Web
 
         private static void RegisterPublicRoutes(RouteCollection routes)
         {
-            routes.MapRoute(null, "{controller}/{action}/{id}", new { controller = "PublicArticles", action = "ViewPage", id = UrlParameter.Optional });
+            routes.MapRoute(null, "delivery", new { controller = "PublicArticles", action = "Delivery" });
+            routes.MapRoute(null, "guarantee", new { controller = "PublicArticles", action = "Guarantee" });
+            routes.MapRoute(null, "contacts", new { controller = "PublicArticles", action = "Contacts" });
+            routes.MapRoute(null, "catalog", new { controller = "Catalog", action = "Index" });
+            routes.MapRoute(null, "catalog/{id}", new { controller = "Catalog", action = "Catalog" }, new { id = @"\d+" });
+            routes.MapRoute(null, "{controller}/{action}/{id}", new { controller = "PublicArticles", action = "Index", id = UrlParameter.Optional });
         }
 
         private static void RegisterAdminRoutes(RouteCollection routes)

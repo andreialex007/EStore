@@ -120,18 +120,25 @@ namespace EStore.BL.Utils
 
         public static string DownloadImageAndResize(string image)
         {
-            using (var imageFactory = new ImageFactory(true))
+            try
             {
-                using (var stream = new MemoryStream())
+                using (var imageFactory = new ImageFactory(true))
                 {
-                    imageFactory.Load(DownloadData(image))
-                        .Resize(new ResizeLayer(new Size(800, 800),ResizeMode.Max))
-                        .Format(new PngFormat())
-                        .Save(stream);
-                    var fileName = Path.GetFileNameWithoutExtension(image) + ".png";
-                    var url = UploadFileToDirectory(stream, "Products", fileName);
-                    return url;
+                    using (var stream = new MemoryStream())
+                    {
+                        imageFactory.Load(DownloadData(image))
+                            .Resize(new ResizeLayer(new Size(800, 800), ResizeMode.Max))
+                            .Format(new PngFormat())
+                            .Save(stream);
+                        var fileName = Path.GetFileNameWithoutExtension(image) + ".png";
+                        var url = UploadFileToDirectory(stream, "Products", fileName);
+                        return url;
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                return string.Empty;
             }
         }
     }

@@ -21,7 +21,7 @@ namespace EStore.Web.Controllers.Admin
         [HttpGet]
         public ActionResult Edit(long id = 0)
         {
-            var item = Service.Product.Edit(id);
+            var item = Service.Product.Get(id);
             return View("~/Views/Admin/Products/Edit.cshtml", item);
         }
 
