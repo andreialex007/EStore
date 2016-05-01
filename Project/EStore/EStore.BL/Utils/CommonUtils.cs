@@ -141,5 +141,10 @@ namespace EStore.BL.Utils
                 return string.Empty;
             }
         }
+
+        public static string Truncate(this string value, int maxChars)
+        {
+            return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
+        }
     }
 }

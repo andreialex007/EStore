@@ -150,3 +150,29 @@ body .page-content {
 .page-content ul {
     list-style-type: none !important;
 }
+
+.catalog-product-item .delivery {
+    margin-top: 6px !important;
+}
+
+.catalog-product-item .avaliability {
+    margin-top: 6px !important;
+}
+
+.catalog-product-item .img-thumbnail {
+    width: 204px;
+    height: auto;
+}
+
+
+.catalog-product-item .img-container {
+    text-align: center !important;
+}
+
+.catalog-product-item .more-info-div {
+    margin-top: 5px !important;
+}
+
+.catalog-product-item .caption {
+    font-weight: bold !important;
+}

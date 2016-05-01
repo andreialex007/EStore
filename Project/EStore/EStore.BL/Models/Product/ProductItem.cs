@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using EStore.BL.Models._Common;
 using EStore.BL.Utils;
+using EStore.DL.Mapping;
 
 namespace EStore.BL.Models.Product
 {
@@ -22,6 +23,8 @@ namespace EStore.BL.Models.Product
         public long? CategoryId { get; set; }
 
         public string MainImage { get; set; }
+        public bool IsAvaliable { get; set; }
+        public decimal Price { get; set; }
 
         public List<ProductCategoryItem> AvaliableCategories { get; set; } = new List<ProductCategoryItem>();
         public List<FileItem> ProductImages { get; set; } = new List<FileItem>();

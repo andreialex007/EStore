@@ -5,6 +5,7 @@ using EStore.BL.Models.Product;
 using EStore.BL.Models._Common;
 using EStore.BL.Services._Common;
 using EStore.DL.Mapping;
+using Humanizer;
 
 // ReSharper disable RedundantAssignment
 
@@ -107,13 +108,17 @@ namespace EStore.BL.Services
 
         public List<ProductItem> ByCategoryId(long categoryId)
         {
+            var forSaleState = ProductSingleStateEnum.ForSale.CastTo<int>();
+
             var items = Db.Set<tblProduct>().Where(x => x.CategoryId == categoryId)
                 .Select(x => new ProductItem
                 {
                     Id = x.Id,
                     Name = x.Name,
                     MainImage = x.tblFiles.OrderBy(f => f.Position).FirstOrDefault().Path,
-                    Descripton = x.Descripton
+                    Descripton = x.Descripton,
+                    Price = x.tblProductSingles.FirstOrDefault(p => p.State == forSaleState).SellPrice ?? 0,
+                    IsAvaliable = x.tblProductSingles.Any(p => p.State == forSaleState)
                 })
                 .OrderBy(x => x.Name)
                 .ToList();

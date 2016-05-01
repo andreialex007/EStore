@@ -66,6 +66,10 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Humanizer, Version=2.0.1.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Humanizer.Core.2.0.1\lib\portable-win+net45+wp8+wpa81\Humanizer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ImageProcessor, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageProcessor.2.3.3.0\lib\net45\ImageProcessor.dll</HintPath>
       <Private>True</Private>
@@ -233,6 +237,7 @@
     <Compile Include="Controllers\Admin\SupplierInvoicesController.cs" />
     <Compile Include="Controllers\Public\CatalogController.cs" />
     <Compile Include="Controllers\Public\PublicArticlesController.cs" />
+    <Compile Include="Controllers\Public\ViewProductController.cs" />
     <Compile Include="Controllers\_Common\ControllerBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -241,6 +246,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\no-image.jpg" />
     <Content Include="Content\Public.css" />
     <Content Include="Content\assets\admin\layout2\css\custom.css" />
     <Content Include="Content\assets\admin\layout2\css\layout.css" />
@@ -4008,6 +4014,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Public\Catalog\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Public\ViewProduct\View.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

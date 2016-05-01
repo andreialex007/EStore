@@ -19,6 +19,7 @@ namespace EStore.Web
             routes.MapRoute(null, "contacts", new { controller = "PublicArticles", action = "Contacts" });
             routes.MapRoute(null, "catalog", new { controller = "Catalog", action = "Index" });
             routes.MapRoute(null, "catalog/{id}", new { controller = "Catalog", action = "Catalog" }, new { id = @"\d+" });
+            routes.MapRoute("ViewProduct", "catalog/product{id}", new { controller = "ViewProduct", action = "View" }, new { id = @"\d+" });
             routes.MapRoute(null, "{controller}/{action}/{id}", new { controller = "PublicArticles", action = "Index", id = UrlParameter.Optional });
         }
 

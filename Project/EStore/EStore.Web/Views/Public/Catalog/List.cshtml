@@ -1,4 +1,5 @@
-﻿@model List<EStore.BL.Models.Product.ProductItem>
+﻿@using EStore.BL.Utils
+@model List<EStore.BL.Models.Product.ProductItem>
 
 @{
     ViewBag.Title = "Каталог товаров";
@@ -23,52 +24,68 @@
     <div class="col-md-12">
         @foreach (var item in Model)
         {
-            <div class="portlet">
+            <div class="portlet catalog-product-item">
                 <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-apple"></i>
+                    <a href="@Url.RouteUrl("ViewProduct", new { id = item.Id })" 
+                       class="caption">
+                        <i class="fa fa-square"></i>
                         @item.Name
-                    </div>
+                    </a>
                 </div>
                 <div class="portlet-body">
                     <div class="row">
-                        <div class="col-md-3">
-                            <img src="@item.MainImage"
-                                 class="img-responsive img-thumbnail" alt="Cinque Terre"
-                                 style="width: 204px; height: auto;">
+                        <div class="col-md-3 img-container">
+                            <a href="@Url.RouteUrl("ViewProduct", new { id = item.Id })">
+                                <img src="@item.MainImage"
+                                     onError="this.onerror = null; this.src = '/Content/Images/no-image.jpg';"
+                                     class="img-responsive img-thumbnail"
+                                     alt="Cinque Terre">
+                            </a>
                         </div>
                         <div class="col-md-7">
                             <div>
-                                @item.DescriptionText
+                                @(item.DescriptionText.Truncate(500))
                             </div>
-                            <div class="extra-info">
-                                <div class="info-container">
-                                    <span class="icon-container">
-                                        <i class="fa fa-truck font-blue-dark"></i>
-                                    </span>
-                                    <span class="info-text dashed-link">Доставка бесплатно</span>
-                                </div>
-                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <div class="info-container amount">
-                                    <span class="icon-container">
-                                        <i class="fa fa-check-circle font-green-meadow"></i>
-                                    </span>
-                                    <span class="info-text dashed-link">В наличии</span>
-                                </div>
-                            </div>
+                            <div class="more-info-div"><a href="@Url.RouteUrl("ViewProduct", new {id = item.Id})" 
+                                                          class="btn btn-success btn-xs">Подробнее</a></div>
                         </div>
                         <div class="col-md-2 text-center price-block">
-                            <div class="info-container price">
-                                <span class="icon-container">
-                                    <i class="fa fa-rub"></i>
-                                </span>
-                                <span class="value">12 000</span>
+                            @if (item.IsAvaliable)
+                            {
+                                <div class="info-container price">
+                                    <span class="icon-container">
+                                        <i class="fa fa-rub"></i>
+                                    </span>
+                                    <span class="value">&nbsp;@(item.Price.ToString("N0"))</span>
+                                </div>
+                                <div class="add-to-cart-container">
+                                    <span class="btn btn-warning">
+                                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                                        В корзину
+                                    </span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <strong>Нет в наличии</strong>
+                                </div>
+                            }
+                            <div class="delivery">
+                                <i class="fa fa-truck font-blue-dark"></i>
+                                <span class="info-text dashed-link">Доставка бесплатно</span>
                             </div>
-                            <div class="add-to-cart-container">
-                                <span class="btn bg-yellow-gold">
-                                    <i class="glyphicon glyphicon-shopping-cart"></i>
-                                    В корзину
-                                </span>
+                            <div class="avaliability">
+                                @if (item.IsAvaliable)
+                                {
+                                    <i class="fa fa-check-circle font-green-meadow"></i>
+                                    <span class="info-text dashed-link">В наличии</span>
+                                }
+                                else
+                                {
+                                    <i class="fa  fa-times-circle font-red"></i>
+                                    <span class="info-text dashed-link">Под заказ</span>
+                                }
                             </div>
                         </div>
                     </div>
