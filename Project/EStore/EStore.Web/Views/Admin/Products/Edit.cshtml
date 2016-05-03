@@ -104,7 +104,15 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label">Описание товара</label>
-                                                    <textarea placeholder="Описание товара" class="form-control note-editor" name="@Html.NameFor(x => x.Descripton)">@Model.Descripton</textarea>
+                                                    <textarea placeholder="Описание товара" class="form-control note-editor" rows="8" name="@Html.NameFor(x => x.Descripton)">@Model.Descripton</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">Характеристики</label>
+                                                    <textarea placeholder="Характеристики" class="form-control note-editor" name="@Html.NameFor(x => x.Specs)">@Model.Specs</textarea>
                                                 </div>
                                             </div>
                                         </div>

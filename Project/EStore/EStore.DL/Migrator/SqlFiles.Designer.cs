@@ -276,5 +276,16 @@ namespace EStore.DL.Migrator {
                 return ResourceManager.GetString("_20150404_update", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblProduct ADD Specs nvarchar(MAX) NULL
+        ///GO
+        ///.
+        /// </summary>
+        public static string _20150503_update {
+            get {
+                return ResourceManager.GetString("_20150503_update", resourceCulture);
+            }
+        }
     }
 }

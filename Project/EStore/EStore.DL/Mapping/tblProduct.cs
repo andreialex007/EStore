@@ -28,6 +28,7 @@ namespace EStore.DL.Mapping
         public string Descripton { get; set; }
         public Nullable<long> ManufacterId { get; set; }
         public Nullable<long> CategoryId { get; set; }
+        public string Specs { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblFile> tblFiles { get; set; }

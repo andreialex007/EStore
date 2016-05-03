@@ -130,7 +130,6 @@
                 </div>
             </div>
 
-
         </div>
 
     </div>
@@ -156,39 +155,8 @@
         <div class="portlet-body">
             <div class="tab-content">
                 <div class="tab-pane active" id="portlet_tab_1">
-                    <table class="table table-bordered table-striped table-condensed flip-content specifications-table">
-                        <tbody>
-                            <tr>
-                                <td> Тип</td>
-                                <td> ноутбук</td>
-                            </tr>
-                            <tr>
-                                <td> Тип процессора</td>
-                                <td> Celeron / Core i3 / Pentium</td>
-                            </tr>
-                            <tr>
-                                <td> Код процессора</td>
-                                <td> N3530</td>
-                            </tr>
-                            <tr>
-                                <td> Ядро процессора</td>
-                                <td> Bay Trail-M / Haswell</td>
-                            </tr>
-                            <tr>
-                                <td> Частота процессора</td>
-                                <td> 1900...2170 МГц</td>
-                            </tr>
-                            <tr>
-                                <td> Количество ядер процессора</td>
-                                <td> 2 / 4</td>
-                            </tr>
-                            <tr>
-                                <td> Объем кэша L2</td>
-                                <td> 1 Мб / 2 Мб / 512 Кб</td>
-                            </tr>
+                    @Html.Raw(Model.Specs)
 
-                        </tbody>
-                    </table>
                 </div>
                 <div class="tab-pane" id="delivery">
                     <p>

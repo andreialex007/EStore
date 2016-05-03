@@ -19,6 +19,8 @@ namespace EStore.BL.Models.Product
         public long? SubCategoryId { get; set; }
         public string SubCategoryName { get; set; }
 
+        public string Specs { get; set; }
+
         [Required]
         [Display(Name = "Описание")]
         public string DescriptionText => CommonUtils.StripHtml(Descripton).Trim();

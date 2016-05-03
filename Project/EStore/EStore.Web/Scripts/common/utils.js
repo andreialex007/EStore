@@ -142,7 +142,7 @@
         self.showSavedMessage = function (messageText) {
             if ($.cookie("Saved")) {
                 $.removeCookie("Saved", { path: '/' });
-                UIToastr.ShowMessage("success", "Saved", "Successfully saved", true);
+                UIToastr.ShowMessage("success", "Сохранено", "Успешно сохранено", true);
             }
         }
 
