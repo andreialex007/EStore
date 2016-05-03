@@ -30,7 +30,7 @@ namespace EStore.BL.Utils.ProductFeedbackParsers
                         var user = reviewItem.CssSelect(".product-review-user a").FirstOrDefault()?.InnerText ?? "Анонимно";
                         var pluses = reviewItem.CssSelect(".product-review-item__stat").Skip(1).First().CssSelect(".product-review-item__text").First().InnerText;
                         var minuses = reviewItem.CssSelect(".product-review-item__stat").Skip(2).First().CssSelect(".product-review-item__text").First().InnerText;
-                        var comment = reviewItem.CssSelect("meta[itemprop='description']").Single().Attributes["content"].Value.ToString();
+                        var comment = reviewItem.CssSelect(".product-review-item__text").Last().InnerHtml;
 
                         productFeedbackItem = new ProductFeedbackItem
                         {

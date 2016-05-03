@@ -50,6 +50,7 @@
           <Property Name="ManufacterId" Type="bigint" />
           <Property Name="CategoryId" Type="bigint" />
           <Property Name="Specs" Type="nvarchar(max)" />
+          <Property Name="YandexUrl" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="tblProductCategory">
           <Key>
@@ -488,6 +489,7 @@
           <Property Name="ManufacterId" Type="Int64" />
           <Property Name="CategoryId" Type="Int64" />
           <Property Name="Specs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YandexUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblFiles" Relationship="EStoreModel.FK_tblFile_tblProduct" FromRole="tblProduct" ToRole="tblFile" />
           <NavigationProperty Name="tblManufacter" Relationship="EStoreModel.FK_tblProduct_tblManufacter" FromRole="tblProduct" ToRole="tblManufacter" />
           <NavigationProperty Name="tblProductCategory" Relationship="EStoreModel.FK_tblProduct_tblProductCategory" FromRole="tblProduct" ToRole="tblProductCategory" />
@@ -803,6 +805,7 @@
           <EntitySetMapping Name="tblProducts">
             <EntityTypeMapping TypeName="EStoreModel.tblProduct">
               <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="YandexUrl" ColumnName="YandexUrl" />
                 <ScalarProperty Name="Specs" ColumnName="Specs" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ManufacterId" ColumnName="ManufacterId" />

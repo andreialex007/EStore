@@ -25,199 +25,216 @@
 }
 
 
-<!-- BEGIN PAGE BREADCRUMB -->
-<ul class="page-breadcrumb breadcrumb">
-    <li>
-        <a href="/">Главная</a><i class="fa fa-circle"></i>
-    </li>
-    <li>
-        <a href="/catalog/">Каталог</a><i class="fa fa-circle"></i>
-    </li>
-    @if (Model.CategoryId.HasValue)
-    {
+<div class="view-product-page">
+    <!-- BEGIN PAGE BREADCRUMB -->
+    <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="/catalog/@Model.CategoryId">@Model.CategoryName</a><i class="fa fa-circle"></i>
+            <a href="/">Главная</a><i class="fa fa-circle"></i>
         </li>
-    }
-    @if (Model.SubCategoryId.HasValue)
-    {
         <li>
-            <a href="/catalog/@Model.SubCategoryId">@Model.SubCategoryName</a><i class="fa fa-circle"></i>
+            <a href="/catalog/">Каталог</a><i class="fa fa-circle"></i>
         </li>
-    }
-    <li class="active">
-        @Model.Name
-    </li>
-</ul>
-<!-- END PAGE BREADCRUMB -->
+        @if (Model.CategoryId.HasValue)
+        {
+            <li>
+                <a href="/catalog/@Model.CategoryId">@Model.CategoryName</a><i class="fa fa-circle"></i>
+            </li>
+        }
+        @if (Model.SubCategoryId.HasValue)
+        {
+            <li>
+                <a href="/catalog/@Model.SubCategoryId">@Model.SubCategoryName</a><i class="fa fa-circle"></i>
+            </li>
+        }
+        <li class="active">
+            @Model.Name
+        </li>
+    </ul>
+    <!-- END PAGE BREADCRUMB -->
 
-<div class="row">
-    <div class="col-md-5">
-        <!-- Begin: life time stats -->
-        <div class="portlet light">
-            <div class="portlet-body">
-                <div class="main-img text-center">
-                    <a class="fancybox"
-                       href="@(Model.MainImage)">
-                        <img class="img-responsive img-thumbnail"
-                             src="@(Model.MainImage)" />
-                    </a>
-                </div>
-                <div id="owl-demo">
-
-                    @foreach (var item in Model.ProductImages)
-                    {
-                        <div class="item">
-                            <a href="@(item.Path)" rel="group"
-                               class="fancybox">
-                                <img src="@(item.Path)"
-                                     alt="Owl Image">
-                            </a>
+    <div class="row">
+        <div class="col-md-5">
+            <!-- Begin: life time stats -->
+            <div class="portlet light images-preview-block">
+                <div class="portlet-body">
+                    <div class="main-img text-center">
+                        <div class="ttable">
+                            <div class="trow">
+                                <div class="tcell">
+                                    <a class="fancybox"
+                                       href="@(Model.MainImage)">
+                                        <img class="img-responsive img-thumbnail"
+                                             onerror="this.onerror = null; this.src = '/Content/Images/no-image.jpg';"
+                                             src="@(Model.MainImage)" />
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    }
-                </div>
-            </div>
-        </div>
-        <!-- End: life time stats -->
-    </div>
-    <div class="col-md-7">
+                    </div>
+                    <div id="owl-demo">
 
-        <p>
-            @Html.Raw(Model.DescriptionText)
-        </p>
-
-        <div class="well extra-info-well">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="info-container price">
-                        <span class="icon-container">
-                            <i class="fa fa-rub"></i>
-                        </span>
-                        <span class="value">@Model.Price.ToString("N0")</span>
+                        @foreach (var item in Model.ProductImages)
+                        {
+                            <div class="item">
+                                <div class="ttable">
+                                    <div class="trow">
+                                        <div class="tcell">
+                                            <a href="@(item.Path)" rel="group"
+                                               class="fancybox">
+                                                <img src="@(item.Path)"
+                                                     onerror="this.onerror = null; this.src = '/Content/Images/no-image.jpg';"
+                                                     alt="Owl Image">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <span class="btn bg-yellow-gold add-to-cart-button">
-                        <i class="glyphicon glyphicon-shopping-cart"></i>
-                        В корзину
-                    </span>
-                </div>
-                <div class="col-md-6">
-                    <div class="extra-info">
-                        <div class="info-container">
+            </div>
+            <!-- End: life time stats -->
+        </div>
+        <div class="col-md-7">
+
+            <p>
+                @Html.Raw(Model.DescriptionText)
+            </p>
+
+            <div class="well extra-info-well">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="info-container price">
                             <span class="icon-container">
-                                <i class="fa fa-truck font-blue-dark"></i>
+                                <i class="fa fa-rub"></i>
                             </span>
-                            <span class="info-text dashed-link more-info-about-delivery">Подробнее о доставке</span>
+                            <span class="value">@Model.Price.ToString("N0")</span>
                         </div>
-                        <div class="info-container amount">
-                            @if (Model.IsAvaliable)
-                            {
+                    </div>
+                    <div class="col-md-3">
+                        <span class="btn bg-yellow-gold add-to-cart-button">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            В корзину
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="extra-info">
+                            <div class="info-container">
                                 <span class="icon-container">
-                                    <i class="fa fa-check-circle font-green-meadow"></i>
+                                    <i class="fa fa-truck font-blue-dark"></i>
                                 </span>
-                                <span class="info-text">В наличии</span>
-                            }
-                            else
-                            {
-                                <span class="icon-container">
-                                    <i class="fa  fa-times-circle font-red"></i>
-                                </span>
-                                <span class="info-text">Под заказ</span>
-                            }
+                                <span class="info-text dashed-link more-info-about-delivery">Подробнее о доставке</span>
+                            </div>
+                            <div class="info-container amount">
+                                @if (Model.IsAvaliable)
+                                {
+                                    <span class="icon-container">
+                                        <i class="fa fa-check-circle font-green-meadow"></i>
+                                    </span>
+                                    <span class="info-text">В наличии</span>
+                                }
+                                else
+                                {
+                                    <span class="icon-container">
+                                        <i class="fa  fa-times-circle font-red"></i>
+                                    </span>
+                                    <span class="info-text">Под заказ</span>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="portlet box product-info-portlet">
-        <div class="portlet-title">
-            <div class="caption">
-            </div>
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#portlet_tab_1" data-toggle="tab"> Характеристики </a>
-                </li>
-                <li>
-                    <a href="#delivery" data-toggle="tab"> Доставка </a>
-                </li>
-                <li>
-                    <a href="#portlet_tab_3" data-toggle="tab"> Отзывы </a>
-                </li>
-            </ul>
-        </div>
-        <div class="portlet-body">
-            <div class="tab-content">
-                <div class="tab-pane active" id="portlet_tab_1">
-                    @Html.Raw(Model.Specs)
-
-                </div>
-                <div class="tab-pane" id="delivery">
-                    <p>
-                        Наш курьер доставит заказ по указанному адресу с 9:00 до 23:00. После
-                        предварительного звонка оператора курьер дополнительно свяжется для
-                        предупреждения о выезде по адресу доставки (ориентировочно за 1 час).
-                        При оплате картой курьер интернет-магазина приедет с товаром и переносным
-                        терминалом, с помощью которого можно будет осуществить оплату. Внимание! Только
-                        в пределах МКАД.
-                        Доставка за пределы МКАД осуществляется на следующий день после оформления
-                        заказа.
-                        Стоимость доставки 200 руб. при сумме заказа менее 5000 руб.
-                        При сумме заказа более 5000 руб. доставка осуществляется бесплатно.
-
-                        Стоимость доставки за КАД составляет 200 рублей.
-                    </p>
-
-                    <p>
-                        Мы можем предложить доставку в день заказа или в любой последующий день с 10:00
-                        до 21:00. Срочная доставка может быть осуществлена в любое удобное время в
-                        интервале 1 час, но не ранее, чем через 3 часа после оформления заказа.
-                        В случае опоздания курьера - доставка за наш счет!
-
-                        Минимальная сумма заказа отсутствует. Стоимость доставки 350 руб.
-                    </p>
-                </div>
-                <div class="tab-pane" id="portlet_tab_3">
-
-                    @foreach (var item in Model.FeedbackItems)
-                    {
-                        <div class="portlet">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-user"></i>
-                                    @item.UserName
-                                </div>
-                                <div class="actions">
-                                    <i class="fa fa-calendar"></i>
-                                    @DateTime.Now.ToString("D")
-                                </div>
-                            </div>
-                            <div class="portlet-body">
-                                <p>
-                                    @Html.Raw(item.Comment)
-                                </p>
-                                <div>
-                                    <div><strong>Плюсы:</strong></div>
-                                    <div>@Html.Raw(item.Pluses)</div>
-                                </div>
-                                <div>
-                                    <div><strong>Минусы:</strong></div>
-                                    <div>@Html.Raw(item.Minuses)</div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-
-
-                </div>
-            </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="portlet box product-info-portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                </div>
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#portlet_tab_1" data-toggle="tab"> Характеристики </a>
+                    </li>
+                    <li>
+                        <a href="#delivery" data-toggle="tab"> Доставка </a>
+                    </li>
+                    <li>
+                        <a href="#portlet_tab_3" data-toggle="tab"> Отзывы </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="portlet-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="portlet_tab_1">
+                        @Html.Raw(Model.Specs)
+
+                    </div>
+                    <div class="tab-pane" id="delivery">
+                        <p>
+                            Наш курьер доставит заказ по указанному адресу с 9:00 до 23:00. После
+                            предварительного звонка оператора курьер дополнительно свяжется для
+                            предупреждения о выезде по адресу доставки (ориентировочно за 1 час).
+                            При оплате картой курьер интернет-магазина приедет с товаром и переносным
+                            терминалом, с помощью которого можно будет осуществить оплату. Внимание! Только
+                            в пределах МКАД.
+                            Доставка за пределы МКАД осуществляется на следующий день после оформления
+                            заказа.
+                            Стоимость доставки 200 руб. при сумме заказа менее 5000 руб.
+                            При сумме заказа более 5000 руб. доставка осуществляется бесплатно.
+
+                            Стоимость доставки за КАД составляет 200 рублей.
+                        </p>
+
+                        <p>
+                            Мы можем предложить доставку в день заказа или в любой последующий день с 10:00
+                            до 21:00. Срочная доставка может быть осуществлена в любое удобное время в
+                            интервале 1 час, но не ранее, чем через 3 часа после оформления заказа.
+                            В случае опоздания курьера - доставка за наш счет!
+
+                            Минимальная сумма заказа отсутствует. Стоимость доставки 350 руб.
+                        </p>
+                    </div>
+                    <div class="tab-pane" id="portlet_tab_3">
+
+                        @foreach (var item in Model.FeedbackItems)
+                        {
+                            <div class="portlet">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-user"></i>
+                                        @item.UserName
+                                    </div>
+                                    <div class="actions">
+                                        <i class="fa fa-calendar"></i>
+                                        @DateTime.Now.ToString("D")
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <p>
+                                        @Html.Raw(item.Comment)
+                                    </p>
+                                    <div>
+                                        <div><strong>Плюсы:</strong></div>
+                                        <div>@Html.Raw(item.Pluses)</div>
+                                    </div>
+                                    <div>
+                                        <div><strong>Минусы:</strong></div>
+                                        <div>@Html.Raw(item.Minuses)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

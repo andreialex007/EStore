@@ -29,6 +29,7 @@ namespace EStore.DL.Mapping
         public Nullable<long> ManufacterId { get; set; }
         public Nullable<long> CategoryId { get; set; }
         public string Specs { get; set; }
+        public string YandexUrl { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblFile> tblFiles { get; set; }

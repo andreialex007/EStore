@@ -427,3 +427,18 @@ table {
     max-height: 100px;
     overflow: hidden;
 }
+
+
+.product-search-btn-box {
+    padding-left: 8px;
+}
+
+    .product-search-btn-box .btn {
+        position: absolute !important;
+        right: 17px !important;
+        top: 25px !important;
+    }
+
+.input-box-ya-market {
+    padding-right: 42px;
+}

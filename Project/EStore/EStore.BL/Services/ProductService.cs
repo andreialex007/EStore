@@ -36,6 +36,7 @@ namespace EStore.BL.Services
 
             product.Descripton = item.Descripton;
             product.Name = item.Name;
+            product.YandexUrl = item.YandexUrl;
             product.Specs = item.Specs;
             product.CategoryId = item.CategoryId;
 
@@ -59,10 +60,11 @@ namespace EStore.BL.Services
                         CategoryId = x.CategoryId,
                         CategoryName = x.tblProductCategory.Name,
                         Name = x.Name,
+                        YandexUrl = x.YandexUrl,
                         Specs = x.Specs,
                         Price = x.tblProductSingles.FirstOrDefault(p => p.State == forSaleState).SellPrice ?? 0,
                         IsAvaliable = x.tblProductSingles.Any(p => p.State == forSaleState),
-                        MainImage = x.tblFiles.OrderBy(f => f.Position).FirstOrDefault().Path,
+                        MainImage = x.tblFiles.OrderByDescending(f => f.Position).FirstOrDefault().Path,
                         SubCategoryId = x.tblProductCategory.ParentCategoryId,
                         SubCategoryName = x.tblProductCategory.tblProductCategory2.Name,
                         ProductImages = x.tblFiles
@@ -124,8 +126,9 @@ namespace EStore.BL.Services
                 {
                     Id = x.Id,
                     Name = x.Name,
+                    YandexUrl = x.YandexUrl,
                     Specs = x.Specs,
-                    MainImage = x.tblFiles.OrderBy(f => f.Position).FirstOrDefault().Path,
+                    MainImage = x.tblFiles.OrderByDescending(f => f.Position).FirstOrDefault().Path,
                     Descripton = x.Descripton,
                     Price = x.tblProductSingles.FirstOrDefault(p => p.State == forSaleState).SellPrice ?? 0,
                     IsAvaliable = x.tblProductSingles.Any(p => p.State == forSaleState)
@@ -153,6 +156,7 @@ namespace EStore.BL.Services
                     Descripton = x.Descripton,
                     CategoryId = x.CategoryId,
                     Name = x.Name,
+                    YandexUrl = x.YandexUrl,
                     Specs = x.Specs
                 });
 

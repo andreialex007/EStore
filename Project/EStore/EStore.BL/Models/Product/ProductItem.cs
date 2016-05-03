@@ -13,6 +13,7 @@ namespace EStore.BL.Models.Product
         [Required]
         [Display(Name = "Название")]
         public string Name { get; set; }
+        public string YandexUrl { get; set; }
 
         public string Descripton { get; set; }
 

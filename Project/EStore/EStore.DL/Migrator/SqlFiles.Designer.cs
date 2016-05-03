@@ -287,5 +287,16 @@ namespace EStore.DL.Migrator {
                 return ResourceManager.GetString("_20150503_update", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblProduct ADD YandexUrl nvarchar(250) NULL
+        ///GO
+        ///.
+        /// </summary>
+        public static string _20150503_update_2 {
+            get {
+                return ResourceManager.GetString("_20150503_update_2", resourceCulture);
+            }
+        }
     }
 }

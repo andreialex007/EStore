@@ -39,7 +39,18 @@
                 placeholder: "Выберите категорию",
                 data: $(".product-category input[type='hidden']").data("items")
             }).select2("val", categoryId);
+
+
+            $(document.body).on("click", ".product-search-btn-box .btn", self.openYandexMarketPage);
         }
+
+        self.openYandexMarketPage = function (event) {
+            var searchPage = "https://market.yandex.ru/search.xml?text=";
+            var searchUrl = searchPage + encodeURIComponent($(".product-name-box input").val());
+            var win = window.open(searchUrl, '_blank');
+            win.focus();
+        }
+
 
         self.onImagesUploaded = function (params) {
             self.productImagesGrid.filesUploaded(params.views);

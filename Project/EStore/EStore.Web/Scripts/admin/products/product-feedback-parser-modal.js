@@ -6,11 +6,12 @@
 
         self.init = function () {
 
-
             $(document.body).on("click", ".feedback-parser-modal .select-feedbacks-button", self.selectFeedbacks);
             $(document.body).on("click", ".feedback-parser-modal .close-button", self.cancel);
             $(document.body).on("click", ".feedback-parser-modal .open-feedback-search-page .btn", self.openFeedbacksSearchPage);
             $(document.body).on("click", ".feedback-parser-modal .start-parsing-btn", self.startParsing);
+
+            
         }
 
         self.openFeedbacksSearchPage = function (event) {
@@ -20,8 +21,8 @@
             win.focus();
         }
 
-        self.startParsing = function (event) {
-            var url = $(event.target).closest(".input-group").find("input").val();
+        self.startParsing = function () {
+            var url = $(".input-box-ya-market input").val() + "/reviews";
             Metronic.blockUI({
                 boxed: true,
                 message: "Загрузка..."
@@ -33,7 +34,8 @@
                 data: JSON.stringify({ url: url })
             }).done(function (result) {
                 Metronic.unblockUI();
-                $(event.target).closest(".tab-pane").find(".parsing-result-items").html(result);
+                $(".feedback-parser-modal .parsing-result-items").html(result);
+                $(".feedback-parser-modal").modal("show");
             });
         }
 
@@ -68,7 +70,8 @@
         }
 
         self.show = function () {
-            $(".feedback-parser-modal").modal("show");
+            self.startParsing();
+            
         }
 
         self.init();

@@ -61,13 +61,31 @@
                     <form method="post">
                         @Html.Partial("~/Views/_Common/ErrorsBlock.cshtml")
                         <div class="row ">
-                            <div class="col-md-6 product-name-box">
+                            <div class="col-md-4 product-name-box">
                                 <div class="form-group">
                                     <label class="control-label">Название</label>
                                     <input type="text" name="@Html.NameFor(x => x.Name)" value="@Model.Name" class="form-control" placeholder="Название">
                                 </div>
                             </div>
-                            <div class="col-md-6 product-category">
+                            <div class="col-md-4 ">
+                                <div class="ttable">
+                                    <div class="trow">
+                                        <div class="tcell input-box-ya-market">
+                                            <div class="form-group">
+                                                <label class="control-label">Yandex market url</label>
+                                                <input type="text" name="@Html.NameFor(x => x.YandexUrl)" value="@Model.YandexUrl" class="form-control" placeholder="Yandex market url">
+                                            </div>
+                                        </div>
+                                        <div class="tcell product-search-btn-box">
+                                            <a href="#" class="btn btn-primary">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 product-category">
                                 <div class="form-group">
                                     <label class="control-label">Категория</label>
                                     <input type="hidden"
