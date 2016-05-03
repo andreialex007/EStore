@@ -246,6 +246,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\global\plugins\fancybox\lib\jquery-1.10.1.min.js" />
+    <Content Include="Content\assets\global\plugins\fancybox\lib\jquery-1.9.0.min.js" />
+    <Content Include="Content\assets\global\plugins\fancybox\source\fancybox_loading%402x.gif" />
+    <Content Include="Content\assets\global\plugins\fancybox\source\fancybox_sprite%402x.png" />
+    <Content Include="Content\assets\global\plugins\owl.carousel\assets\owl.carousel.css" />
+    <Content Include="Content\assets\global\plugins\owl.carousel\assets\owl.theme.css" />
+    <Content Include="Content\assets\global\plugins\owl.carousel\owl.carousel.js" />
+    <Content Include="Content\assets\global\plugins\owl.carousel\owl.carousel.min.js" />
     <Content Include="Content\Images\no-image.jpg" />
     <Content Include="Content\Public.css" />
     <Content Include="Content\assets\admin\layout2\css\custom.css" />
@@ -3322,10 +3330,10 @@
     <Content Include="Resources\phantomjs.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\admin-users\admin-users-search-page.js" />
-    <Content Include="Scripts\articles\articles-grid.js" />
-    <Content Include="Scripts\articles\articles-search-page.js" />
-    <Content Include="Scripts\articles\edit-article-page.js" />
+    <Content Include="Scripts\admin\admin-users\admin-users-search-page.js" />
+    <Content Include="Scripts\admin\articles\articles-grid.js" />
+    <Content Include="Scripts\admin\articles\articles-search-page.js" />
+    <Content Include="Scripts\admin\articles\edit-article-page.js" />
     <Content Include="Scripts\common\search-grid-base.js" />
     <Content Include="Scripts\common\ajax-grid-base.js" />
     <Content Include="Scripts\common\custom.ui.toastr.js" />
@@ -3334,21 +3342,23 @@
     <Content Include="Scripts\common\files-grid-base.js" />
     <Content Include="Scripts\common\images-search-modal.js" />
     <Content Include="Scripts\common\inline-edit-grid-base.js" />
+    <Content Include="Scripts\common\utils.public.js" />
     <Content Include="Scripts\common\utils.js" />
-    <Content Include="Scripts\product-categories\edit-product-category-page.js" />
-    <Content Include="Scripts\product-categories\product-categories-search-page.js" />
-    <Content Include="Scripts\products\product-feedback-parser-modal.js" />
-    <Content Include="Scripts\products\product-feedbacks-grid.js" />
-    <Content Include="Scripts\products\product-images-grid.js" />
-    <Content Include="Scripts\products\product-singles-grid.js" />
-    <Content Include="Scripts\products\products-grid.js" />
-    <Content Include="Scripts\products\products-search-page.js" />
-    <Content Include="Scripts\products\edit-product-page.js" />
-    <Content Include="Scripts\supplier-invoices\edit-supplier-invoice-page.js" />
-    <Content Include="Scripts\supplier-invoices\supplier-invoice-positions-grid.js" />
-    <Content Include="Scripts\supplier-invoices\supplier-invoice-files-grid.js" />
-    <Content Include="Scripts\supplier-invoices\supplier-invoices-grid.js" />
-    <Content Include="Scripts\supplier-invoices\supplier-invoices-search-page.js" />
+    <Content Include="Scripts\admin\product-categories\edit-product-category-page.js" />
+    <Content Include="Scripts\admin\product-categories\product-categories-search-page.js" />
+    <Content Include="Scripts\admin\products\product-feedback-parser-modal.js" />
+    <Content Include="Scripts\admin\products\product-feedbacks-grid.js" />
+    <Content Include="Scripts\admin\products\product-images-grid.js" />
+    <Content Include="Scripts\admin\products\product-singles-grid.js" />
+    <Content Include="Scripts\admin\products\products-grid.js" />
+    <Content Include="Scripts\admin\products\products-search-page.js" />
+    <Content Include="Scripts\admin\products\edit-product-page.js" />
+    <Content Include="Scripts\public\view-product\product-detail.js" />
+    <Content Include="Scripts\admin\supplier-invoices\edit-supplier-invoice-page.js" />
+    <Content Include="Scripts\admin\supplier-invoices\supplier-invoice-positions-grid.js" />
+    <Content Include="Scripts\admin\supplier-invoices\supplier-invoice-files-grid.js" />
+    <Content Include="Scripts\admin\supplier-invoices\supplier-invoices-grid.js" />
+    <Content Include="Scripts\admin\supplier-invoices\supplier-invoices-search-page.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -4017,6 +4027,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Public\ViewProduct\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\assets\global\plugins\fancybox\sprite.psd" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

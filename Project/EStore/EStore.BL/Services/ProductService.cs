@@ -46,6 +46,7 @@ namespace EStore.BL.Services
         public ProductItem Get(long id)
         {
             var productItem = new ProductItem();
+            var forSaleState = ProductSingleStateEnum.ForSale.CastTo<int>();
             if (id != 0)
             {
                 productItem = Db.Set<tblProduct>()
@@ -55,7 +56,13 @@ namespace EStore.BL.Services
                         Id = x.Id,
                         Descripton = x.Descripton,
                         CategoryId = x.CategoryId,
+                        CategoryName = x.tblProductCategory.Name,
                         Name = x.Name,
+                        Price = x.tblProductSingles.FirstOrDefault(p => p.State == forSaleState).SellPrice ?? 0,
+                        IsAvaliable = x.tblProductSingles.Any(p => p.State == forSaleState),
+                        MainImage = x.tblFiles.OrderBy(f => f.Position).FirstOrDefault().Path,
+                        SubCategoryId = x.tblProductCategory.ParentCategoryId,
+                        SubCategoryName = x.tblProductCategory.tblProductCategory2.Name,
                         ProductImages = x.tblFiles
                             .Select(f => new FileItem
                             {

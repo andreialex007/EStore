@@ -176,3 +176,66 @@ body .page-content {
 .catalog-product-item .caption {
     font-weight: bold !important;
 }
+
+
+#owl-demo .item {
+    margin: 3px;
+}
+
+#owl-demo .item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.owl-theme .owl-controls .owl-buttons div {
+    position: absolute;
+}
+
+.owl-theme .owl-controls .owl-buttons .owl-prev {
+    left: -25px;
+    top: 50%;
+    margin-top: -11px;
+    padding: 3px;
+    border-radius: 2px;
+    height: 23px;
+    padding-top: 4px;
+}
+
+.owl-theme .owl-controls .owl-buttons .owl-next {
+    right: -25px;
+    top: 50%;
+    margin-top: -11px;
+    padding: 3px;
+    border-radius: 2px;
+    height: 23px;
+    padding-top: 4px;
+}
+
+.product-details-page .main-img {
+    margin-bottom: 17px;
+}
+
+.extra-info-well {
+    background-color: #CCE6FC !important;
+}
+
+.product-details-page .add-to-cart-button {
+    margin-top: 4px;
+}
+
+.product-info-portlet .nav-tabs {
+    float: left !important;
+}
+
+.product-info-portlet .portlet-title > .nav-tabs > li > a {
+    color: slategray !important;
+}
+
+.product-info-portlet .portlet-title > .nav-tabs > li.active > a {
+    color: black !important;
+}
+
+.specifications-table {
+    margin-bottom: 0px !important;
+}

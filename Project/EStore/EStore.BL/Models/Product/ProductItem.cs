@@ -16,11 +16,15 @@ namespace EStore.BL.Models.Product
 
         public string Descripton { get; set; }
 
+        public long? SubCategoryId { get; set; }
+        public string SubCategoryName { get; set; }
+
         [Required]
         [Display(Name = "Описание")]
         public string DescriptionText => CommonUtils.StripHtml(Descripton).Trim();
 
         public long? CategoryId { get; set; }
+        public string CategoryName { get; set; }
 
         public string MainImage { get; set; }
         public bool IsAvaliable { get; set; }
