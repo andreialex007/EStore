@@ -23,8 +23,8 @@ namespace EStore.Web.Controllers.Public
         [HttpGet]
         public ActionResult Catalog(long id)
         {
-            var items = Service.Product.ByCategoryId(id);
-            return View("~/Views/Public/Catalog/List.cshtml", items);
+            var model = Service.Product.ByCategoryId(id);
+            return View("~/Views/Public/Catalog/List.cshtml", model);
         }
     }
 }

@@ -151,6 +151,7 @@
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Models\AdminLoginModel.cs" />
     <Compile Include="Models\ArticleItem.cs" />
+    <Compile Include="Models\ProductListModel.cs" />
     <Compile Include="Models\Product\ProductCategoryItem.cs" />
     <Compile Include="Models\Product\ProductFeedbackItem.cs" />
     <Compile Include="Models\Product\ProductSingleStateEnum.cs" />

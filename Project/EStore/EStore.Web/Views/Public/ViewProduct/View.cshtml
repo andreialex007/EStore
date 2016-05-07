@@ -157,19 +157,19 @@
                 </div>
                 <ul class="nav nav-tabs">
                     <li class="active">
-                        <a href="#portlet_tab_1" data-toggle="tab"> Характеристики </a>
+                        <a href="#specs-tab" data-toggle="tab"> Характеристики </a>
                     </li>
                     <li>
                         <a href="#delivery" data-toggle="tab"> Доставка </a>
                     </li>
                     <li>
-                        <a href="#portlet_tab_3" data-toggle="tab"> Отзывы </a>
+                        <a href="#feedback-tab" data-toggle="tab"> Отзывы </a>
                     </li>
                 </ul>
             </div>
             <div class="portlet-body">
                 <div class="tab-content">
-                    <div class="tab-pane active" id="portlet_tab_1">
+                    <div class="tab-pane active" id="specs-tab">
                         @Html.Raw(Model.Specs)
 
                     </div>
@@ -198,7 +198,7 @@
                             Минимальная сумма заказа отсутствует. Стоимость доставки 350 руб.
                         </p>
                     </div>
-                    <div class="tab-pane" id="portlet_tab_3">
+                    <div class="tab-pane" id="feedback-tab">
 
                         @foreach (var item in Model.FeedbackItems)
                         {

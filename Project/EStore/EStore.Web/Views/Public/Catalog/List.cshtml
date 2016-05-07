@@ -1,5 +1,5 @@
 ﻿@using EStore.BL.Utils
-@model List<EStore.BL.Models.Product.ProductItem>
+@model EStore.BL.Models.ProductListModel
 
 @{
     ViewBag.Title = "Каталог товаров";
@@ -8,21 +8,35 @@
 }
 
 
+
 <!-- BEGIN PAGE BREADCRUMB -->
 <ul class="page-breadcrumb breadcrumb">
     <li>
         <a href="/">Главная</a><i class="fa fa-circle"></i>
     </li>
-    <li class="active">
-        Каталог
+    <li>
+        <a href="/catalog/">Каталог</a><i class="fa fa-circle"></i>
     </li>
+    @if (Model.CategoryId.HasValue && Model.SubCategoryId.HasValue)
+    {
+        <li>
+            <a href="/catalog/@Model.CategoryId">@Model.CategoryName</a><i class="fa fa-circle"></i>
+        </li>
+        <li class="active">
+            @Model.SubCategoryName
+        </li>
+    }
+    else
+    {
+        <li class="active">
+            @Model.SubCategoryName
+        </li>
+    }
 </ul>
 <!-- END PAGE BREADCRUMB -->
-
-
 <div class="row">
     <div class="col-md-12">
-        @foreach (var item in Model)
+        @foreach (var item in Model.Products)
         {
             <div class="portlet catalog-product-item">
                 <div class="portlet-title">

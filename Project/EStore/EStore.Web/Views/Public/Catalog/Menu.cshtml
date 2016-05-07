@@ -6,7 +6,7 @@
         <li class="mega-menu-submenu submenu-element">
             <ul>
                 <li>
-                    <h3>@item.Name</h3>
+                    <a class="category-link" href="/catalog/@(item.Id)">@item.Name</a>
                 </li>
                 @foreach (var subItem in item.ChildCategories)
                 {

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using EStore.BL.Extensions;
+using EStore.BL.Models;
 using EStore.BL.Models.Product;
 using EStore.BL.Models._Common;
 using EStore.BL.Services._Common;
@@ -117,11 +119,14 @@ namespace EStore.BL.Services
             return productItem;
         }
 
-        public List<ProductItem> ByCategoryId(long categoryId)
+        public ProductListModel ByCategoryId(long categoryId)
         {
+            var model = new ProductListModel();
+
             var forSaleState = ProductSingleStateEnum.ForSale.CastTo<int>();
 
-            var items = Db.Set<tblProduct>().Where(x => x.CategoryId == categoryId)
+            var items = Db.Set<tblProduct>()
+                .Where(x => x.CategoryId == categoryId || x.tblProductCategory.ParentCategoryId == categoryId)
                 .Select(x => new ProductItem
                 {
                     Id = x.Id,
@@ -131,12 +136,29 @@ namespace EStore.BL.Services
                     MainImage = x.tblFiles.OrderByDescending(f => f.Position).FirstOrDefault().Path,
                     Descripton = x.Descripton,
                     Price = x.tblProductSingles.FirstOrDefault(p => p.State == forSaleState).SellPrice ?? 0,
-                    IsAvaliable = x.tblProductSingles.Any(p => p.State == forSaleState)
+                    IsAvaliable = x.tblProductSingles.Any(p => p.State == forSaleState),
+                    CategoryId = x.tblProductCategory.ParentCategoryId,
+                    CategoryName = x.tblProductCategory.tblProductCategory2.Name,
+                    SubCategoryId = x.CategoryId,
+                    SubCategoryName = x.tblProductCategory.Name
                 })
                 .OrderBy(x => x.Name)
                 .ToList();
 
-            return items;
+            model.Products = items;
+
+
+            var category = Db.Set<tblProductCategory>().Include(x => x.tblProductCategory2).Single(x => x.Id == categoryId);
+            model.SubCategoryId = category.Id;
+            model.SubCategoryName = category.Name;
+
+            if (category.ParentCategoryId.HasValue)
+            {
+                model.CategoryName = category.tblProductCategory2.Name;
+                model.CategoryId = category.ParentCategoryId;
+            }
+
+            return model;
         }
 
         public SearchModel<ProductItem> Search(
