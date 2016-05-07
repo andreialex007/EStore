@@ -1,0 +1,13 @@
+﻿@model List<EStore.BL.Models.SpecItem>
+
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-left" >
+                <strong>@item.Name</strong>
+            </td>
+            <td class="text-left" >@item.Value</td>
+        </tr>
+    }
+</table>

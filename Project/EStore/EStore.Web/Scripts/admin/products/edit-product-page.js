@@ -42,6 +42,7 @@
 
 
             $(document.body).on("click", ".product-search-btn-box .btn", self.openYandexMarketPage);
+            $(document.body).on("click", ".download-from-yandex-market", self.downloadFromYandexMarket);
         }
 
         self.openYandexMarketPage = function (event) {
@@ -49,6 +50,27 @@
             var searchUrl = searchPage + encodeURIComponent($(".product-name-box input").val());
             var win = window.open(searchUrl, '_blank');
             win.focus();
+        }
+
+        self.downloadFromYandexMarket = function () {
+
+            Metronic.blockUI({
+                boxed: true,
+                message: "Загрузка.."
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "/admin/Products/DownloadFromYandexMarket",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({ productId: $(".entity-id").val() })
+            }).done(function (json) {
+                Metronic.unblockUI();
+                var view = json.view;
+                $(".specs-box textarea").code(view);
+            });
+
         }
 
 

@@ -126,10 +126,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row specs-box">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="control-label">Характеристики</label>
+                                                    <div>
+                                                        <label class="control-label">Характеристики</label>
+                                                        &nbsp;
+                                                        <span class="btn btn-success download-from-yandex-market btn-xs">
+                                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                                            <span>Скачать с Yandex market</span>
+                                                        </span>
+                                                    </div>
                                                     <textarea placeholder="Характеристики" class="form-control note-editor" name="@Html.NameFor(x => x.Specs)">@Model.Specs</textarea>
                                                 </div>
                                             </div>

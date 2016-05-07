@@ -209,8 +209,14 @@
                                         @item.UserName
                                     </div>
                                     <div class="actions">
-                                        <i class="fa fa-calendar"></i>
-                                        @DateTime.Now.ToString("D")
+                                        @for (var i = 0; i < item.Stars; i++)
+                                        {
+                                            <i class="fa fa-star" ></i>
+                                        }
+                                        @for (var i = item.Stars; i < 5; i++)
+                                        {
+                                            <i class="fa fa-star-o"></i>
+                                        }
                                     </div>
                                 </div>
                                 <div class="portlet-body">

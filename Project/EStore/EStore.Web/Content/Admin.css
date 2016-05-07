@@ -40,12 +40,12 @@ table {
         vertical-align: middle;
     }
 
-    table td:last-of-type {
+    .table td:last-of-type {
         text-align: center;
         vertical-align: middle !important;
     }
 
-    table td {
+    .table td {
         vertical-align: middle !important;
     }
 
@@ -441,4 +441,8 @@ table {
 
 .input-box-ya-market {
     padding-right: 42px;
+}
+
+.specs-box {
+    position: relative !important;
 }

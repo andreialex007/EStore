@@ -147,6 +147,7 @@
     <Compile Include="Extensions\DataExtensions.cs" />
     <Compile Include="Extensions\DbContextExtensions.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
+    <Compile Include="Extensions\OtherExtensions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Models\AdminLoginModel.cs" />
     <Compile Include="Models\ArticleItem.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="Models\Product\FileItem.cs" />
     <Compile Include="Models\Product\ProductItem.cs" />
     <Compile Include="Models\Product\ProductSingleItem.cs" />
+    <Compile Include="Models\SpecItem.cs" />
     <Compile Include="Models\SupplierInvoice\SupplierInvoiceItem.cs" />
     <Compile Include="Models\SupplierInvoice\SupplierInvoicePositionItem.cs" />
     <Compile Include="Models\SupplierItem.cs" />
@@ -174,6 +176,7 @@
     <Compile Include="Services\ProductFeedbackService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\ProductSingleService.cs" />
+    <Compile Include="Services\SpecsService.cs" />
     <Compile Include="Services\SupplierInvoicePositionService.cs" />
     <Compile Include="Services\SupplierInvoiceService.cs" />
     <Compile Include="Services\AdminUserService.cs" />
@@ -199,6 +202,7 @@
     <Compile Include="Utils\YandexImages\Dto\YandexImageItem.cs" />
     <Compile Include="Utils\YandexImages\ImageSearchItem.cs" />
     <Compile Include="Utils\YandexImages\YandexImagesSearcher.cs" />
+    <Compile Include="Utils\YandexMarketSpecsParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

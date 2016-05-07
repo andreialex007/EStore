@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Web.Mvc;
 using EStore.BL.Exceptions;
+using EStore.BL.Models;
 using EStore.BL.Models.Product;
 using EStore.BL.Models._Common;
+using EStore.BL.Utils;
 using EStore.BL.Utils.ProductFeedbackParsers;
 using EStore.DL.Mapping;
 using EStore.Web.Code;
@@ -48,7 +50,6 @@ namespace EStore.Web.Controllers.Admin
             Service.Delete<tblProduct>(id);
             return SuccessJsonResult();
         }
-
 
         [HttpPost]
         public JsonResult Search(SearchParams @params)
@@ -95,6 +96,16 @@ namespace EStore.Web.Controllers.Admin
         {
             Service.Delete<tblProductFeedback>(id);
             return SuccessJsonResult();
+        }
+
+        [HttpPost]
+        public JsonResult DownloadFromYandexMarket(long productId)
+        {
+            var item = Service.Product.Get(productId);
+            var url = $"{item.YandexUrl}/spec";
+            var items = YandexMarketSpecsParser.Parse(url);
+            var view = this.RenderRazorViewToString(items, "~/Views/Admin/Products/SpecsTable.cshtml");
+            return Json(new { view });
         }
 
         [HttpPost]
