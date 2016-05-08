@@ -1313,7 +1313,7 @@
 
       // fontName
       fontNames: [
-        'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
+        '"Open Sans", sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
         'Helvetica Neue', 'Impact', 'Lucida Grande',
         'Tahoma', 'Times New Roman', 'Verdana', "Calibri"
       ],

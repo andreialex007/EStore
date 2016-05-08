@@ -1,4 +1,5 @@
 ﻿@using System.Diagnostics
+@using EStore.BL.Services
 @using Microsoft.AspNet.Identity
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -76,10 +77,29 @@
                 <div class="top-menu">
                     <ul class="nav navbar-nav pull-right">
                         <!-- BEGIN TODO DROPDOWN -->
-                        <li class="dropdown dropdown-extended dropdown-dark dropdown-tasks" id="header_task_bar">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <i class="glyphicon glyphicon-shopping-cart"></i>
-                                <span class="badge badge-default">3</span>
+                        <li>
+                            <a href="#" class="cart-link">
+                                <div class="ttable">
+                                    <div class="trow">
+                                        <div class="tcell cart-icon-cell">
+                                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                                        </div>
+                                        <div class="tcell cart-total-cell @((UserInfo.Cart.Any() ? "" : "empty-cart"))">
+                                            <div class="total-products-line">
+                                                <span class="badge badge-danger cart-count">3</span>
+                                                <span class="products-label">Товаров</span>
+                                            </div>
+                                            <div class="total-amount-line">
+                                                На сумму:
+                                                <span class="label label-success total-cart-block">
+                                                    <span class="value">125 000</span>
+                                                    <span class="currency">р.</span>
+                                                </span>
+                                            </div>
+                                            <span class="empty-cart-label">Корзина пуста</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                         <!-- END TODO DROPDOWN -->
@@ -87,48 +107,11 @@
                             <span class="separator"></span>
                         </li>
                         <!-- BEGIN USER LOGIN DROPDOWN -->
-                        <li class="dropdown dropdown-user dropdown-dark">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <span class="username ">Войти</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-default">
-                                <li>
-                                    <a href="extra_profile.html">
-                                        <i class="icon-user"></i> My Profile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="page_calendar.html">
-                                        <i class="glyphicon-shopping-cart"></i> My Calendar
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="inbox.html">
-                                        <i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
-                                            3
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="icon-rocket"></i> My Tasks <span class="badge badge-success">
-                                            7
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="extra_lock.html">
-                                        <i class="icon-lock"></i> Lock Screen
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="login.html">
-                                        <i class="icon-key"></i> Log Out
-                                    </a>
-                                </li>
-                            </ul>
+                        <li class="dropdown dropdown-user dropdown-dark login-register-block">
+                            <div class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <div><a href="#" class="login-link">Вход</a></div>
+                                <div><a href="#" class="register-link">Регистрация</a></div>
+                            </div>
                         </li>
                         <!-- END USER LOGIN DROPDOWN -->
                     </ul>

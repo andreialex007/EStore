@@ -29,6 +29,7 @@ namespace EStore.Web
             routes.LowercaseUrls = true;
 
             routes.MapRoute(null, "admin/login", new { controller = "AdminAccount", action = "Login" });
+            routes.MapRoute(null, "admin", new { controller = "Dashboard", action = "Index" });
 
             routes.MapRoute("AddArticle", "admin/articles/add", new { controller = "Articles", action = "Edit" });
             routes.MapRoute("EditArticle", "admin/articles/{id}",

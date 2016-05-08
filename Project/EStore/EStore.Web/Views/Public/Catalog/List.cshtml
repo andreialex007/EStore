@@ -8,6 +8,19 @@
 }
 
 
+@section Styles
+{
+}
+
+@section Scripts
+{
+    <!-- scripts -->
+    <script src="~/Scripts/public/catalog/products-list-page.js"></script>
+}
+
+
+
+
 
 <!-- BEGIN PAGE BREADCRUMB -->
 <ul class="page-breadcrumb breadcrumb">
@@ -40,7 +53,7 @@
         {
             <div class="portlet catalog-product-item">
                 <div class="portlet-title">
-                    <a href="@Url.RouteUrl("ViewProduct", new { id = item.Id })" 
+                    <a href="@Url.RouteUrl("ViewProduct", new { id = item.Id })"
                        class="caption">
                         <i class="fa fa-square"></i>
                         @item.Name
@@ -60,8 +73,10 @@
                             <div>
                                 @(item.DescriptionText.Truncate(500))
                             </div>
-                            <div class="more-info-div"><a href="@Url.RouteUrl("ViewProduct", new {id = item.Id})" 
-                                                          class="btn btn-success btn-xs">Подробнее</a></div>
+                            <div class="more-info-div">
+                                <a href="@Url.RouteUrl("ViewProduct", new {id = item.Id})"
+                                   class="btn btn-success btn-xs">Подробнее</a>
+                            </div>
                         </div>
                         <div class="col-md-2 text-center price-block">
                             @if (item.IsAvaliable)
@@ -73,7 +88,7 @@
                                     <span class="value">&nbsp;@(item.Price.ToString("N0"))</span>
                                 </div>
                                 <div class="add-to-cart-container">
-                                    <span class="btn btn-warning">
+                                    <span class="btn btn-warning add-to-cart-button">
                                         <i class="glyphicon glyphicon-shopping-cart"></i>
                                         В корзину
                                     </span>

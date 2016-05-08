@@ -26,6 +26,8 @@ $(function () {
             $(".more-info-about-delivery").click(function () {
                 $("a[href='#delivery']").click();
             });
+
+            $(".product-info-portlet .nav-tabs > li:first a").click();
         }
 
         self.hoverImage = function (event) {

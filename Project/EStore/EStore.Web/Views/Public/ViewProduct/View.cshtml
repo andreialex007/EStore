@@ -1,8 +1,11 @@
-﻿@model EStore.BL.Models.Product.ProductItem
+﻿@using System.Security.Principal
+@using Microsoft.Ajax.Utilities
+@model EStore.BL.Models.Product.ProductItem
 
 @{
     ViewBag.Title = Model.Name;
     ViewBag.PageTitle = Model.Name;
+    var identity = User.Identity;
 }
 
 
@@ -22,6 +25,7 @@
     <script src="~/Content/assets/global/plugins/owl.carousel/owl.carousel.js"></script>
     <script src="~/Content/assets/global/plugins/fancybox/source/jquery.fancybox.js"></script>
     <script src="~/Scripts/public/view-product/product-detail.js"></script>
+
 }
 
 
@@ -97,18 +101,25 @@
         </div>
         <div class="col-md-7">
 
-            <p>
-                @Html.Raw(Model.DescriptionText)
+            <p class="product-description">
+                @Html.Raw(Model.Descripton)
             </p>
 
             <div class="well extra-info-well">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="info-container price">
-                            <span class="icon-container">
-                                <i class="fa fa-rub"></i>
-                            </span>
-                            <span class="value">@Model.Price.ToString("N0")</span>
+                            @if (Model.Price > 0)
+                            {
+                                <span class="icon-container">
+                                    <i class="fa fa-rub"></i>
+                                </span>
+                                <span class="value">@Model.Price.ToString("N0")</span>
+                            }
+                            else
+                            {
+                                <span class="no-data">Нет данных</span>
+                            }
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -156,23 +167,30 @@
                 <div class="caption">
                 </div>
                 <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#specs-tab" data-toggle="tab"> Характеристики </a>
-                    </li>
+                    @if (!Model.Specs.IsNullOrWhiteSpace())
+                    {
+                        <li>
+                            <a href="#specs-tab" data-toggle="tab"> Характеристики </a>
+                        </li>
+                    }
                     <li>
                         <a href="#delivery" data-toggle="tab"> Доставка </a>
                     </li>
-                    <li>
-                        <a href="#feedback-tab" data-toggle="tab"> Отзывы </a>
-                    </li>
+                    @if (Model.FeedbackItems.Any())
+                    {
+                        <li>
+                            <a href="#feedback-tab" data-toggle="tab"> Отзывы </a>
+                        </li>
+                    }
                 </ul>
             </div>
             <div class="portlet-body">
                 <div class="tab-content">
-                    <div class="tab-pane active" id="specs-tab">
-                        @Html.Raw(Model.Specs)
 
+                    <div class="tab-pane " id="specs-tab">
+                        @Html.Raw(Model.Specs)
                     </div>
+
                     <div class="tab-pane" id="delivery">
                         <p>
                             Наш курьер доставит заказ по указанному адресу с 9:00 до 23:00. После
@@ -211,7 +229,7 @@
                                     <div class="actions">
                                         @for (var i = 0; i < item.Stars; i++)
                                         {
-                                            <i class="fa fa-star" ></i>
+                                            <i class="fa fa-star"></i>
                                         }
                                         @for (var i = item.Stars; i < 5; i++)
                                         {
@@ -224,11 +242,15 @@
                                         @Html.Raw(item.Comment)
                                     </p>
                                     <div>
-                                        <div><strong>Плюсы:</strong></div>
+                                        <div>
+                                            <strong>Плюсы:</strong>
+                                        </div>
                                         <div>@Html.Raw(item.Pluses)</div>
                                     </div>
                                     <div>
-                                        <div><strong>Минусы:</strong></div>
+                                        <div>
+                                            <strong>Минусы:</strong>
+                                        </div>
                                         <div>@Html.Raw(item.Minuses)</div>
                                     </div>
                                 </div>

@@ -88,7 +88,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PGK.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f93e897f802ddcb7, processorArchitecture=MSIL">
-      <HintPath>..\packages\PGK.Extensions.2011.6\lib\PGK.Extensions.dll</HintPath>
+      <HintPath>..\packages\dnpextensions.2011.6.0.0\lib\PGK.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ScrapySharp.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -231,6 +231,7 @@
     <Compile Include="Controllers\Admin\AdminAccountController.cs" />
     <Compile Include="Controllers\Admin\AdminUsersController.cs" />
     <Compile Include="Controllers\Admin\ArticlesController.cs" />
+    <Compile Include="Controllers\Admin\DashboardController.cs" />
     <Compile Include="Controllers\Admin\FilesController.cs" />
     <Compile Include="Controllers\Admin\ProductCategoriesController.cs" />
     <Compile Include="Controllers\Admin\ProductsController.cs" />
@@ -3353,6 +3354,7 @@
     <Content Include="Scripts\admin\products\products-grid.js" />
     <Content Include="Scripts\admin\products\products-search-page.js" />
     <Content Include="Scripts\admin\products\edit-product-page.js" />
+    <Content Include="Scripts\public\catalog\products-list-page.js" />
     <Content Include="Scripts\public\view-product\product-detail.js" />
     <Content Include="Scripts\admin\supplier-invoices\edit-supplier-invoice-page.js" />
     <Content Include="Scripts\admin\supplier-invoices\supplier-invoice-positions-grid.js" />
@@ -4033,6 +4035,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Products\SpecsTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Dashboard\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

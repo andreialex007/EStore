@@ -367,3 +367,110 @@ body .page-content {
 .category-link {
     font-size: 17px !important;
 }
+
+.extra-info-well .no-data {
+    font-size: 14px;
+    margin-top: 8px;
+    display: inline-block;
+}
+
+p.product-description {
+    font-family: "Open Sans", sans-serif !important;
+}
+
+.cart-icon-cell {
+    width: 42px;
+    height: 42px;
+}
+
+    .cart-icon-cell > i {
+        font-size: 26px;
+        vertical-align: middle;
+        display: inline-block;
+        top: 9px;
+    }
+
+.cart-count {
+    font-weight: bold;
+    margin-top: -2px !important;
+}
+
+.total-cart-block {
+    display: inline-block !important;
+    font-weight: bold;
+}
+
+.products-label {
+    color: black !important;
+}
+
+.total-amount-line {
+    color: black !important;
+}
+
+.total-products-line {
+    margin-bottom: 4px !important;
+}
+
+.cart-link {
+    padding: 0px !important;
+    color: #5e738b !important;
+    display: inline-block !important;
+    border-radius: 5px !important;
+}
+
+    .cart-link:hover {
+        color: #5e738b !important;
+        background-color: #FAFAFA !important;
+    }
+
+.page-header .page-header-top .top-menu .navbar-nav > li.dropdown-separator .separator {
+    float: left !important;
+    display: inline-block !important;
+    width: 1px !important;
+    height: 52px !important;
+    margin-left: 5px !important;
+    margin-top: 0px !important;
+}
+
+.page-header .page-header-top .top-menu .navbar-nav > li.dropdown-separator {
+    padding-left: 5px !important;
+    padding-right: 9px !important;
+}
+
+
+.cart-link > .ttable {
+    margin: 5px !important;
+}
+
+.cart-total-cell {
+    vertical-align: middle !important;
+}
+
+.login-link {
+    font-size: 16px;
+}
+
+.register-link {
+    font-size: 12px;
+}
+
+.login-register-block > div {
+    padding-top: 7px !important;
+}
+
+.empty-cart-label {
+    display: none !important;
+}
+
+.empty-cart .empty-cart-label {
+    display: inline-block !important;
+}
+
+.empty-cart .total-products-line {
+    display: none !important;
+}
+
+.empty-cart .total-amount-line {
+    display: none !important;
+}
