@@ -78,29 +78,7 @@
                     <ul class="nav navbar-nav pull-right">
                         <!-- BEGIN TODO DROPDOWN -->
                         <li>
-                            <a href="#" class="cart-link">
-                                <div class="ttable">
-                                    <div class="trow">
-                                        <div class="tcell cart-icon-cell">
-                                            <i class="glyphicon glyphicon-shopping-cart"></i>
-                                        </div>
-                                        <div class="tcell cart-total-cell @((UserInfo.Cart.Any() ? "" : "empty-cart"))">
-                                            <div class="total-products-line">
-                                                <span class="badge badge-danger cart-count">3</span>
-                                                <span class="products-label">Товаров</span>
-                                            </div>
-                                            <div class="total-amount-line">
-                                                На сумму:
-                                                <span class="label label-success total-cart-block">
-                                                    <span class="value">125 000</span>
-                                                    <span class="currency">р.</span>
-                                                </span>
-                                            </div>
-                                            <span class="empty-cart-label">Корзина пуста</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                            @Html.Partial("~/Views/_Common/ShoppingCartBlock.cshtml")
                         </li>
                         <!-- END TODO DROPDOWN -->
                         <li class="droddown dropdown-separator">

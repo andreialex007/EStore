@@ -474,3 +474,15 @@ p.product-description {
 .empty-cart .total-amount-line {
     display: none !important;
 }
+
+.add-to-cart-container .remove-from-cart-button {
+    display: none;
+}
+
+.add-to-cart-container.in-cart .remove-from-cart-button {
+    display: inline-block !important;
+}
+
+.add-to-cart-container.in-cart .add-to-cart-button {
+    display: none !important;
+}

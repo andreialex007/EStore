@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoParse;
 using Newtonsoft.Json;
 
 namespace EStore.Web.Code
@@ -50,6 +51,27 @@ namespace EStore.Web.Code
             var requestUrl = url.RequestContext.HttpContext.Request.Url;
             var result = $"{requestUrl.Scheme}://{requestUrl.Authority}{VirtualPathUtility.ToAbsolute(virtualPath)}";
             return result;
+        }
+
+        public static string GetProductsForm(int products)
+        {
+            if (products > 20)
+                products = products.ToString().GetLast(1).TryParse<int>();
+
+            if (products == 1)
+                return "Товар";
+
+            if (products > 1 && products < 5)
+                return "Товара";
+
+            return "Товаров";
+        }
+
+        public static string GetLast(this string source, int tail_length)
+        {
+            if (tail_length >= source.Length)
+                return source;
+            return source.Substring(source.Length - tail_length);
         }
 
     }

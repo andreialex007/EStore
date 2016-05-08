@@ -3,9 +3,14 @@
 
         var self = {};
 
-
         self.init = function () {
-            console.log("productsListPage");
+
+            $(".add-to-cart-button").click(self.addToCart);
+
+        }
+
+        self.addToCart = function (event) {
+            console.log("addToCart");
         }
 
         self.init();

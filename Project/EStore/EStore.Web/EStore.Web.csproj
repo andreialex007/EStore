@@ -236,6 +236,7 @@
     <Compile Include="Controllers\Admin\ProductCategoriesController.cs" />
     <Compile Include="Controllers\Admin\ProductsController.cs" />
     <Compile Include="Controllers\Admin\SupplierInvoicesController.cs" />
+    <Compile Include="Controllers\Public\CartController.cs" />
     <Compile Include="Controllers\Public\CatalogController.cs" />
     <Compile Include="Controllers\Public\PublicArticlesController.cs" />
     <Compile Include="Controllers\Public\ViewProductController.cs" />
@@ -4038,6 +4039,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Dashboard\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_Common\ShoppingCartBlock.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

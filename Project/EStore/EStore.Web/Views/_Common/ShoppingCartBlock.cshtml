@@ -1,0 +1,25 @@
+﻿@using EStore.BL.Services
+@using EStore.Web.Code
+<a href="#" class="cart-link">
+    <div class="ttable">
+        <div class="trow">
+            <div class="tcell cart-icon-cell">
+                <i class="glyphicon glyphicon-shopping-cart"></i>
+            </div>
+            <div class="tcell cart-total-cell @((UserInfo.Cart.Any() ? "" : "empty-cart"))">
+                <div class="total-products-line">
+                    <span class="badge badge-danger cart-count">@(UserInfo.Cart.Count)</span>
+                    <span class="products-label">@Extensions.GetProductsForm(UserInfo.Cart.Count)</span>
+                </div>
+                <div class="total-amount-line">
+                    На сумму:
+                    <span class="label label-success total-cart-block">
+                        <span class="value">@(UserInfo.Cart.Sum(x => x.Total))</span>
+                        <span class="currency">р.</span>
+                    </span>
+                </div>
+                <span class="empty-cart-label">Корзина пуста</span>
+            </div>
+        </div>
+    </div>
+</a>
