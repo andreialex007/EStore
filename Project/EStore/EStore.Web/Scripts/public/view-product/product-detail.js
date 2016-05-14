@@ -28,6 +28,13 @@ $(function () {
             });
 
             $(".product-info-portlet .nav-tabs > li:first a").click();
+
+            $(".add-to-cart-button").click(self.addToCart);
+            $(".remove-from-cart-button").click(self.addToCart);
+        }
+
+        self.addToCart = function (event) {
+            utils.addRemoveInCart(event.target);
         }
 
         self.hoverImage = function (event) {

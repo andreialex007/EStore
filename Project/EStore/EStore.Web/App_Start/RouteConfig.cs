@@ -14,6 +14,7 @@ namespace EStore.Web
 
         private static void RegisterPublicRoutes(RouteCollection routes)
         {
+            routes.MapRoute(null, "cart", new { controller = "Cart", action = "Cart" });
             routes.MapRoute(null, "delivery", new { controller = "PublicArticles", action = "Delivery" });
             routes.MapRoute(null, "guarantee", new { controller = "PublicArticles", action = "Guarantee" });
             routes.MapRoute(null, "contacts", new { controller = "PublicArticles", action = "Contacts" });

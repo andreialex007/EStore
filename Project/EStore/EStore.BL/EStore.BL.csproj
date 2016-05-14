@@ -152,6 +152,8 @@
     <Compile Include="Models\AdminLoginModel.cs" />
     <Compile Include="Models\ArticleItem.cs" />
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\CartPageModel.cs" />
+    <Compile Include="Models\CartProductItem.cs" />
     <Compile Include="Models\ProductListModel.cs" />
     <Compile Include="Models\Product\ProductCategoryItem.cs" />
     <Compile Include="Models\Product\ProductFeedbackItem.cs" />

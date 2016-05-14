@@ -6,11 +6,12 @@
         self.init = function () {
 
             $(".add-to-cart-button").click(self.addToCart);
+            $(".remove-from-cart-button").click(self.addToCart);
 
         }
 
         self.addToCart = function (event) {
-            console.log("addToCart");
+            utils.addRemoveInCart(event.target);
         }
 
         self.init();

@@ -93,7 +93,7 @@
                     "pageLength": 100
                 });
             }
-            
+
 
             String.prototype.capitalizeFirstLetter = function () {
                 return this.charAt(0).toUpperCase() + this.slice(1);
@@ -176,6 +176,23 @@
             request.send(data);
         }
 
+        self.addRemoveInCart = function (addRemoveBtn) {
+            var addToCartContainer = $(addRemoveBtn).closest(".add-to-cart-container");
+            var isInCart = addToCartContainer.is(".in-cart");
+            addToCartContainer.find(".btn").addClass("disabled");
+            var productId = addToCartContainer.data("product-id");
+
+            $.ajax({
+                type: "POST",
+                url: !isInCart ? "/Cart/AddToCart" : "/Cart/RemoveFromCart",
+                contentType: "application/json",
+                data: JSON.stringify({ productId: productId })
+            }).done(function (result) {
+                $(".cart-link").replaceWith(result);
+                addToCartContainer.find(".btn").removeClass("disabled");
+                addToCartContainer.toggleClass("in-cart", !isInCart);
+            });
+        }
 
 
         self.filesCounter = 0;

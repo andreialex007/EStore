@@ -486,3 +486,26 @@ p.product-description {
 .add-to-cart-container.in-cart .add-to-cart-button {
     display: none !important;
 }
+
+.cart-items-page .cart-items-table {
+    table-layout: fixed !important;
+    background-color: white;
+}
+
+    .cart-items-page .cart-items-table .price,
+    .cart-items-page .cart-items-table .total,
+    .cart-items-page .cart-items-table .amount {
+        width: 115px !important;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .cart-items-page .cart-items-table .id {
+        width: 50px !important;
+    }
+
+    .cart-items-page .cart-items-table .delete {
+        width: 115px !important;
+        text-align: center;
+        vertical-align: middle;
+    }

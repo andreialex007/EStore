@@ -1,4 +1,5 @@
 ﻿@using System.Web.Mvc
+@using EStore.BL.Services
 @using Newtonsoft.Json
 
 
@@ -26,13 +27,31 @@
 
 @helper IsActiveMainMenu(string url, ViewContext viewContext)
 {
-    if (url == "/" && viewContext.HttpContext.Request.Path == "/")
-    {
+if (url == "/" && viewContext.HttpContext.Request.Path == "/")
+{
         <text>active</text>
-    }
+}
 
-    if (viewContext.HttpContext.Request.Path.TrimStart("/".ToCharArray()).StartsWith(url))
-    {
+if (viewContext.HttpContext.Request.Path.TrimStart("/".ToCharArray()).StartsWith(url))
+{
         <text>active</text>
-    }
+}
+}
+
+@helper RenderAddToCartBtn(long productId)
+{
+    <div data-product-id="@productId"
+         class="add-to-cart-container @(UserInfo.Cart.Any(x=>x.ProductId == productId) ? "in-cart": "")">
+        <span data-container="body" data-placement="bottom" data-html="true" data-original-title="Убрать из корзины"
+              class="btn btn-success remove-from-cart-button tooltips">
+            <i class="fa fa-check"></i>
+            В корзине
+        </span>
+        <span data-container="body" data-placement="bottom" data-html="true"
+              data-original-title="Добавить в корзину"
+              class="btn btn-warning add-to-cart-button tooltips">
+            <i class="fa fa-shopping-cart"></i>
+            В корзину
+        </span>
+    </div>
 }

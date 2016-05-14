@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using EStore.BL.Models;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
 namespace EStore.Web.Controllers.Public
@@ -9,14 +10,22 @@ namespace EStore.Web.Controllers.Public
         [HttpGet]
         public ActionResult Cart()
         {
-            return null;
+            var model = Service.Cart.GetCart();
+            return View("~/Views/Public/Cart/Index.cshtml", model);
         }
 
         [HttpPost]
         public ActionResult AddToCart(long productId)
         {
             Service.Cart.Add(productId);
-            return View("~/Views/_Common/ShoppingCartBlock.cshtml");
+            return PartialView("~/Views/_Common/ShoppingCartBlock.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult RemoveFromCart(long productId)
+        {
+            Service.Cart.Remove(productId);
+            return PartialView("~/Views/_Common/ShoppingCartBlock.cshtml");
         }
     }
 }

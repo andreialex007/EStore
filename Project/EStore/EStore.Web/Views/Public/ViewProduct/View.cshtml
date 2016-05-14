@@ -1,4 +1,5 @@
 ﻿@using System.Security.Principal
+@using EStore.BL.Services
 @using Microsoft.Ajax.Utilities
 @model EStore.BL.Models.Product.ProductItem
 
@@ -123,10 +124,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <span class="btn bg-yellow-gold add-to-cart-button">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>
-                            В корзину
-                        </span>
+                        @RazorHelpers.RenderAddToCartBtn(Model.Id)
                     </div>
                     <div class="col-md-6">
                         <div class="extra-info">
@@ -229,11 +227,11 @@
                                     <div class="actions">
                                         @for (var i = 0; i < item.Stars; i++)
                                         {
-                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star font-yellow-gold"></i>
                                         }
                                         @for (var i = item.Stars; i < 5; i++)
                                         {
-                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o font-yellow-gold"></i>
                                         }
                                     </div>
                                 </div>
@@ -256,9 +254,6 @@
                                 </div>
                             </div>
                         }
-
-
-
                     </div>
                 </div>
             </div>

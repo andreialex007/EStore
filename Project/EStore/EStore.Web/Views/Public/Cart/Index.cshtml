@@ -1,0 +1,116 @@
+﻿@using System.Security.Principal
+@using EStore.BL.Services
+@using EStore.BL.Utils
+@using Microsoft.Ajax.Utilities
+@model EStore.BL.Models.CartPageModel
+
+@{
+    ViewBag.Title = "Корзина покупок";
+    ViewBag.PageTitle = "Корзина покупок";
+    ViewBag.PageSmallTitle = "Список товаров в корзине";
+}
+
+
+
+@section Styles
+{
+    <!-- styles -->
+    <link href="/Content/assets/global/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="/Content/assets/global/plugins/owl.carousel/assets/owl.theme.css" rel="stylesheet" type="text/css">
+    <link href="/Content/assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css">
+
+}
+
+@section Scripts
+{
+    <!-- scripts -->
+    <script src="~/Content/assets/global/plugins/owl.carousel/owl.carousel.js"></script>
+    <script src="~/Content/assets/global/plugins/fancybox/source/jquery.fancybox.js"></script>
+    <script src="~/Scripts/public/view-product/product-detail.js"></script>
+
+}
+
+
+<div class="cart-items-page">
+    <!-- BEGIN PAGE BREADCRUMB -->
+    <ul class="page-breadcrumb breadcrumb">
+        <li>
+            <a href="/">Главная</a><i class="fa fa-circle"></i>
+        </li>
+        <li class="active">
+            Корзина покупок
+        </li>
+    </ul>
+    <!-- END PAGE BREADCRUMB -->
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.Products.Any())
+            {
+                <table class="table table-hover cart-items-table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="id"> ID </th>
+                            <th> Наименование </th>
+                            <th class="price"> Цена <span>руб.</span> </th>
+                            <th class="amount"> Количество </th>
+                            <th class="total"> Сумма <span>руб.</span> </th>
+                            <th class="delete"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Products)
+                        {
+                            <tr>
+                                <td> @item.ProductId </td>
+                                <td>
+                                    <div class="ttable">
+                                        <div class="trow">
+                                            <div class="tcell">
+                                                <a  href="/product/@(item.ProductId)" >
+                                                    
+                                                </a>
+                                            </div>
+                                            <div class="tcell">
+                                                <div>
+                                                    <strong>
+                                                        <a href="/product/@(item.ProductId)">
+                                                            @item.ProductName
+                                                        </a>
+                                                    </strong>
+                                                </div>
+                                                <p>@item.Description.Truncate(100)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="price">
+                                    <span>@item.Price.ToString("N")</span>
+                                </td>
+                                <td class="amount">
+                                    <input value="@item.Count" type="text" class="form-control text-center" />
+                                </td>
+                                <td class="total">
+                                    <span>@item.Total.ToString("N")</span>
+                                </td>
+                                <td class="delete">
+                                    <span class="btn btn-danger btn-xs">
+                                        <i class="fa fa-times"></i>
+                                        Удалить
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h4 class="text-center">
+                    В вашей корзине нет товаров, для добавления товара выберите его из
+                    <a href="/catalog"><strong>каталога</strong></a>
+                </h4>
+            }
+        </div>
+    </div>
+
+</div>

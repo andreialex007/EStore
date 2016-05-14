@@ -1,4 +1,5 @@
-﻿@using EStore.BL.Utils
+﻿@using EStore.BL.Services
+@using EStore.BL.Utils
 @model EStore.BL.Models.ProductListModel
 
 @{
@@ -84,16 +85,7 @@
                                     </span>
                                     <span class="value">&nbsp;@(item.Price.ToString("N0"))</span>
                                 </div>
-                                <div class="add-to-cart-container">
-                                    <span class="btn btn-success remove-from-cart-button">
-                                        <i class="fa fa-check"></i>
-                                        В корзине
-                                    </span>
-                                    <span class="btn btn-warning add-to-cart-button">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        В корзину
-                                    </span>
-                                </div>
+                                @RazorHelpers.RenderAddToCartBtn(item.Id)
                             }
                             else
                             {
