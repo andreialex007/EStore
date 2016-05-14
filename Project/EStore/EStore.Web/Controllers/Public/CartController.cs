@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using EStore.BL.Models;
+using EStore.BL.Services;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
 namespace EStore.Web.Controllers.Public
@@ -25,6 +25,20 @@ namespace EStore.Web.Controllers.Public
         public ActionResult RemoveFromCart(long productId)
         {
             Service.Cart.Remove(productId);
+            return PartialView("~/Views/_Common/ShoppingCartBlock.cshtml");
+        }
+
+        [HttpPost]
+        public JsonResult Clear()
+        {
+            UserInfo.Cart.Clear();
+            return SuccessJsonResult();
+        }
+
+        [HttpPost]
+        public ActionResult SetItem(long productId, int amount)
+        {
+            Service.Cart.SetItem(productId, amount);
             return PartialView("~/Views/_Common/ShoppingCartBlock.cshtml");
         }
     }

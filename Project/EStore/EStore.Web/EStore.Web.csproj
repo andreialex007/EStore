@@ -3355,6 +3355,7 @@
     <Content Include="Scripts\admin\products\products-grid.js" />
     <Content Include="Scripts\admin\products\products-search-page.js" />
     <Content Include="Scripts\admin\products\edit-product-page.js" />
+    <Content Include="Scripts\public\cart\cart-page.js" />
     <Content Include="Scripts\public\catalog\products-list-page.js" />
     <Content Include="Scripts\public\view-product\product-detail.js" />
     <Content Include="Scripts\admin\supplier-invoices\edit-supplier-invoice-page.js" />

@@ -26,8 +26,8 @@
     <!-- scripts -->
     <script src="~/Content/assets/global/plugins/owl.carousel/owl.carousel.js"></script>
     <script src="~/Content/assets/global/plugins/fancybox/source/jquery.fancybox.js"></script>
-    <script src="~/Scripts/public/view-product/product-detail.js"></script>
-
+    <script src="~/Content/assets/global/plugins/accounting.js"></script>
+    <script src="~/Scripts/public/cart/cart-page.js"></script>
 }
 
 
@@ -51,10 +51,15 @@
                         <tr>
                             <th class="id"> ID </th>
                             <th> Наименование </th>
-                            <th class="price"> Цена <span>руб.</span> </th>
+                            <th class="price"> Цена, <span>руб.</span> </th>
                             <th class="amount"> Количество </th>
-                            <th class="total"> Сумма <span>руб.</span> </th>
-                            <th class="delete"> </th>
+                            <th class="total"> Сумма, <span>руб.</span> </th>
+                            <th class="delete">
+                                <span class="btn red-thunderbird btn-xs">
+                                    <i class="fa fa-times"></i>
+                                    Очистить
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,20 +70,22 @@
                                 <td>
                                     <div class="ttable">
                                         <div class="trow">
-                                            <div class="tcell">
-                                                <a  href="/product/@(item.ProductId)" >
-                                                    
+                                            <div class="tcell image-cell">
+                                                <a target="_blank" href="/catalog/product@(item.ProductId)">
+                                                    <img class="img-responsive img-thumbnail" src="@item.Image" />
                                                 </a>
                                             </div>
-                                            <div class="tcell">
+                                            <div class="tcell description-cell">
                                                 <div>
-                                                    <strong>
-                                                        <a href="/product/@(item.ProductId)">
-                                                            @item.ProductName
-                                                        </a>
-                                                    </strong>
+                                                    <div>
+                                                        <strong>
+                                                            <a  target="_blank"  href="/catalog/product@(item.ProductId)">
+                                                                @item.ProductName
+                                                            </a>
+                                                        </strong>
+                                                    </div>
+                                                    <p>@item.Description.Truncate(100)</p>
                                                 </div>
-                                                <p>@item.Description.Truncate(100)</p>
                                             </div>
                                         </div>
                                     </div>
@@ -86,8 +93,20 @@
                                 <td class="price">
                                     <span>@item.Price.ToString("N")</span>
                                 </td>
-                                <td class="amount">
-                                    <input value="@item.Count" type="text" class="form-control text-center" />
+                                <td class="amount cell-item">
+                                    <div class="ttable">
+                                        <div class="trow">
+                                            <div class="tcell">
+                                                <i class="fa fa-plus-circle font-green-meadow amount-up"></i>
+                                            </div>
+                                            <div class="tcell">
+                                                <input value="@item.Count" maxlength="3" type="text" class="form-control text-center items-amount inner-glow" />
+                                            </div>
+                                            <div class="tcell">
+                                                <i class="fa fa-minus-circle font-red-soft amount-down"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="total">
                                     <span>@item.Total.ToString("N")</span>

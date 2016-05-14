@@ -36,10 +36,12 @@ namespace EStore.BL.Services
             if (UserInfo.Cart.All(x => x.ProductId != productId))
                 return;
 
-            var cartItem = UserInfo.Cart.Single(x => x.ProductId == productId);
-            cartItem.Count -= 1;
-            if (cartItem.Count == 0)
-                UserInfo.Cart.RemoveAll(x => x.ProductId == productId);
+            UserInfo.Cart.RemoveAll(x => x.ProductId == productId);
+        }
+
+        public void SetItem(long productId, int amount)
+        {
+            UserInfo.Cart.Single(x => x.ProductId == productId).Count = amount;
         }
 
         public CartPageModel GetCart()
@@ -47,7 +49,7 @@ namespace EStore.BL.Services
             var model = new CartPageModel();
 
             var productIds = UserInfo.Cart.Select(x => x.ProductId).ToList();
-            var products = Db.Set<tblProduct>().Include(x=>x.tblFiles).Where(x => productIds.Contains(x.Id)).ToList();
+            var products = Db.Set<tblProduct>().Include(x => x.tblFiles).Where(x => productIds.Contains(x.Id)).ToList();
 
             foreach (var product in products)
             {
@@ -59,7 +61,7 @@ namespace EStore.BL.Services
                     Count = cartItem.Count,
                     ProductName = product.Name,
                     Description = CommonUtils.StripHtml(product.Descripton).Trim(),
-                    Image = product.tblFiles.Any() ? product.tblFiles.OrderBy(f=>f.Position).First().Path : string.Empty
+                    Image = product.tblFiles.Any() ? product.tblFiles.OrderBy(f => f.Position).First().Path : string.Empty
                 };
                 model.Products.Add(item);
             }

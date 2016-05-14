@@ -26,5 +26,6 @@ namespace EStore.Web.Controllers.Public
             var model = Service.Product.ByCategoryId(id);
             return View("~/Views/Public/Catalog/List.cshtml", model);
         }
+
     }
 }
