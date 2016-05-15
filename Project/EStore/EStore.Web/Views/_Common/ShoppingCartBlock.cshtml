@@ -16,7 +16,7 @@
                 <div class="total-amount-line">
                     На сумму:
                     <span class="label label-success total-cart-block">
-                        <span class="value">@(UserInfo.Cart.Sum(x => x.Total))</span>
+                        <span class="value">@(UserInfo.Cart.Sum(x => x.Total).ToString("N0"))</span>
                         <span class="currency">р.</span>
                     </span>
                 </div>

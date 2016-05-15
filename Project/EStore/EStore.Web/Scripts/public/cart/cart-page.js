@@ -22,21 +22,38 @@
                 $(event.target).val(1);
             }
             self.updateCart(event);
+            self.calculatePositionTotal(event);
         }
 
         self.amountUp = function (event) {
-            var currentVal = accounting.unformat($(".items-amount").val());
+            var parentTr = $(event.target).closest("tr");
+            var currentVal = accounting.unformat(parentTr.find(".items-amount").val());
             currentVal++;
-            $(".items-amount").val(currentVal);
+            parentTr.find(".items-amount").val(currentVal);
             self.updateCart(event);
+            self.calculatePositionTotal(event);
         }
 
         self.amountDown = function (event) {
-            var currentVal = accounting.unformat($(".items-amount").val());
+            var parentTr = $(event.target).closest("tr");
+            var currentVal = accounting.unformat(parentTr.find(".items-amount").val());
             currentVal--;
             currentVal = currentVal == 0 ? 1 : currentVal;
-            $(".items-amount").val(currentVal);
+            parentTr.find(".items-amount").val(currentVal);
             self.updateCart(event);
+            self.calculatePositionTotal(event);
+        }
+
+        self.calculatePositionTotal = function (event) {
+            var parentTr = $(event.target).closest("tr");
+            var itemPrice = accounting.unformat(parentTr.find(".price").text());
+            var amount = parseInt(parentTr.find("input").val());
+            var total = itemPrice * amount;
+            var totalFormatted = accounting.formatMoney(total, "", 0, " ", ",").toString();
+            parentTr.find(".total span").text(totalFormatted);
+            var sum = $.map($("tbody .total span"), function (x) { return accounting.unformat($(x).text()); }).reduce((a, b) => a + b, 0);
+            $("tfoot .total").text(accounting.formatMoney(sum, "", 0, " ", ",").toString());
+
         }
 
         self.updateTimeout = null;

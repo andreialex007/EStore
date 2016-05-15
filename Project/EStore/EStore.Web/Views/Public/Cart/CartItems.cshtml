@@ -1,0 +1,90 @@
+﻿@using EStore.BL.Utils
+@model EStore.BL.Models.CartPageModel
+
+<h3>Список товаров в корзине</h3>
+<table class="table table-hover cart-items-table table-bordered">
+    <thead>
+        <tr>
+            <th class="id"> ID </th>
+            <th> Наименование </th>
+            <th class="price"> Цена, <span>руб.</span> </th>
+            <th class="amount"> Количество </th>
+            <th class="total"> Сумма, <span>руб.</span> </th>
+            <th class="delete">
+                <span class="btn red-thunderbird btn-xs">
+                    <i class="fa fa-times"></i>
+                    Очистить
+                </span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td> @item.ProductId </td>
+                <td>
+                    <div class="ttable">
+                        <div class="trow">
+                            <div class="tcell image-cell">
+                                <a target="_blank" href="/catalog/product@(item.ProductId)">
+                                    <img class="img-responsive img-thumbnail" src="@item.Image" />
+                                </a>
+                            </div>
+                            <div class="tcell description-cell">
+                                <div>
+                                    <div>
+                                        <strong>
+                                            <a target="_blank" href="/catalog/product@(item.ProductId)">
+                                                @item.ProductName
+                                            </a>
+                                        </strong>
+                                    </div>
+                                    <p>@item.Description.Truncate(100)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="price">
+                    <span>@item.Price.ToString("N0")</span>
+                </td>
+                <td class="amount cell-item">
+                    <div class="ttable">
+                        <div class="trow">
+                            <div class="tcell">
+                                <i class="fa fa-plus-circle font-green-meadow amount-up"></i>
+                            </div>
+                            <div class="tcell">
+                                <input value="@item.Count" maxlength="3" type="text" class="form-control text-center items-amount inner-glow" />
+                            </div>
+                            <div class="tcell">
+                                <i class="fa fa-minus-circle font-red-soft amount-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="total">
+                    <span>@item.Total.ToString("N0")</span>
+                </td>
+                <td class="delete">
+                    <span class="btn btn-danger btn-xs">
+                        <i class="fa fa-times"></i>
+                        Удалить
+                    </span>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="3"></th>
+            <th class="amount">
+                <span>Итого:</span>
+            </th>
+            <th class="total"> @Model.Products.Sum(x => x.Total).ToString("N0") </th>
+            <th class="delete">
+            </th>
+        </tr>
+    </tfoot>
+</table>
