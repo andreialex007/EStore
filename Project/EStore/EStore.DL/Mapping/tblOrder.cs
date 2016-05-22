@@ -23,6 +23,12 @@ namespace EStore.DL.Mapping
         public long Id { get; set; }
         public Nullable<long> UserId { get; set; }
         public Nullable<int> State { get; set; }
+        public Nullable<bool> IsDelivery { get; set; }
+        public string City { get; set; }
+        public string Address { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
     
         public virtual tblUser tblUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -298,5 +298,21 @@ namespace EStore.DL.Migrator {
                 return ResourceManager.GetString("_20150503_update_2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALTER TABLE tblOrder ADD IsDelivery bit NULL
+        ///ALTER TABLE tblOrder ADD City nvarchar(255) NULL
+        ///ALTER TABLE tblOrder ADD Address nvarchar(255) NULL
+        ///ALTER TABLE tblOrder ADD Name nvarchar(255) NULL
+        ///ALTER TABLE tblOrder ADD Phone nvarchar(255) NULL
+        ///ALTER TABLE tblOrder ADD Email nvarchar(255) NULL
+        ///GO
+        ///.
+        /// </summary>
+        public static string _20150522_update {
+            get {
+                return ResourceManager.GetString("_20150522_update", resourceCulture);
+            }
+        }
     }
 }

@@ -160,4 +160,7 @@
   <data name="_20150503_update_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>scripts\20150503_update_2.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="_20150522_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>scripts\20150522_update.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

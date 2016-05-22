@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using EStore.BL.Exceptions;
+using EStore.BL.Models;
 using EStore.BL.Services;
 using ControllerBase = EStore.Web.Controllers._Common.ControllerBase;
 
@@ -12,6 +14,29 @@ namespace EStore.Web.Controllers.Public
         {
             var model = Service.Cart.GetCart();
             return View("~/Views/Public/Cart/Index.cshtml", model);
+        }
+
+        [HttpPost]
+        public ActionResult Cart(CheckOutModel model)
+        {
+            try
+            {
+                Service.Order.Add(model);
+                return RedirectToRouteNotify("Ordered", new { id = model.Id });
+            }
+            catch (ValidationException ex)
+            {
+                AddModelErrors(ex);
+                var cart = Service.Cart.GetCart();
+                cart.CheckOutModel = model;
+                return View("~/Views/Public/Cart/Index.cshtml", cart);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Ordered()
+        {
+            return null;
         }
 
         [HttpPost]

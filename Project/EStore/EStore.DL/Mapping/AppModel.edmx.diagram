@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="EStoreModel.tblArticle" Width="1.5" PointX="7.75" PointY="1" />
         <EntityTypeShape EntityType="EStoreModel.tblFile" Width="1.5" PointX="5.25" PointY="2.875" />
         <EntityTypeShape EntityType="EStoreModel.tblManufacter" Width="1.5" PointX="0.75" PointY="7.25" />
-        <EntityTypeShape EntityType="EStoreModel.tblOrder" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="EStoreModel.tblOrder" Width="1.5" PointX="5.25" PointY="10.625" />
         <EntityTypeShape EntityType="EStoreModel.tblProduct" Width="1.5" PointX="3" PointY="6.375" />
         <EntityTypeShape EntityType="EStoreModel.tblProductCategory" Width="1.5" PointX="0.75" PointY="4" />
         <EntityTypeShape EntityType="EStoreModel.tblProductFeedback" Width="1.5" PointX="5.25" PointY="17" />

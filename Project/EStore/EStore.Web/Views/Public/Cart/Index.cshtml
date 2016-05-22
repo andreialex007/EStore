@@ -42,7 +42,7 @@
             @if (Model.Products.Any())
             {
                 @Html.Partial("~/Views/Public/Cart/CartItems.cshtml")
-                @Html.Partial("~/Views/Public/Cart/Checkout.cshtml")
+                @Html.Partial("~/Views/Public/Cart/Checkout.cshtml", Model.CheckOutModel)
             }
             else
             {

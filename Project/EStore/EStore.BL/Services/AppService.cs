@@ -20,6 +20,7 @@ namespace EStore.BL.Services
             AdminUser = new AdminUserService(entities);
             ProductFeedback = new ProductFeedbackService(entities);
             Cart = new CartService(entities);
+            Order = new OrderService(entities);
         }
 
         public ArticleService Article { get; set; }
@@ -32,7 +33,7 @@ namespace EStore.BL.Services
         public AdminUserService AdminUser { get; set; }
         public ProductFeedbackService ProductFeedback { get; set; }
         public CartService Cart { get; set; }
-
+        public OrderService Order { get; set; }
 
         public void Dispose()
         {

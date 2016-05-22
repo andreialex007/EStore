@@ -39,6 +39,12 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="bigint" />
           <Property Name="State" Type="int" />
+          <Property Name="IsDelivery" Type="bit" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="tblProduct">
           <Key>
@@ -476,6 +482,12 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int64" />
           <Property Name="State" Type="Int32" />
+          <Property Name="IsDelivery" Type="Boolean" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblUser" Relationship="EStoreModel.FK_tblOrder_tblUser" FromRole="tblOrder" ToRole="tblUser" />
           <NavigationProperty Name="tblProductSingles" Relationship="EStoreModel.FK_tblProductSingle_tblOrder" FromRole="tblOrder" ToRole="tblProductSingle" />
         </EntityType>
@@ -796,6 +808,12 @@
           <EntitySetMapping Name="tblOrders">
             <EntityTypeMapping TypeName="EStoreModel.tblOrder">
               <MappingFragment StoreEntitySet="tblOrder">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IsDelivery" ColumnName="IsDelivery" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

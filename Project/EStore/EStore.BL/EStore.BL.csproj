@@ -154,6 +154,8 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CartPageModel.cs" />
     <Compile Include="Models\CartProductItem.cs" />
+    <Compile Include="Models\CheckOutModel.cs" />
+    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\ProductListModel.cs" />
     <Compile Include="Models\Product\ProductCategoryItem.cs" />
     <Compile Include="Models\Product\ProductFeedbackItem.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\CartService.cs" />
     <Compile Include="Services\FileService.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ProductCategoryService.cs" />
     <Compile Include="Services\ProductFeedbackService.cs" />
     <Compile Include="Services\ProductService.cs" />
