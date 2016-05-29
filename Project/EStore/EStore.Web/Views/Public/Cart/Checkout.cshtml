@@ -8,10 +8,11 @@
         <div class="portlet light">
             <div class="portlet-body">
                 <form method="POST">
+                    <br />
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="col-md-3">Способ доставки</label>
+                                <label class="col-md-3">Способ получения</label>
                                 <div class="col-md-4">
                                     <label>
                                         <input type="radio" name="delivery-item" value="delivery"> Доставка
@@ -27,11 +28,64 @@
                     </div>
                     <br />
                     <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="alert alert-info">
+                                <div><strong>Информация о доставке:</strong></div>
+                                <div>
+                                    Доставка осуществляется почтой россии. Срок доставки от 5 до 14 дней в зависимости от региона. Для получения точных сроков введите адрес доставки
+                                </div>
+                                <div><strong>Стоимость доставки</strong>
+                                </div>
+                                <div>
+                                    <ul class="delivery-price-list" >
+                                        <li><strong>500 р.</strong> для заказов на сумму до <strong>7000 р.</strong></li>
+                                        <li><strong>900 р.</strong> для заказов на сумму до <strong>от 7000 до 15000  р.</strong></li>
+                                        <li><strong>1500 р.</strong> для заказов на сумму до <strong>от 15000 до 30000  р.</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="display: none;"  class="alert alert-info">
+                                <div class="ttable">
+                                    <div class="trow">
+                                        <div class="tcell self-delivery-text">
+                                            <div>
+                                                Самовывоз происходит по адресу:
+                                                <br />
+                                                <strong>г. Краснодар, ул Красная 11</strong>
+                                                <br/>
+                                                Мы работаем:
+                                                <br />
+                                                <strong>Понедельник-Пятница</strong>
+                                                <br />
+                                                Рабочее время:
+                                                <br />
+                                                <strong>с 8:00 до 19:00</strong>
+                                                <br />
+                                                Для получения заказа:
+                                                <br />
+                                                <strong>Необходимо назвать номер заказа</strong>
+                                            </div>
+                                        </div>
+                                        <div class="tcell self-delivery-map">
+                                            <div>
+                                                <a href="https://maps.yandex.ru/?um=constructor:97sXCw_rFpCkeCUrvAcr01n5xHhRobct&source=constructor" target="_blank">
+                                                    <img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?sid=97sXCw_rFpCkeCUrvAcr01n5xHhRobct&width=175&height=159&lang=ru_RU&sourceType=constructor" alt="" style="border: 0;" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label col-md-3">Город</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" placeholder="Укажите город">
+                                    <span class="help-block"> Например: г. Краснодар</span>
                                 </div>
                             </div>
                         </div>
@@ -43,11 +97,77 @@
                                 <label class="control-label col-md-3">Адрес доставки</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" placeholder="Укажите адрес доставки">
-                                    <span class="help-block"> Например улица Власова 4, корпус 3, строение 5, квартира 7 </span>
+                                    <span class="help-block"> Например: улица Власова 4, корпус 3, строение 5, квартира 7 </span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Имя</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" placeholder="Укажите как к вам обращаться">
+                                    <span class="help-block"> Например: Алексей</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Контактный телефон</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" placeholder="+7(952) 125-17-12">
+                                    <span class="help-block"> Для получения sms о готовности товара</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Email (Не обязательно)</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" placeholder="Введите email">
+                                    <span class="help-block"> Для отправки сообщения о готовности товара</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-md-3">Форма оплаты</label>
+                                <div class="col-md-4">
+                                    <label>
+                                        <input type="radio" name="payment" value="online"> Cейчас на сайте
+                                    </label>
+                                    &nbsp;
+                                    &nbsp;
+                                    <label>
+                                        <input type="radio" name="payment" value="whendelivery"> При получении товара
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9">
+                            <span class="btn btn-primary pull-left">
+                                <span>Оформить заказ</span>
+                                <span class="go-to-payment">и перейти к оплате</span>
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </div><br />
                 </form>
             </div>
         </div>

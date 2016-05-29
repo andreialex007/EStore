@@ -548,13 +548,26 @@ p.product-description {
     cursor: pointer;
 }
 
-.cart-items-page .amount-up:hover,
-.cart-items-page .amount-down:hover {
-    opacity: 0.7;
-}
+    .cart-items-page .amount-up:hover,
+    .cart-items-page .amount-down:hover {
+        opacity: 0.7;
+    }
 
 .inner-glow {
     -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
     -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
     box-shadow: inset 2px 2px 2px 0px #dddddd;
+}
+
+.self-delivery-text {
+    vertical-align: top;
+}
+
+.self-delivery-map {
+    padding-left: 10px !important;
+    width: 188px !important;
+}
+
+ul.delivery-price-list {
+    list-style-type: circle !important;
 }
